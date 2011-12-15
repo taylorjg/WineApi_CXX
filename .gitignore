@@ -1,0 +1,16 @@
+*.ncb
+*.opt
+*.tlh
+*.tli
+*.aps
+*.clw
+*.plg
+*.tlb
+dlldata.c
+WineApi_i.c
+WineApi_p.c
+WineApips.def
+WineApips.mk
+Debug
+Release
+Notes

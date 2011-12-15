@@ -1,0 +1,26 @@
+HKCR
+{
+	WineApi.Config.1 = s 'Config Class'
+	{
+		CLSID = s '{DE19ADA9-9E50-482C-B055-ECF7E51355C0}'
+	}
+	WineApi.Config = s 'Config Class'
+	{
+		CLSID = s '{DE19ADA9-9E50-482C-B055-ECF7E51355C0}'
+		CurVer = s 'WineApi.Config.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {DE19ADA9-9E50-482C-B055-ECF7E51355C0} = s 'Config Class'
+		{
+			ProgID = s 'WineApi.Config.1'
+			VersionIndependentProgID = s 'WineApi.Config'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{4E908787-08CA-45C6-B1C3-4CBED04EF017}'
+		}
+	}
+}

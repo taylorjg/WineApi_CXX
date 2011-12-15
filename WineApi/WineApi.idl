@@ -1,0 +1,883 @@
+// WineApi.idl : IDL source for WineApi.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (WineApi.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+//*****************************************************************************
+//* enum ReturnCode
+//*****************************************************************************
+
+[
+	uuid(3C8A23D5-3052-46B5-B7D9-B2EE4FBC9F95),
+]
+typedef enum ReturnCode
+{
+	ReturnCodeSuccess = 0,
+	ReturnCodeCriticalError = 100,
+	ReturnCodeUnableToAuthorize = 200,
+	ReturnCodeNoAccess = 300
+} ReturnCode;
+
+//*****************************************************************************
+//* enum SortOptions
+//*****************************************************************************
+
+[
+	uuid(B697B012-116A-4B14-826C-06DE39F94639),
+]
+typedef enum SortOptions
+{
+	SortOptionPopularity,
+	SortOptionRating,
+	SortOptionVintage,
+	SortOptionWinery,
+	SortOptionName,
+	SortOptionPrice,
+	SortOptionSaving,
+	SortOptionJustIn
+} SortOptions;
+
+//*****************************************************************************
+//* enum SortDirection
+//*****************************************************************************
+
+[
+	uuid(B6B0A90F-D465-4D99-A636-CF9335DCDF04),
+]
+typedef enum SortDirection
+{
+	SortDirectionAscending,
+	SortDirectionDescending,
+} SortDirection;
+
+//*****************************************************************************
+//* Forward declarations for interfaces
+//*****************************************************************************
+
+interface IAppellation;
+interface IArea;
+interface IArticle;
+interface IBook;
+interface ICategory;
+interface ICategoryMap;
+interface ICommunity;
+interface ICommunityReview;
+interface ICommunityReviews;
+interface IFootnote;
+interface IGeoLocation;
+interface ILabel;
+interface IProduct;
+interface IProductAttribute;
+interface IProducts;
+interface IRating;
+interface IRatings;
+interface IReference;
+interface IRefinement;
+interface IRegion;
+interface IRetail;
+interface IStatus;
+interface IVarietal;
+interface IVineyard;
+interface IVintage;
+interface IVintages;
+interface IWineType;
+
+interface IObjectCollection;
+interface IStringCollection;
+
+//*****************************************************************************
+//* interface IAppellation
+//*****************************************************************************
+
+[
+	object,
+	uuid(5D0DEF55-F950-4F6E-8B74-2F2B586561A1),
+	dual,
+	helpstring("IAppellation Interface"),
+	pointer_default(unique)
+]
+interface IAppellation : IDispatch
+{
+	[propget, id(1), helpstring("property Id")] HRESULT Id([out, retval] long* Id);
+	[propget, id(2), helpstring("property Name")] HRESULT Name([out, retval] BSTR* Name);
+	[propget, id(3), helpstring("property Url")] HRESULT Url([out, retval] BSTR* Url);
+	[propget, id(4), helpstring("property Region")] HRESULT Region([out, retval] IRegion** Region);
+};
+
+//*****************************************************************************
+//* interface IArea
+//*****************************************************************************
+
+[
+	object,
+	uuid(19BEA1BB-47CA-4814-9F95-1CFC07F99B5B),
+	dual,
+	helpstring("IArea Interface"),
+	pointer_default(unique)
+]
+interface IArea : IDispatch
+{
+	[propget, id(1), helpstring("property Id")] HRESULT Id([out, retval] long* Id);
+	[propget, id(2), helpstring("property Name")] HRESULT Name([out, retval] BSTR* Name);
+	[propget, id(3), helpstring("property Url")] HRESULT Url([out, retval] BSTR* Url);
+	[propget, id(4), helpstring("property Parent")] HRESULT Parent([out, retval] IArea** Parent);
+};
+
+//*****************************************************************************
+//* interface IArticle
+//*****************************************************************************
+
+[
+	object,
+	uuid(CD1AD367-5C42-4126-872C-4908AF7A87F5),
+	dual,
+	helpstring("IArticle Interface"),
+	pointer_default(unique)
+]
+interface IArticle : IDispatch
+{
+	[propget, id(1), helpstring("property Id")] HRESULT Id([out, retval] BSTR* Id);
+	[propget, id(2), helpstring("property Title")] HRESULT Title([out, retval] BSTR* Title);
+	[propget, id(3), helpstring("property Abstract")] HRESULT Abstract([out, retval] BSTR* Abstract);
+	[propget, id(4), helpstring("property Content")] HRESULT Content([out, retval] BSTR* Content);
+	[propget, id(5), helpstring("property Url")] HRESULT Url([out, retval] BSTR* Url);
+	[propget, id(6), helpstring("property Footnotes")] HRESULT Footnotes([out, retval] IObjectCollection** Footnotes);
+};
+
+//*****************************************************************************
+//* interface IBook
+//*****************************************************************************
+
+[
+	object,
+	uuid(87B85F54-8EB4-4356-9B78-95F5B66498B5),
+	dual,
+	helpstring("IBook Interface"),
+	pointer_default(unique)
+]
+interface IBook : IDispatch
+{
+	[propget, id(1), helpstring("property Id")] HRESULT Id([out, retval] BSTR* Id);
+	[propget, id(2), helpstring("property Title")] HRESULT Title([out, retval] BSTR* Title);
+	[propget, id(3), helpstring("property Articles")] HRESULT Articles([out, retval] IObjectCollection** Articles);
+};
+
+//*****************************************************************************
+//* interface ICatalog
+//*****************************************************************************
+
+[
+	object,
+	uuid(BB7DF7A5-211A-431E-83D2-3E42CA803F72),
+	dual,
+	helpstring("ICatalog Interface"),
+	pointer_default(unique)
+]
+interface ICatalog : IDispatch
+{
+	[propget, id(1), helpstring("property Status")] HRESULT Status([out, retval] IStatus** Status);
+	[propget, id(2), helpstring("property Products")] HRESULT Products([out, retval] IProducts** Products);
+};
+
+//*****************************************************************************
+//* interface ICategory
+//*****************************************************************************
+
+[
+	object,
+	uuid(BD72D908-3638-41AF-A4BF-C1BBE08C29C5),
+	dual,
+	helpstring("ICategory Interface"),
+	pointer_default(unique)
+]
+interface ICategory : IDispatch
+{
+	[propget, id(1), helpstring("property Id")] HRESULT Id([out, retval] long* Id);
+	[propget, id(2), helpstring("property Name")] HRESULT Name([out, retval] BSTR* Name);
+	[propget, id(3), helpstring("property Refinements")] HRESULT Refinements([out, retval] IObjectCollection** Refinements);
+};
+
+//*****************************************************************************
+//* interface ICategoryMap
+//*****************************************************************************
+
+[
+	object,
+	uuid(3BFF6C9C-5CC3-4347-B249-1D09BB4E8B78),
+	dual,
+	helpstring("ICategoryMap Interface"),
+	pointer_default(unique)
+]
+interface ICategoryMap : IDispatch
+{
+	[propget, id(1), helpstring("property Status")] HRESULT Status([out, retval] IStatus** Status);
+	[propget, id(2), helpstring("property Categories")] HRESULT Categories([out, retval] IObjectCollection** Categories);
+};
+
+//*****************************************************************************
+//* interface ICommunity
+//*****************************************************************************
+
+[
+	object,
+	uuid(5563693C-3FB4-4D22-A9F8-6AED9DD5C348),
+	dual,
+	helpstring("ICommunity Interface"),
+	pointer_default(unique)
+]
+interface ICommunity : IDispatch
+{
+	[propget, id(1), helpstring("property Url")] HRESULT Url([out, retval] BSTR* Url);
+	[propget, id(2), helpstring("property Reviews")] HRESULT Reviews([out, retval] ICommunityReviews** Reviews);
+};
+
+//*****************************************************************************
+//* interface ICommunityReview
+//*****************************************************************************
+
+[
+	object,
+	uuid(3A545728-BE93-4B5D-A1EF-3F48FF2DBF6B),
+	dual,
+	helpstring("ICommunityReview Interface"),
+	pointer_default(unique)
+]
+interface ICommunityReview : IDispatch
+{
+	[propget, id(1), helpstring("property Id")] HRESULT Id([out, retval] long* Id);
+	[propget, id(2), helpstring("property Name")] HRESULT Name([out, retval] BSTR* Name);
+	[propget, id(3), helpstring("property Score")] HRESULT Score([out, retval] long* Score);
+	[propget, id(4), helpstring("property Description")] HRESULT Description([out, retval] BSTR* Description);
+	[propget, id(5), helpstring("property Url")] HRESULT Url([out, retval] BSTR* Url);
+};
+
+//*****************************************************************************
+//* interface ICommunityReviews
+//*****************************************************************************
+
+[
+	object,
+	uuid(FFB91875-D954-4D3D-8050-5AF85296CFA3),
+	dual,
+	helpstring("ICommunityReviews Interface"),
+	pointer_default(unique)
+]
+interface ICommunityReviews : IDispatch
+{
+	[propget, id(1), helpstring("property HighestScore")] HRESULT HighestScore([out, retval] long* HighestScore);
+	[propget, id(2), helpstring("property Url")] HRESULT Url([out, retval] BSTR* Url);
+	[propget, id(3), helpstring("property List")] HRESULT List([out, retval] IObjectCollection** List);
+};
+
+//*****************************************************************************
+//* interface IFootnote
+//*****************************************************************************
+
+[
+	object,
+	uuid(19BD583B-F9A5-4F0A-9636-B8A9B2F9320E),
+	dual,
+	helpstring("IFootnote Interface"),
+	pointer_default(unique)
+]
+interface IFootnote : IDispatch
+{
+	[propget, id(1), helpstring("property Id")] HRESULT Id([out, retval] BSTR* Id);
+	[propget, id(2), helpstring("property Title")] HRESULT Title([out, retval] BSTR* Title);
+	[propget, id(3), helpstring("property Url")] HRESULT Url([out, retval] BSTR* Url);
+};
+
+//*****************************************************************************
+//* interface IGeoLocation
+//*****************************************************************************
+
+[
+	object,
+	uuid(01809819-7A29-4FDB-8430-448EBC4FE9A3),
+	dual,
+	helpstring("IGeoLocation Interface"),
+	pointer_default(unique)
+]
+interface IGeoLocation : IDispatch
+{
+	[propget, id(1), helpstring("property Latitude")] HRESULT Latitude([out, retval] long* Latitude);
+	[propget, id(2), helpstring("property Longitude")] HRESULT Longitude([out, retval] long* Longitude);
+	[propget, id(3), helpstring("property Url")] HRESULT Url([out, retval] BSTR* Url);
+};
+
+//*****************************************************************************
+//* interface ILabel
+//*****************************************************************************
+
+[
+	object,
+	uuid(D89D3E74-681B-4B2F-8682-66EF2F925BBC),
+	dual,
+	helpstring("ILabel Interface"),
+	pointer_default(unique)
+]
+interface ILabel : IDispatch
+{
+	[propget, id(1), helpstring("property Id")] HRESULT Id([out, retval] BSTR* Id);
+	[propget, id(2), helpstring("property Name")] HRESULT Name([out, retval] BSTR* Name);
+	[propget, id(3), helpstring("property Url")] HRESULT Url([out, retval] BSTR* Url);
+};
+
+//*****************************************************************************
+//* interface IObjectCollection
+//*****************************************************************************
+
+[
+	object,
+	uuid(6494BD88-BB53-4867-9F9D-0C9F0EEDA937),
+	dual,
+	helpstring("IObjectCollection Interface"),
+	pointer_default(unique)
+]
+interface IObjectCollection : IDispatch
+{
+	[propget, id(1), helpstring("property Count")] HRESULT Count([out, retval] long* Count);
+	[propget, id(DISPID_VALUE), helpstring("property Item")] HRESULT Item([in] long Index, [out, retval] IDispatch** Item);
+	[propget, id(DISPID_NEWENUM), helpstring("property _NewEnum")] HRESULT _NewEnum([out, retval] IUnknown** Enum);
+};
+
+//*****************************************************************************
+//* interface IProduct
+//*****************************************************************************
+
+[
+	object,
+	uuid(81BB218A-3DED-4941-8BDB-F773E82ED0F7),
+	dual,
+	helpstring("IProduct Interface"),
+	pointer_default(unique)
+]
+interface IProduct : IDispatch
+{
+	[propget, id(1), helpstring("A unique identifier for the product.")]
+	HRESULT Id([out, retval] long* Id);
+
+	[propget, id(2), helpstring("The product name.")]
+	HRESULT Name([out, retval] BSTR* Name);
+
+	[propget, id(3), helpstring("Additional information that may accompany the product.")]
+	HRESULT Description([out, retval] BSTR* Description);
+
+	[propget, id(4), helpstring("The url to the product detail.")]
+	HRESULT Url([out, retval] BSTR* Url);
+
+	[propget, id(5), helpstring("The starting point for the price. Prices could be higher in certain markets, but they will never be lower than this price.")]
+	HRESULT PriceMin([out, retval] double* PriceMin);
+
+	[propget, id(6), helpstring("The maximum price point across all markets for this product.")]
+	HRESULT PriceMax([out, retval] double* PriceMax);
+
+	[propget, id(7), helpstring("The suggested retail price for the product.")]
+	HRESULT PriceRetail([out, retval] double* PriceRetail);
+
+	[propget, id(8), helpstring("Identifies the type of product that is being described. See the list of possible product type options.")]
+	HRESULT Type([out, retval] BSTR* Type);
+
+	[propget, id(9), helpstring("The year, or vintage of the product. If the product is not a bottle of wine, then the string will be empty. If the product is a bottle of wine, but has no vintage, it will have a designation of \"Non-Vintage\".")]
+	HRESULT Year([out, retval] BSTR* Year);
+
+	[propget, id(10), helpstring("property GeoLocation")] HRESULT GeoLocation([out, retval] IGeoLocation** GeoLocation);
+	[propget, id(11), helpstring("property Appellation")] HRESULT Appellation([out, retval] IAppellation** Appellation);
+	[propget, id(12), helpstring("property Varietal")] HRESULT Varietal([out, retval] IVarietal** Varietal);
+	[propget, id(13), helpstring("property Vineyard")] HRESULT Vineyard([out, retval] IVineyard** Vineyard);
+	[propget, id(14), helpstring("property Ratings")] HRESULT Ratings([out, retval] IRatings** Ratings);
+	[propget, id(15), helpstring("property Retail")] HRESULT Retail([out, retval] IRetail** Retail);
+	[propget, id(16), helpstring("property Vintages")] HRESULT Vintages([out, retval] IVintages** Vintages);
+	[propget, id(17), helpstring("property Community")] HRESULT Community([out, retval] ICommunity** Community);
+
+	[propget, id(18), helpstring("property ProductAttributes")] HRESULT ProductAttributes([out, retval] IObjectCollection** ProductAttributes);
+	[propget, id(19), helpstring("property Labels")] HRESULT Labels([out, retval] IObjectCollection** Labels);
+};
+
+//*****************************************************************************
+//* interface IProductAttribute
+//*****************************************************************************
+
+[
+	object,
+	uuid(B67475D6-8DD4-4C9B-BAD6-9271A1E8D3C4),
+	dual,
+	helpstring("IProductAttribute Interface"),
+	pointer_default(unique)
+]
+interface IProductAttribute : IDispatch
+{
+	[propget, id(1), helpstring("property Id")] HRESULT Id([out, retval] long* Id);
+	[propget, id(2), helpstring("property Name")] HRESULT Name([out, retval] BSTR* Name);
+	[propget, id(3), helpstring("property Url")] HRESULT Url([out, retval] BSTR* Url);
+};
+
+//*****************************************************************************
+//* interface IProducts
+//*****************************************************************************
+
+[
+	object,
+	uuid(D96ADEE5-37CE-4B12-A354-F6E9D8626993),
+	dual,
+	helpstring("IProducts Interface"),
+	pointer_default(unique)
+]
+interface IProducts : IDispatch
+{
+	[propget, id(1), helpstring("property Total")] HRESULT Total([out, retval] long* Total);
+	[propget, id(2), helpstring("property Offset")] HRESULT Offset([out, retval] long* Offset);
+	[propget, id(3), helpstring("property Url")] HRESULT Url([out, retval] BSTR* Url);
+	[propget, id(4), helpstring("property List")] HRESULT List([out, retval] IObjectCollection** List);
+};
+
+//*****************************************************************************
+//* interface IRating
+//*****************************************************************************
+
+[
+	object,
+	uuid(D5B0979D-14EE-4DA9-BC95-9EEE539D8B8C),
+	dual,
+	helpstring("IRating Interface"),
+	pointer_default(unique)
+]
+interface IRating : IDispatch
+{
+	[propget, id(1), helpstring("property Id")] HRESULT Id([out, retval] long* Id);
+	[propget, id(2), helpstring("property Name")] HRESULT Name([out, retval] BSTR* Name);
+	[propget, id(3), helpstring("property Score")] HRESULT Score([out, retval] long* Score);
+	[propget, id(4), helpstring("property Url")] HRESULT Url([out, retval] BSTR* Url);
+};
+
+//*****************************************************************************
+//* interface IRatings
+//*****************************************************************************
+
+[
+	object,
+	uuid(07FAE185-EEBE-4C37-BFA6-A93F28990C1F),
+	dual,
+	helpstring("IRatings Interface"),
+	pointer_default(unique)
+]
+interface IRatings : IDispatch
+{
+	[propget, id(1), helpstring("property HighestScore")] HRESULT HighestScore([out, retval] long* HighestScore);
+	[propget, id(2), helpstring("property List")] HRESULT List([out, retval] IObjectCollection** List);
+};
+
+//*****************************************************************************
+//* interface IReference
+//*****************************************************************************
+
+[
+	object,
+	uuid(D148803C-A8AE-47E7-A984-E482746527BC),
+	dual,
+	helpstring("IReference Interface"),
+	pointer_default(unique)
+]
+interface IReference : IDispatch
+{
+	[propget, id(1), helpstring("property Status")] HRESULT Status([out, retval] IStatus** Status);
+	[propget, id(2), helpstring("property Books")] HRESULT Books([out, retval] IObjectCollection** Books);
+};
+
+//*****************************************************************************
+//* interface IRefinement
+//*****************************************************************************
+
+[
+	object,
+	uuid(BE8D6329-FC4A-472A-BEE6-7F2B6D051B75),
+	dual,
+	helpstring("IRefinement Interface"),
+	pointer_default(unique)
+]
+interface IRefinement : IDispatch
+{
+	[propget, id(1), helpstring("property Id")] HRESULT Id([out, retval] long* Id);
+	[propget, id(2), helpstring("property Name")] HRESULT Name([out, retval] BSTR* Name);
+	[propget, id(3), helpstring("property Url")] HRESULT Url([out, retval] BSTR* Url);
+};
+
+//*****************************************************************************
+//* interface IRegion
+//*****************************************************************************
+
+[
+	object,
+	uuid(0BE22B32-DF39-47AD-B44C-A3DC8CD68C66),
+	dual,
+	helpstring("IRegion Interface"),
+	pointer_default(unique)
+]
+interface IRegion : IDispatch
+{
+	[propget, id(1), helpstring("property Id")] HRESULT Id([out, retval] long* Id);
+	[propget, id(2), helpstring("property Name")] HRESULT Name([out, retval] BSTR* Name);
+	[propget, id(3), helpstring("property Url")] HRESULT Url([out, retval] BSTR* Url);
+	[propget, id(4), helpstring("property Area")] HRESULT Area([out, retval] IArea** Area);
+};
+
+//*****************************************************************************
+//* interface IRetail
+//*****************************************************************************
+
+[
+	object,
+	uuid(78F07435-050F-4D02-B27D-C37D380A2602),
+	dual,
+	helpstring("IRetail Interface"),
+	pointer_default(unique)
+]
+interface IRetail : IDispatch
+{
+	[propget, id(1), helpstring("property Sku")] HRESULT Sku([out, retval] BSTR* Sku);
+	[propget, id(2), helpstring("property InStock")] HRESULT InStock([out, retval] VARIANT_BOOL* InStock);
+	[propget, id(3), helpstring("property Price")] HRESULT Price([out, retval] double* Price);
+	[propget, id(4), helpstring("property Url")] HRESULT Url([out, retval] BSTR* Url);
+};
+
+//*****************************************************************************
+//* interface IStatus
+//*****************************************************************************
+
+[
+	object,
+	uuid(E06B4384-2B1F-4D5C-977B-F2D265679E20),
+	dual,
+	helpstring("IStatus Interface"),
+	pointer_default(unique)
+]
+interface IStatus : IDispatch
+{
+	[propget, id(1), helpstring("property ReturnCode")] HRESULT ReturnCode([out, retval] long* ReturnCode);
+	[propget, id(2), helpstring("property Messages")] HRESULT Messages([out, retval] IStringCollection** Messages);
+};
+
+//*****************************************************************************
+//* interface IStringCollection
+//*****************************************************************************
+
+[
+	object,
+	uuid(D8DBDB63-D035-4E3B-BB9F-611FAFFC2D2C),
+	dual,
+	helpstring("IStringCollection Interface"),
+	pointer_default(unique)
+]
+interface IStringCollection : IDispatch
+{
+	[propget, id(1), helpstring("property Count")] HRESULT Count([out, retval] long* Count);
+	[propget, id(DISPID_VALUE), helpstring("property Item")] HRESULT Item([in] long Index, [out, retval] BSTR* Item);
+	[propget, id(DISPID_NEWENUM), helpstring("property _NewEnum")] HRESULT _NewEnum([out, retval] IUnknown** Enum);
+};
+
+//*****************************************************************************
+//* interface IVarietal
+//*****************************************************************************
+
+[
+	object,
+	uuid(F75590F1-8FFB-4560-A680-163B2AF00BE0),
+	dual,
+	helpstring("IVarietal Interface"),
+	pointer_default(unique)
+]
+interface IVarietal : IDispatch
+{
+	[propget, id(1), helpstring("property Id")] HRESULT Id([out, retval] long* Id);
+	[propget, id(2), helpstring("property Name")] HRESULT Name([out, retval] BSTR* Name);
+	[propget, id(3), helpstring("property Url")] HRESULT Url([out, retval] BSTR* Url);
+	[propget, id(4), helpstring("property WineType")] HRESULT WineType([out, retval] IWineType** WineType);
+};
+
+//*****************************************************************************
+//* interface IVineyard
+//*****************************************************************************
+
+[
+	object,
+	uuid(A62234F2-AD0F-43BB-973E-8BE604602DCC),
+	dual,
+	helpstring("IVineyard Interface"),
+	pointer_default(unique)
+]
+interface IVineyard : IDispatch
+{
+	[propget, id(1), helpstring("property Id")] HRESULT Id([out, retval] long* Id);
+	[propget, id(2), helpstring("property Name")] HRESULT Name([out, retval] BSTR* Name);
+	[propget, id(3), helpstring("property Url")] HRESULT Url([out, retval] BSTR* Url);
+	[propget, id(4), helpstring("property GeoLocation")] HRESULT GeoLocation([out, retval] IGeoLocation** GeoLocation);
+};
+
+//*****************************************************************************
+//* interface IVintage
+//*****************************************************************************
+
+[
+	object,
+	uuid(84D5E4AC-D3D6-4030-85AE-54D18CF9FA02),
+	dual,
+	helpstring("IVintage Interface"),
+	pointer_default(unique)
+]
+interface IVintage : IDispatch
+{
+	[propget, id(1), helpstring("property Id")] HRESULT Id([out, retval] long* Id);
+	[propget, id(2), helpstring("property Name")] HRESULT Name([out, retval] BSTR* Name);
+	[propget, id(3), helpstring("property Url")] HRESULT Url([out, retval] BSTR* Url);
+	[propget, id(4), helpstring("property Ratings")] HRESULT Ratings([out, retval] IRatings** Ratings);
+};
+
+//*****************************************************************************
+//* interface IVintages
+//*****************************************************************************
+
+[
+	object,
+	uuid(647D676E-475E-4C15-9BB7-9A8DFAB902FD),
+	dual,
+	helpstring("IVintages Interface"),
+	pointer_default(unique)
+]
+interface IVintages : IDispatch
+{
+	[propget, id(1), helpstring("property List")] HRESULT List([out, retval] IObjectCollection** List);
+};
+
+//*****************************************************************************
+//* interface IWineType
+//*****************************************************************************
+
+[
+	object,
+	uuid(F596011D-FF0A-4E91-814E-AF7A9B5FAB9D),
+	dual,
+	helpstring("IWineType Interface"),
+	pointer_default(unique)
+]
+interface IWineType : IDispatch
+{
+	[propget, id(1), helpstring("property Id")] HRESULT Id([out, retval] long* Id);
+	[propget, id(2), helpstring("property Name")] HRESULT Name([out, retval] BSTR* Name);
+	[propget, id(3), helpstring("property Url")] HRESULT Url([out, retval] BSTR* Url);
+};
+
+//*****************************************************************************
+//* interface IConfig
+//*****************************************************************************
+
+[
+	object,
+	uuid(BACF1BE0-7A6D-4DEE-BBEE-38C0CCB3BFE9),
+	dual,
+	helpstring("IConfig Interface"),
+	pointer_default(unique)
+]
+interface IConfig : IDispatch
+{
+	[propget, id(1), helpstring("property ApiKey")] HRESULT ApiKey([out, retval] BSTR* ApiKey);
+	[propput, id(1), helpstring("property ApiKey")] HRESULT ApiKey([in] BSTR ApiKey);
+	[propget, id(2), helpstring("property Version")] HRESULT Version([out, retval] BSTR* Version);
+	[propput, id(2), helpstring("property Version")] HRESULT Version([in] BSTR Version);
+};
+
+//*****************************************************************************
+//* interface ICategoryMapService
+//*****************************************************************************
+
+[
+	object,
+	uuid(618D119B-366C-486B-89C0-72B357837DE8),
+	dual,
+	helpstring("ICategoryMapService Interface"),
+	pointer_default(unique)
+]
+interface ICategoryMapService : IDispatch
+{
+	[id(1),  helpstring("method Execute")] HRESULT Execute([out, retval] ICategoryMap** CategoryMap);
+	[id(2),  helpstring("method CategoryFilter1")] HRESULT CategoryFilter1([in] long Id1, [out, retval] ICategoryMapService** Self);
+	[id(3),  helpstring("method CategoryFilter2")] HRESULT CategoryFilter2([in] long Id1, [in] long Id2, [out, retval] ICategoryMapService** Self);
+	[id(4),  helpstring("method CategoryFilter3")] HRESULT CategoryFilter3([in] long Id1, [in] long Id2, [in] long Id3, [out, retval] ICategoryMapService** Self);
+	[id(5),  helpstring("method CategoryFilter4")] HRESULT CategoryFilter4([in] long Id1, [in] long Id2, [in] long Id3, [in] long Id4, [out, retval] ICategoryMapService** Self);
+	[id(6),  helpstring("method CategoryFilter5")] HRESULT CategoryFilter5([in] long Id1, [in] long Id2, [in] long Id3, [in] long Id4, [in] long Id5, [out, retval] ICategoryMapService** Self);
+	[id(7),  helpstring("method CategoryFilter"), vararg] HRESULT CategoryFilter([in] SAFEARRAY(VARIANT) Categories, [out, retval] ICategoryMapService** Self);
+	[id(8),  helpstring("method Search1")] HRESULT Search1([in] BSTR Term1, [out, retval] ICategoryMapService** Self);
+	[id(9),  helpstring("method Search2")] HRESULT Search2([in] BSTR Term1, [in] BSTR Term2, [out, retval] ICategoryMapService** Self);
+	[id(10), helpstring("method Search3")] HRESULT Search3([in] BSTR Term1, [in] BSTR Term2, [in] BSTR Term3, [out, retval] ICategoryMapService** Self);
+	[id(11), helpstring("method Search4")] HRESULT Search4([in] BSTR Term1, [in] BSTR Term2, [in] BSTR Term3, [in] BSTR Term4, [out, retval] ICategoryMapService** Self);
+	[id(12), helpstring("method Search5")] HRESULT Search5([in] BSTR Term1, [in] BSTR Term2, [in] BSTR Term3, [in] BSTR Term4, [in] BSTR Term5, [out, retval] ICategoryMapService** Self);
+	[id(13), helpstring("method Search"), vararg] HRESULT Search([in] SAFEARRAY(VARIANT) Terms, [out, retval] ICategoryMapService** Self);
+	[id(14), helpstring("method Show")] HRESULT Show([in] long Id, [out, retval] ICategoryMapService** Self);
+};
+
+//*****************************************************************************
+//* interface ICatalogService
+//*****************************************************************************
+
+[
+	object,
+	uuid(32DBCC18-E5F2-47F2-9394-08164842CBF8),
+	dual,
+	helpstring("ICatalogService Interface"),
+	pointer_default(unique)
+]
+interface ICatalogService : IDispatch
+{
+	[id(1),  helpstring("method Execute")] HRESULT Execute([out, retval] ICatalog** Catalog);
+	[id(2),  helpstring("method Offset")] HRESULT Offset([in] long Offset, [out, retval] ICatalogService** Self);
+	[id(3),  helpstring("method Size")] HRESULT Size([in] long Size, [out, retval] ICatalogService** Self);
+	[id(4),  helpstring("method Search1")] HRESULT Search1([in] BSTR Term1, [out, retval] ICatalogService** Self);
+	[id(5),  helpstring("method Search2")] HRESULT Search2([in] BSTR Term1, [in] BSTR Term2, [out, retval] ICatalogService** Self);
+	[id(6),  helpstring("method Search3")] HRESULT Search3([in] BSTR Term1, [in] BSTR Term2, [in] BSTR Term3, [out, retval] ICatalogService** Self);
+	[id(7),  helpstring("method Search4")] HRESULT Search4([in] BSTR Term1, [in] BSTR Term2, [in] BSTR Term3, [in] BSTR Term4, [out, retval] ICatalogService** Self);
+	[id(8),  helpstring("method Search5")] HRESULT Search5([in] BSTR Term1, [in] BSTR Term2, [in] BSTR Term3, [in] BSTR Term4, [in] BSTR Term5, [out, retval] ICatalogService** Self);
+	[id(9),  helpstring("method Search"), vararg] HRESULT Search([in] SAFEARRAY(VARIANT) Terms, [out, retval] ICatalogService** Self);
+	[id(10), helpstring("method CategoryFilter1")] HRESULT CategoryFilter1([in] long Id1, [out, retval] ICatalogService** Self);
+	[id(11), helpstring("method CategoryFilter2")] HRESULT CategoryFilter2([in] long Id1, [in] long Id2, [out, retval] ICatalogService** Self);
+	[id(12), helpstring("method CategoryFilter3")] HRESULT CategoryFilter3([in] long Id1, [in] long Id2, [in] long Id3, [out, retval] ICatalogService** Self);
+	[id(13), helpstring("method CategoryFilter4")] HRESULT CategoryFilter4([in] long Id1, [in] long Id2, [in] long Id3, [in] long Id4, [out, retval] ICatalogService** Self);
+	[id(14), helpstring("method CategoryFilter5")] HRESULT CategoryFilter5([in] long Id1, [in] long Id2, [in] long Id3, [in] long Id4, [in] long Id5, [out, retval] ICatalogService** Self);
+	[id(15), helpstring("method CategoryFilter"), vararg] HRESULT CategoryFilter([in] SAFEARRAY(VARIANT) Categories, [out, retval] ICatalogService** Self);
+	[id(16), helpstring("method RatingFromFilter")] HRESULT RatingFromFilter([in] long From, [out, retval] ICatalogService** Self);
+	[id(17), helpstring("method RatingFromToFilter")] HRESULT RatingFromToFilter([in] long From, [in] long To, [out, retval] ICatalogService** Self);
+	[id(18), helpstring("method PriceFromFilter")] HRESULT PriceFromFilter([in] double From, [out, retval] ICatalogService** Self);
+	[id(19), helpstring("method PriceFromToFilter")] HRESULT PriceFromToFilter([in] double From, [in] double To, [out, retval] ICatalogService** Self);
+	[id(20), helpstring("method ProductFilter1")] HRESULT ProductFilter1([in] long Id1, [out, retval] ICatalogService** Self);
+	[id(21), helpstring("method ProductFilter2")] HRESULT ProductFilter2([in] long Id1, [in] long Id2, [out, retval] ICatalogService** Self);
+	[id(22), helpstring("method ProductFilter3")] HRESULT ProductFilter3([in] long Id1, [in] long Id2, [in] long Id3, [out, retval] ICatalogService** Self);
+	[id(23), helpstring("method ProductFilter4")] HRESULT ProductFilter4([in] long Id1, [in] long Id2, [in] long Id3, [in] long Id4, [out, retval] ICatalogService** Self);
+	[id(24), helpstring("method ProductFilter5")] HRESULT ProductFilter5([in] long Id1, [in] long Id2, [in] long Id3, [in] long Id4, [in] long Id5, [out, retval] ICatalogService** Self);
+	[id(25), helpstring("method ProductFilter"), vararg] HRESULT ProductFilter([in] SAFEARRAY(VARIANT) Products, [out, retval] ICatalogService** Self);
+	[id(26), helpstring("method State")] HRESULT State([in] BSTR State, [out, retval] ICatalogService** Self);
+	[id(27), helpstring("method SortBy")] HRESULT SortBy([in] enum SortOptions SortOption, [in] enum SortDirection SortDirection, [out, retval] ICatalogService** Self);
+	[id(28), helpstring("method InStock")] HRESULT InStock([in] VARIANT_BOOL InStock, [out, retval] ICatalogService** Self);
+};
+
+//*****************************************************************************
+//* interface IReferenceService
+//*****************************************************************************
+
+[
+	object,
+	uuid(49A4F778-ECC9-40D1-BFBA-A64763AF276B),
+	dual,
+	helpstring("IReferenceService Interface"),
+	pointer_default(unique)
+]
+interface IReferenceService : IDispatch
+{
+	[id(1), helpstring("method Execute")] HRESULT Execute([out, retval] IReference** Reference);
+	[id(2), helpstring("method CategoryFilter1")] HRESULT CategoryFilter1([in] long Id1, [out, retval] IReferenceService** Self);
+	[id(3), helpstring("method CategoryFilter2")] HRESULT CategoryFilter2([in] long Id1, [in] long Id2, [out, retval] IReferenceService** Self);
+	[id(4), helpstring("method CategoryFilter3")] HRESULT CategoryFilter3([in] long Id1, [in] long Id2, [in] long Id3, [out, retval] IReferenceService** Self);
+	[id(5), helpstring("method CategoryFilter4")] HRESULT CategoryFilter4([in] long Id1, [in] long Id2, [in] long Id3, [in] long Id4, [out, retval] IReferenceService** Self);
+	[id(6), helpstring("method CategoryFilter5")] HRESULT CategoryFilter5([in] long Id1, [in] long Id2, [in] long Id3, [in] long Id4, [in] long Id5, [out, retval] IReferenceService** Self);
+	[id(7), helpstring("method CategoryFilter"), vararg] HRESULT CategoryFilter([in] SAFEARRAY(VARIANT) Categories, [out, retval] IReferenceService** Self);
+};
+
+//*****************************************************************************
+//* library WineApi
+//*****************************************************************************
+
+[
+	uuid(4E908787-08CA-45C6-B1C3-4CBED04EF017),
+	version(1.0),
+	helpstring("WineApi 1.0 Type Library")
+]
+library WineApi
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	enum ReturnCode;
+	enum SortOptions;
+	enum SortDirection;
+
+	interface IAppellation;
+	interface IArea;
+	interface IArticle;
+	interface IBook;
+	interface ICategory;
+	interface ICategoryMap;
+	interface ICommunity;
+	interface ICommunityReview;
+	interface ICommunityReviews;
+	interface IFootnote;
+	interface IGeoLocation;
+	interface ILabel;
+	interface IProduct;
+	interface IProductAttribute;
+	interface IProducts;
+	interface IRating;
+	interface IRatings;
+	interface IReference;
+	interface IRefinement;
+	interface IRegion;
+	interface IRetail;
+	interface IStatus;
+	interface IVarietal;
+	interface IVineyard;
+	interface IVintage;
+	interface IVintages;
+	interface IWineType;
+
+	//*************************************************************************
+	//* coclass Config
+	//*************************************************************************
+
+	[
+		uuid(DE19ADA9-9E50-482C-B055-ECF7E51355C0),
+		helpstring("Config Class")
+	]
+	coclass Config
+	{
+		[default] interface IConfig;
+	};
+
+	//*************************************************************************
+	//* coclass CategoryMapService
+	//*************************************************************************
+
+	[
+		uuid(AF59A41C-084E-45B6-905E-29232E541B86),
+		helpstring("CategoryMapService Class")
+	]
+	coclass CategoryMapService
+	{
+		[default] interface ICategoryMapService;
+	};
+
+	//*************************************************************************
+	//* coclass CatalogService
+	//*************************************************************************
+
+	[
+		uuid(C54236C1-15ED-4F59-86C5-5CBF1C1B096F),
+		helpstring("CatalogService Class")
+	]
+	coclass CatalogService
+	{
+		[default] interface ICatalogService;
+	};
+
+	//*************************************************************************
+	//* coclass ReferenceService
+	//*************************************************************************
+
+	[
+		uuid(287E784F-BD1F-458E-8A3D-58907F71E5EB),
+		helpstring("ReferenceService Class")
+	]
+	coclass ReferenceService
+	{
+		[default] interface IReferenceService;
+	};
+};

@@ -1,0 +1,26 @@
+HKCR
+{
+	WineApi.CategoryMapService.1 = s 'CategoryMapService Class'
+	{
+		CLSID = s '{AF59A41C-084E-45B6-905E-29232E541B86}'
+	}
+	WineApi.CategoryMapService = s 'CategoryMapService Class'
+	{
+		CLSID = s '{AF59A41C-084E-45B6-905E-29232E541B86}'
+		CurVer = s 'WineApi.CategoryMapService.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {AF59A41C-084E-45B6-905E-29232E541B86} = s 'CategoryMapService Class'
+		{
+			ProgID = s 'WineApi.CategoryMapService.1'
+			VersionIndependentProgID = s 'WineApi.CategoryMapService'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{4E908787-08CA-45C6-B1C3-4CBED04EF017}'
+		}
+	}
+}
