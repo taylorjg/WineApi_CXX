@@ -14,6 +14,10 @@ making calls to any of the services. It has the following properties:
 - ApiKey
 - Version (defaults to "beta2")
 
+Each of the service objects has an Execute() method that returns an appropriate object.
+For example, CatalogService.Execute() returns a Catalog object which in turn contains
+Status and Products objects.
+
 ## References
 
 - http://api.wine.com
@@ -21,7 +25,7 @@ making calls to any of the services. It has the following properties:
 
 ## Simple Visual C++ Client Example
 
-'''C++
+```C++
 #include <windows.h>
 #include <stdio.h>
 #include <tchar.h>
@@ -68,9 +72,9 @@ int main ()
 
     return 0;
 }
-'''
+```
 
 ## Simple VBScript Client Example
 
-'''VBScript
-'''
+```VBScript
+```
