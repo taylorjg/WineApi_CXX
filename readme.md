@@ -77,4 +77,27 @@ int main ()
 ## Simple VBScript Client Example
 
 ```VBScript
+Const ReturnCodeSuccess = 0
+Const SortOptionRating = 1
+Const SortDirectionDescending = 1
+
+Set oConfig = CreateObject("WineApi.Config")
+oConfig.ApiKey = "<your api key here>"
+
+Set oCatalogService = CreateObject("WineApi.CatalogService")
+
+Set oCatalog = oCatalogService _
+    .State ("CA") _
+    .InStock (True) _
+    .Search ("Merlot") _
+    .RatingFromToFilter (90, 96) _
+    .SortBy (SortOptionRating, SortDirectionDescending) _
+    .Execute ()
+
+If oCatalog.Status.ReturnCode = ReturnCodeSuccess Then
+    MsgBox "Number of products found: " & oCatalog.Products.Total, vbOKOnly, "CatalogService Success"
+Else
+    strFirstMessage = oCatalog.Status.Messages(0)
+    MsgBox strFirstMessage, vbOKOnly, "CatalogService Failure"
+End If
 ```
