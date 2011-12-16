@@ -7,6 +7,7 @@
 *.plg
 *.tlb
 dlldata.c
+WineApi.h
 WineApi_i.c
 WineApi_p.c
 WineApips.def
