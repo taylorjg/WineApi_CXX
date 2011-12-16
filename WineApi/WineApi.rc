@@ -68,17 +68,21 @@ VS_VERSION_INFO VERSIONINFO
 BEGIN
     BLOCK "StringFileInfo"
     BEGIN
-        BLOCK "040904B0"
+        BLOCK "040904b0"
         BEGIN
+            VALUE "Comments", "\0"
             VALUE "CompanyName", "\0"
-            VALUE "FileDescription", "WineApi Module\0"
-            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "FileDescription", "RESTful implementation of wine.com API.\0"
+            VALUE "FileVersion", "1, 0, 0, 2\0"
             VALUE "InternalName", "WineApi\0"
-            VALUE "LegalCopyright", "Copyright 2011\0"
-            VALUE "OriginalFilename", "WineApi.DLL\0"
-            VALUE "ProductName", "WineApi Module\0"
-            VALUE "ProductVersion", "1, 0, 0, 1\0"
+            VALUE "LegalCopyright", "\0"
+            VALUE "LegalTrademarks", "\0"
             VALUE "OLESelfRegister", "\0"
+            VALUE "OriginalFilename", "WineApi.dll\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "WineApi Module\0"
+            VALUE "ProductVersion", "1, 0, 0, 2\0"
+            VALUE "SpecialBuild", "\0"
         END
     END
     BLOCK "VarFileInfo"

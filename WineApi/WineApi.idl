@@ -13,6 +13,7 @@ import "ocidl.idl";
 
 [
 	uuid(3C8A23D5-3052-46B5-B7D9-B2EE4FBC9F95),
+	helpstring("A numerical code that identifies the status. A number of 0 means everything worked correctly.")
 ]
 typedef enum ReturnCode
 {
@@ -28,6 +29,7 @@ typedef enum ReturnCode
 
 [
 	uuid(B697B012-116A-4B14-826C-06DE39F94639),
+	helpstring("Supported sort options.")
 ]
 typedef enum SortOptions
 {
@@ -47,6 +49,7 @@ typedef enum SortOptions
 
 [
 	uuid(B6B0A90F-D465-4D99-A636-CF9335DCDF04),
+	helpstring("The direction in which to sort.")
 ]
 typedef enum SortDirection
 {
@@ -102,10 +105,17 @@ interface IStringCollection;
 ]
 interface IAppellation : IDispatch
 {
-	[propget, id(1), helpstring("property Id")] HRESULT Id([out, retval] long* Id);
-	[propget, id(2), helpstring("property Name")] HRESULT Name([out, retval] BSTR* Name);
-	[propget, id(3), helpstring("property Url")] HRESULT Url([out, retval] BSTR* Url);
-	[propget, id(4), helpstring("property Region")] HRESULT Region([out, retval] IRegion** Region);
+	[propget, id(1), helpstring("A unique (Endeca) identifier for the appellation.")]
+	HRESULT Id([out, retval] long* Id);
+
+	[propget, id(2), helpstring("The name of the appellation.")]
+	HRESULT Name([out, retval] BSTR* Name);
+
+	[propget, id(3), helpstring("The url to the other products in the same appellation.")]
+	HRESULT Url([out, retval] BSTR* Url);
+
+	[propget, id(4), helpstring("The region that corresponds to the appellation.")]
+	HRESULT Region([out, retval] IRegion** Region);
 };
 
 //*****************************************************************************
@@ -116,15 +126,22 @@ interface IAppellation : IDispatch
 	object,
 	uuid(19BEA1BB-47CA-4814-9F95-1CFC07F99B5B),
 	dual,
-	helpstring("IArea Interface"),
+	helpstring("This defines a high level area that the wine belongs to. An example would be \"New World\", or \"France\"."),
 	pointer_default(unique)
 ]
 interface IArea : IDispatch
 {
-	[propget, id(1), helpstring("property Id")] HRESULT Id([out, retval] long* Id);
-	[propget, id(2), helpstring("property Name")] HRESULT Name([out, retval] BSTR* Name);
-	[propget, id(3), helpstring("property Url")] HRESULT Url([out, retval] BSTR* Url);
-	[propget, id(4), helpstring("property Parent")] HRESULT Parent([out, retval] IArea** Parent);
+	[propget, id(1), helpstring("A unique (Endeca) identifier for the area.")]
+	HRESULT Id([out, retval] long* Id);
+
+	[propget, id(2), helpstring("The name of the area.")]
+	HRESULT Name([out, retval] BSTR* Name);
+
+	[propget, id(3), helpstring("The url to the other products in the same area.")]
+	HRESULT Url([out, retval] BSTR* Url);
+
+	[propget, id(4), helpstring("If there is a higher area classification, this will be populated with the parent. An example could be an area called \"Old World\" which would be the parent of an area called \"France\". This could be null.")]
+	HRESULT Parent([out, retval] IArea** Parent);
 };
 
 //*****************************************************************************
@@ -140,12 +157,23 @@ interface IArea : IDispatch
 ]
 interface IArticle : IDispatch
 {
-	[propget, id(1), helpstring("property Id")] HRESULT Id([out, retval] BSTR* Id);
-	[propget, id(2), helpstring("property Title")] HRESULT Title([out, retval] BSTR* Title);
-	[propget, id(3), helpstring("property Abstract")] HRESULT Abstract([out, retval] BSTR* Abstract);
-	[propget, id(4), helpstring("property Content")] HRESULT Content([out, retval] BSTR* Content);
-	[propget, id(5), helpstring("property Url")] HRESULT Url([out, retval] BSTR* Url);
-	[propget, id(6), helpstring("property Footnotes")] HRESULT Footnotes([out, retval] IObjectCollection** Footnotes);
+	[propget, id(1), helpstring("The article identifier.")]
+	HRESULT Id([out, retval] BSTR* Id);
+
+	[propget, id(2), helpstring("Descriptive name for the article.")]
+	HRESULT Title([out, retval] BSTR* Title);
+
+	[propget, id(3), helpstring("A short description, or abstract, for the article.")]
+	HRESULT Abstract([out, retval] BSTR* Abstract);
+
+	[propget, id(4), helpstring("The article content. This is only populated when the article identifier is specified in the filter. Only available with \"partner\" access.")]
+	HRESULT Content([out, retval] BSTR* Content);
+
+	[propget, id(5), helpstring("A url to the article on the wine.com website.")]
+	HRESULT Url([out, retval] BSTR* Url);
+
+	[propget, id(6), helpstring("Footnotes to other articles that are related to this article.")]
+	HRESULT Footnotes([out, retval] IObjectCollection** Footnotes);
 };
 
 //*****************************************************************************
@@ -156,14 +184,19 @@ interface IArticle : IDispatch
 	object,
 	uuid(87B85F54-8EB4-4356-9B78-95F5B66498B5),
 	dual,
-	helpstring("IBook Interface"),
+	helpstring("A book is defined as a section of the Wine.com reference library. An example would be \"Wine Basics\" or \"Selecting Wines\"."),
 	pointer_default(unique)
 ]
 interface IBook : IDispatch
 {
-	[propget, id(1), helpstring("property Id")] HRESULT Id([out, retval] BSTR* Id);
-	[propget, id(2), helpstring("property Title")] HRESULT Title([out, retval] BSTR* Title);
-	[propget, id(3), helpstring("property Articles")] HRESULT Articles([out, retval] IObjectCollection** Articles);
+	[propget, id(1), helpstring("The book identifier.")]
+	HRESULT Id([out, retval] BSTR* Id);
+
+	[propget, id(2), helpstring("Descriptive name for the book.")]
+	HRESULT Title([out, retval] BSTR* Title);
+
+	[propget, id(3), helpstring("The articles that make up the book.")]
+	HRESULT Articles([out, retval] IObjectCollection** Articles);
 };
 
 //*****************************************************************************
@@ -174,13 +207,16 @@ interface IBook : IDispatch
 	object,
 	uuid(BB7DF7A5-211A-431E-83D2-3E42CA803F72),
 	dual,
-	helpstring("ICatalog Interface"),
+	helpstring("This object is returned when a call is made to the Catalog API."),
 	pointer_default(unique)
 ]
 interface ICatalog : IDispatch
 {
-	[propget, id(1), helpstring("property Status")] HRESULT Status([out, retval] IStatus** Status);
-	[propget, id(2), helpstring("property Products")] HRESULT Products([out, retval] IProducts** Products);
+	[propget, id(1), helpstring("Contains status and debugging information.")]
+	HRESULT Status([out, retval] IStatus** Status);
+
+	[propget, id(2), helpstring("This object contains products that match the catalog query.")]
+	HRESULT Products([out, retval] IProducts** Products);
 };
 
 //*****************************************************************************
@@ -196,9 +232,14 @@ interface ICatalog : IDispatch
 ]
 interface ICategory : IDispatch
 {
-	[propget, id(1), helpstring("property Id")] HRESULT Id([out, retval] long* Id);
-	[propget, id(2), helpstring("property Name")] HRESULT Name([out, retval] BSTR* Name);
-	[propget, id(3), helpstring("property Refinements")] HRESULT Refinements([out, retval] IObjectCollection** Refinements);
+	[propget, id(1), helpstring("The category identifier (Endeca Dimension Id).")]
+	HRESULT Id([out, retval] long* Id);
+
+	[propget, id(2), helpstring("Descriptive name for the category.")]
+	HRESULT Name([out, retval] BSTR* Name);
+
+	[propget, id(3), helpstring("The category options.")]
+	HRESULT Refinements([out, retval] IObjectCollection** Refinements);
 };
 
 //*****************************************************************************
@@ -209,13 +250,16 @@ interface ICategory : IDispatch
 	object,
 	uuid(3BFF6C9C-5CC3-4347-B249-1D09BB4E8B78),
 	dual,
-	helpstring("ICategoryMap Interface"),
+	helpstring("This object is returned when a call is made to the Category Map API. It returns possible category matches based off a provided query."),
 	pointer_default(unique)
 ]
 interface ICategoryMap : IDispatch
 {
-	[propget, id(1), helpstring("property Status")] HRESULT Status([out, retval] IStatus** Status);
-	[propget, id(2), helpstring("property Categories")] HRESULT Categories([out, retval] IObjectCollection** Categories);
+	[propget, id(1), helpstring("Contains status and debugging information.")]
+	HRESULT Status([out, retval] IStatus** Status);
+
+	[propget, id(2), helpstring("A list of categories that match the provided query.")]
+	HRESULT Categories([out, retval] IObjectCollection** Categories);
 };
 
 //*****************************************************************************
@@ -226,13 +270,16 @@ interface ICategoryMap : IDispatch
 	object,
 	uuid(5563693C-3FB4-4D22-A9F8-6AED9DD5C348),
 	dual,
-	helpstring("ICommunity Interface"),
+	helpstring("This object contains summaries the community content, as well as access to the more detailed community information."),
 	pointer_default(unique)
 ]
 interface ICommunity : IDispatch
 {
-	[propget, id(1), helpstring("property Url")] HRESULT Url([out, retval] BSTR* Url);
-	[propget, id(2), helpstring("property Reviews")] HRESULT Reviews([out, retval] ICommunityReviews** Reviews);
+	[propget, id(1), helpstring("The url to the product detail page that contains the community notes.")]
+	HRESULT Url([out, retval] BSTR* Url);
+
+	[propget, id(2), helpstring("A collection of reviews that community members have written.")]
+	HRESULT Reviews([out, retval] ICommunityReviews** Reviews);
 };
 
 //*****************************************************************************
@@ -248,11 +295,20 @@ interface ICommunity : IDispatch
 ]
 interface ICommunityReview : IDispatch
 {
-	[propget, id(1), helpstring("property Id")] HRESULT Id([out, retval] long* Id);
-	[propget, id(2), helpstring("property Name")] HRESULT Name([out, retval] BSTR* Name);
-	[propget, id(3), helpstring("property Score")] HRESULT Score([out, retval] long* Score);
-	[propget, id(4), helpstring("property Description")] HRESULT Description([out, retval] BSTR* Description);
-	[propget, id(5), helpstring("property Url")] HRESULT Url([out, retval] BSTR* Url);
+	[propget, id(1), helpstring("The unique (Endeca) id for the publication.")]
+	HRESULT Id([out, retval] long* Id);
+
+	[propget, id(2), helpstring("The name, or description, of the review or publication.")]
+	HRESULT Name([out, retval] BSTR* Name);
+
+	[propget, id(3), helpstring("The score given to the product.")]
+	HRESULT Score([out, retval] long* Score);
+
+	[propget, id(4), helpstring("The full description of the review.")]
+	HRESULT Description([out, retval] BSTR* Description);
+
+	[propget, id(5), helpstring("A url to other products that have been reviewed by the same publication.")]
+	HRESULT Url([out, retval] BSTR* Url);
 };
 
 //*****************************************************************************
@@ -263,14 +319,19 @@ interface ICommunityReview : IDispatch
 	object,
 	uuid(FFB91875-D954-4D3D-8050-5AF85296CFA3),
 	dual,
-	helpstring("ICommunityReviews Interface"),
+	helpstring("Summaries all of the community reviews."),
 	pointer_default(unique)
 ]
 interface ICommunityReviews : IDispatch
 {
-	[propget, id(1), helpstring("property HighestScore")] HRESULT HighestScore([out, retval] long* HighestScore);
-	[propget, id(2), helpstring("property Url")] HRESULT Url([out, retval] BSTR* Url);
-	[propget, id(3), helpstring("property List")] HRESULT List([out, retval] IObjectCollection** List);
+	[propget, id(1), helpstring("The highest review score given to the product.")]
+	HRESULT HighestScore([out, retval] long* HighestScore);
+
+	[propget, id(2), helpstring("The url to the full list of reviews.")]
+	HRESULT Url([out, retval] BSTR* Url);
+
+	[propget, id(3), helpstring("A collection of reviews that have been given to the product. Only available with \"partner\" access.")]
+	HRESULT List([out, retval] IObjectCollection** List);
 };
 
 //*****************************************************************************
@@ -286,9 +347,14 @@ interface ICommunityReviews : IDispatch
 ]
 interface IFootnote : IDispatch
 {
-	[propget, id(1), helpstring("property Id")] HRESULT Id([out, retval] BSTR* Id);
-	[propget, id(2), helpstring("property Title")] HRESULT Title([out, retval] BSTR* Title);
-	[propget, id(3), helpstring("property Url")] HRESULT Url([out, retval] BSTR* Url);
+	[propget, id(1), helpstring("The article identifier.")]
+	HRESULT Id([out, retval] BSTR* Id);
+
+	[propget, id(2), helpstring("Descriptive name for the article.")]
+	HRESULT Title([out, retval] BSTR* Title);
+
+	[propget, id(3), helpstring("A url to the article on the wine.com website.")]
+	HRESULT Url([out, retval] BSTR* Url);
 };
 
 //*****************************************************************************
@@ -299,14 +365,19 @@ interface IFootnote : IDispatch
 	object,
 	uuid(01809819-7A29-4FDB-8430-448EBC4FE9A3),
 	dual,
-	helpstring("IGeoLocation Interface"),
+	helpstring("Identifies a latitude and longitude for the location of the grapes, or winery, that produced the wine."),
 	pointer_default(unique)
 ]
 interface IGeoLocation : IDispatch
 {
-	[propget, id(1), helpstring("property Latitude")] HRESULT Latitude([out, retval] long* Latitude);
-	[propget, id(2), helpstring("property Longitude")] HRESULT Longitude([out, retval] long* Longitude);
-	[propget, id(3), helpstring("property Url")] HRESULT Url([out, retval] BSTR* Url);
+	[propget, id(1), helpstring("The latitude of the location. If this data does not exist (or you do not have access to it), the value returned will be -360.")]
+	HRESULT Latitude([out, retval] long* Latitude);
+
+	[propget, id(2), helpstring("The longitude of the location. If this data does not exist (or you do not have access to it), the value returned will be -360.")]
+	HRESULT Longitude([out, retval] long* Longitude);
+
+	[propget, id(3), helpstring("The url to a map of the wine.")]
+	HRESULT Url([out, retval] BSTR* Url);
 };
 
 //*****************************************************************************
@@ -322,9 +393,14 @@ interface IGeoLocation : IDispatch
 ]
 interface ILabel : IDispatch
 {
-	[propget, id(1), helpstring("property Id")] HRESULT Id([out, retval] BSTR* Id);
-	[propget, id(2), helpstring("property Name")] HRESULT Name([out, retval] BSTR* Name);
-	[propget, id(3), helpstring("property Url")] HRESULT Url([out, retval] BSTR* Url);
+	[propget, id(1), helpstring("A unique identifier for the label.")]
+	HRESULT Id([out, retval] BSTR* Id);
+
+	[propget, id(2), helpstring("The name, or description, of the label.")]
+	HRESULT Name([out, retval] BSTR* Name);
+
+	[propget, id(3), helpstring("The url to the label.")]
+	HRESULT Url([out, retval] BSTR* Url);
 };
 
 //*****************************************************************************
@@ -364,7 +440,7 @@ interface IProduct : IDispatch
 	[propget, id(2), helpstring("The product name.")]
 	HRESULT Name([out, retval] BSTR* Name);
 
-	[propget, id(3), helpstring("Additional information that may accompany the product.")]
+	[propget, id(3), helpstring("Additional information that may accompany the product. Only available with \"partner\" access.")]
 	HRESULT Description([out, retval] BSTR* Description);
 
 	[propget, id(4), helpstring("The url to the product detail.")]
@@ -385,17 +461,35 @@ interface IProduct : IDispatch
 	[propget, id(9), helpstring("The year, or vintage of the product. If the product is not a bottle of wine, then the string will be empty. If the product is a bottle of wine, but has no vintage, it will have a designation of \"Non-Vintage\".")]
 	HRESULT Year([out, retval] BSTR* Year);
 
-	[propget, id(10), helpstring("property GeoLocation")] HRESULT GeoLocation([out, retval] IGeoLocation** GeoLocation);
-	[propget, id(11), helpstring("property Appellation")] HRESULT Appellation([out, retval] IAppellation** Appellation);
-	[propget, id(12), helpstring("property Varietal")] HRESULT Varietal([out, retval] IVarietal** Varietal);
-	[propget, id(13), helpstring("property Vineyard")] HRESULT Vineyard([out, retval] IVineyard** Vineyard);
-	[propget, id(14), helpstring("property Ratings")] HRESULT Ratings([out, retval] IRatings** Ratings);
-	[propget, id(15), helpstring("property Retail")] HRESULT Retail([out, retval] IRetail** Retail);
-	[propget, id(16), helpstring("property Vintages")] HRESULT Vintages([out, retval] IVintages** Vintages);
-	[propget, id(17), helpstring("property Community")] HRESULT Community([out, retval] ICommunity** Community);
+	[propget, id(10), helpstring("The location of the grapes, or winery, that produced this wine. Only available with \"partner\" access.")]
+	HRESULT GeoLocation([out, retval] IGeoLocation** GeoLocation);
 
-	[propget, id(18), helpstring("property ProductAttributes")] HRESULT ProductAttributes([out, retval] IObjectCollection** ProductAttributes);
-	[propget, id(19), helpstring("property Labels")] HRESULT Labels([out, retval] IObjectCollection** Labels);
+	[propget, id(11), helpstring("The appellation that the product belongs. Note, not all products have appellations. This can be null.")]
+	HRESULT Appellation([out, retval] IAppellation** Appellation);
+
+	[propget, id(12), helpstring("The varietal that the product belongs to. Note, not all products have a varietal. This can be null.")]
+	HRESULT Varietal([out, retval] IVarietal** Varietal);
+
+	[propget, id(13), helpstring("The vineyard that the product belongs to. Note, not all products have a vineyard. This can be null.")]
+	HRESULT Vineyard([out, retval] IVineyard** Vineyard);
+
+	[propget, id(14), helpstring("A collection of ratings that have been given to the product.")]
+	HRESULT Ratings([out, retval] IRatings** Ratings);
+
+	[propget, id(15), helpstring("Retail properties for the product. This is only available when the state is specified, otherwise it is null.")]
+	HRESULT Retail([out, retval] IRetail** Retail);
+
+	[propget, id(16), helpstring("A list of other vintages of this wine. Only available with \"partner\" access.")]
+	HRESULT Vintages([out, retval] IVintages** Vintages);
+
+	[propget, id(17), helpstring("Wine.com community information.")]
+	HRESULT Community([out, retval] ICommunity** Community);
+
+	[propget, id(18), helpstring("A collection of additional attributes that define the product.")]
+	HRESULT ProductAttributes([out, retval] IObjectCollection** ProductAttributes);
+
+	[propget, id(19), helpstring("A collection of labels that go with the product.")]
+	HRESULT Labels([out, retval] IObjectCollection** Labels);
 };
 
 //*****************************************************************************
@@ -406,14 +500,19 @@ interface IProduct : IDispatch
 	object,
 	uuid(B67475D6-8DD4-4C9B-BAD6-9271A1E8D3C4),
 	dual,
-	helpstring("IProductAttribute Interface"),
+	helpstring("This identifies other attributes that describe the product. Some examples would be \"Kosher\" or \"Collectible\" or \"Screw Cap\"."),
 	pointer_default(unique)
 ]
 interface IProductAttribute : IDispatch
 {
-	[propget, id(1), helpstring("property Id")] HRESULT Id([out, retval] long* Id);
-	[propget, id(2), helpstring("property Name")] HRESULT Name([out, retval] BSTR* Name);
-	[propget, id(3), helpstring("property Url")] HRESULT Url([out, retval] BSTR* Url);
+	[propget, id(1), helpstring("The unique (Endeca) id for the attribute.")]
+	HRESULT Id([out, retval] long* Id);
+
+	[propget, id(2), helpstring("The name, or description, of the attribute.")]
+	HRESULT Name([out, retval] BSTR* Name);
+
+	[propget, id(3), helpstring("A url to other products that have the same attribute.")]
+	HRESULT Url([out, retval] BSTR* Url);
 };
 
 //*****************************************************************************
@@ -424,15 +523,22 @@ interface IProductAttribute : IDispatch
 	object,
 	uuid(D96ADEE5-37CE-4B12-A354-F6E9D8626993),
 	dual,
-	helpstring("IProducts Interface"),
+	helpstring("This is a list of products."),
 	pointer_default(unique)
 ]
 interface IProducts : IDispatch
 {
-	[propget, id(1), helpstring("property Total")] HRESULT Total([out, retval] long* Total);
-	[propget, id(2), helpstring("property Offset")] HRESULT Offset([out, retval] long* Offset);
-	[propget, id(3), helpstring("property Url")] HRESULT Url([out, retval] BSTR* Url);
-	[propget, id(4), helpstring("property List")] HRESULT List([out, retval] IObjectCollection** List);
+	[propget, id(1), helpstring("The total number of products that match the query. Not all products will be returned.")]
+	HRESULT Total([out, retval] long* Total);
+
+	[propget, id(2), helpstring("The starting position in the entire list.")]
+	HRESULT Offset([out, retval] long* Offset);
+
+	[propget, id(3), helpstring("The url to the list of wines.")]
+	HRESULT Url([out, retval] BSTR* Url);
+
+	[propget, id(4), helpstring("The actual list of products.")]
+	HRESULT List([out, retval] IObjectCollection** List);
 };
 
 //*****************************************************************************
@@ -448,10 +554,17 @@ interface IProducts : IDispatch
 ]
 interface IRating : IDispatch
 {
-	[propget, id(1), helpstring("property Id")] HRESULT Id([out, retval] long* Id);
-	[propget, id(2), helpstring("property Name")] HRESULT Name([out, retval] BSTR* Name);
-	[propget, id(3), helpstring("property Score")] HRESULT Score([out, retval] long* Score);
-	[propget, id(4), helpstring("property Url")] HRESULT Url([out, retval] BSTR* Url);
+	[propget, id(1), helpstring("The unique (Endeca) id for the publication.")]
+	HRESULT Id([out, retval] long* Id);
+
+	[propget, id(2), helpstring("The name, or description, of the review or publication.")]
+	HRESULT Name([out, retval] BSTR* Name);
+
+	[propget, id(3), helpstring("The score given to the product.")]
+	HRESULT Score([out, retval] long* Score);
+
+	[propget, id(4), helpstring("A url to other products that have been reviewed by the same publication.")]
+	HRESULT Url([out, retval] BSTR* Url);
 };
 
 //*****************************************************************************
@@ -467,8 +580,11 @@ interface IRating : IDispatch
 ]
 interface IRatings : IDispatch
 {
-	[propget, id(1), helpstring("property HighestScore")] HRESULT HighestScore([out, retval] long* HighestScore);
-	[propget, id(2), helpstring("property List")] HRESULT List([out, retval] IObjectCollection** List);
+	[propget, id(1), helpstring("The highest score given to the product.")]
+	HRESULT HighestScore([out, retval] long* HighestScore);
+
+	[propget, id(2), helpstring("A collection of ratings that have been given to the product. Only available with \"partner\" access.")]
+	HRESULT List([out, retval] IObjectCollection** List);
 };
 
 //*****************************************************************************
@@ -479,13 +595,16 @@ interface IRatings : IDispatch
 	object,
 	uuid(D148803C-A8AE-47E7-A984-E482746527BC),
 	dual,
-	helpstring("IReference Interface"),
+	helpstring("This object is returned when a call is made to the Reference Library API."),
 	pointer_default(unique)
 ]
 interface IReference : IDispatch
 {
-	[propget, id(1), helpstring("property Status")] HRESULT Status([out, retval] IStatus** Status);
-	[propget, id(2), helpstring("property Books")] HRESULT Books([out, retval] IObjectCollection** Books);
+	[propget, id(1), helpstring("Contains status and debugging information.")]
+	HRESULT Status([out, retval] IStatus** Status);
+
+	[propget, id(2), helpstring("A list of reference sections, or books.")]
+	HRESULT Books([out, retval] IObjectCollection** Books);
 };
 
 //*****************************************************************************
@@ -496,14 +615,19 @@ interface IReference : IDispatch
 	object,
 	uuid(BE8D6329-FC4A-472A-BEE6-7F2B6D051B75),
 	dual,
-	helpstring("IRefinement Interface"),
+	helpstring("A refinement is the actual category value."),
 	pointer_default(unique)
 ]
 interface IRefinement : IDispatch
 {
-	[propget, id(1), helpstring("property Id")] HRESULT Id([out, retval] long* Id);
-	[propget, id(2), helpstring("property Name")] HRESULT Name([out, retval] BSTR* Name);
-	[propget, id(3), helpstring("property Url")] HRESULT Url([out, retval] BSTR* Url);
+	[propget, id(1), helpstring("The refinement identifier (Endeca Dimension Value Id).")]
+	HRESULT Id([out, retval] long* Id);
+
+	[propget, id(2), helpstring("Describe name for the refinement. \"Red Wine\" for example.")]
+	HRESULT Name([out, retval] BSTR* Name);
+
+	[propget, id(3), helpstring("A url to products that map to this category refinement. This includes the original filter. For example, if you are looking for all child categories for the category Red Wines, the Merlot value will include the Red Wine value.")]
+	HRESULT Url([out, retval] BSTR* Url);
 };
 
 //*****************************************************************************
@@ -519,10 +643,17 @@ interface IRefinement : IDispatch
 ]
 interface IRegion : IDispatch
 {
-	[propget, id(1), helpstring("property Id")] HRESULT Id([out, retval] long* Id);
-	[propget, id(2), helpstring("property Name")] HRESULT Name([out, retval] BSTR* Name);
-	[propget, id(3), helpstring("property Url")] HRESULT Url([out, retval] BSTR* Url);
-	[propget, id(4), helpstring("property Area")] HRESULT Area([out, retval] IArea** Area);
+	[propget, id(1), helpstring("A unique (Endeca) identifier for the region.")]
+	HRESULT Id([out, retval] long* Id);
+
+	[propget, id(2), helpstring("The name of the region.")]
+	HRESULT Name([out, retval] BSTR* Name);
+
+	[propget, id(3), helpstring("The url to the other products in the same region.")]
+	HRESULT Url([out, retval] BSTR* Url);
+
+	[propget, id(4), helpstring("The area that the region belongs to. This could be null.")]
+	HRESULT Area([out, retval] IArea** Area);
 };
 
 //*****************************************************************************
@@ -533,15 +664,22 @@ interface IRegion : IDispatch
 	object,
 	uuid(78F07435-050F-4D02-B27D-C37D380A2602),
 	dual,
-	helpstring("IRetail Interface"),
+	helpstring("This identifies retail values for the purchase of this product. Only available when the destination state is specified using the \"state\" url value."),
 	pointer_default(unique)
 ]
 interface IRetail : IDispatch
 {
-	[propget, id(1), helpstring("property Sku")] HRESULT Sku([out, retval] BSTR* Sku);
-	[propget, id(2), helpstring("property InStock")] HRESULT InStock([out, retval] VARIANT_BOOL* InStock);
-	[propget, id(3), helpstring("property Price")] HRESULT Price([out, retval] double* Price);
-	[propget, id(4), helpstring("property Url")] HRESULT Url([out, retval] BSTR* Url);
+	[propget, id(1), helpstring("The unique sku for the product.")]
+	HRESULT Sku([out, retval] BSTR* Sku);
+
+	[propget, id(2), helpstring("Indicates whether or not the product is in stock.")]
+	HRESULT InStock([out, retval] VARIANT_BOOL* InStock);
+
+	[propget, id(3), helpstring("Wine.com sales price for the product.")]
+	HRESULT Price([out, retval] double* Price);
+
+	[propget, id(4), helpstring("The url for purchasing this product.")]
+	HRESULT Url([out, retval] BSTR* Url);
 };
 
 //*****************************************************************************
@@ -552,13 +690,16 @@ interface IRetail : IDispatch
 	object,
 	uuid(E06B4384-2B1F-4D5C-977B-F2D265679E20),
 	dual,
-	helpstring("IStatus Interface"),
+	helpstring("This object is returned with every query. It contains a status code, and any debugging information that might accompany an error."),
 	pointer_default(unique)
 ]
 interface IStatus : IDispatch
 {
-	[propget, id(1), helpstring("property ReturnCode")] HRESULT ReturnCode([out, retval] long* ReturnCode);
-	[propget, id(2), helpstring("property Messages")] HRESULT Messages([out, retval] IStringCollection** Messages);
+	[propget, id(1), helpstring("A numerical code that identifies the status. A number of 0 means everything worked correctly.")]
+	HRESULT ReturnCode([out, retval] long* ReturnCode);
+
+	[propget, id(2), helpstring("Returns a list of messages that contain debugging information to assist with correcting the issue.")]
+	HRESULT Messages([out, retval] IStringCollection** Messages);
 };
 
 //*****************************************************************************
@@ -592,10 +733,17 @@ interface IStringCollection : IDispatch
 ]
 interface IVarietal : IDispatch
 {
-	[propget, id(1), helpstring("property Id")] HRESULT Id([out, retval] long* Id);
-	[propget, id(2), helpstring("property Name")] HRESULT Name([out, retval] BSTR* Name);
-	[propget, id(3), helpstring("property Url")] HRESULT Url([out, retval] BSTR* Url);
-	[propget, id(4), helpstring("property WineType")] HRESULT WineType([out, retval] IWineType** WineType);
+	[propget, id(1), helpstring("A unique (Endeca) identifier for the varietal.")]
+	HRESULT Id([out, retval] long* Id);
+
+	[propget, id(2), helpstring("The name of the varietal.")]
+	HRESULT Name([out, retval] BSTR* Name);
+
+	[propget, id(3), helpstring("The url to other products that have the same varietal.")]
+	HRESULT Url([out, retval] BSTR* Url);
+
+	[propget, id(4), helpstring("The type of wine that the varietal corresponds to.")]
+	HRESULT WineType([out, retval] IWineType** WineType);
 };
 
 //*****************************************************************************
@@ -611,10 +759,17 @@ interface IVarietal : IDispatch
 ]
 interface IVineyard : IDispatch
 {
-	[propget, id(1), helpstring("property Id")] HRESULT Id([out, retval] long* Id);
-	[propget, id(2), helpstring("property Name")] HRESULT Name([out, retval] BSTR* Name);
-	[propget, id(3), helpstring("property Url")] HRESULT Url([out, retval] BSTR* Url);
-	[propget, id(4), helpstring("property GeoLocation")] HRESULT GeoLocation([out, retval] IGeoLocation** GeoLocation);
+	[propget, id(1), helpstring("A unique identifier for the vineyard.")]
+	HRESULT Id([out, retval] long* Id);
+
+	[propget, id(2), helpstring("The name of the vineyard.")]
+	HRESULT Name([out, retval] BSTR* Name);
+
+	[propget, id(3), helpstring("The url to the description of the vineyard.")]
+	HRESULT Url([out, retval] BSTR* Url);
+
+	[propget, id(4), helpstring("The location of the vineyard. Only available with \"partner\" access.")]
+	HRESULT GeoLocation([out, retval] IGeoLocation** GeoLocation);
 };
 
 //*****************************************************************************
@@ -625,15 +780,22 @@ interface IVineyard : IDispatch
 	object,
 	uuid(84D5E4AC-D3D6-4030-85AE-54D18CF9FA02),
 	dual,
-	helpstring("IVintage Interface"),
+	helpstring("This links a product to other vintages, and lists some additional attributes of these products."),
 	pointer_default(unique)
 ]
 interface IVintage : IDispatch
 {
-	[propget, id(1), helpstring("property Id")] HRESULT Id([out, retval] long* Id);
-	[propget, id(2), helpstring("property Name")] HRESULT Name([out, retval] BSTR* Name);
-	[propget, id(3), helpstring("property Url")] HRESULT Url([out, retval] BSTR* Url);
-	[propget, id(4), helpstring("property Ratings")] HRESULT Ratings([out, retval] IRatings** Ratings);
+	[propget, id(1), helpstring("The product id of the related vintage.")]
+	HRESULT Id([out, retval] long* Id);
+
+	[propget, id(2), helpstring("The year, or vintage, of the related product.")]
+	HRESULT Name([out, retval] BSTR* Name);
+
+	[propget, id(3), helpstring("The url to the product detail for this vintage.")]
+	HRESULT Url([out, retval] BSTR* Url);
+
+	[propget, id(4), helpstring("A collection of ratings that have been given to this specific vintage.")]
+	HRESULT Ratings([out, retval] IRatings** Ratings);
 };
 
 //*****************************************************************************
@@ -644,12 +806,13 @@ interface IVintage : IDispatch
 	object,
 	uuid(647D676E-475E-4C15-9BB7-9A8DFAB902FD),
 	dual,
-	helpstring("IVintages Interface"),
+	helpstring("This is also referred to as pedigree. This is a list of past vintages of the selected product."),
 	pointer_default(unique)
 ]
 interface IVintages : IDispatch
 {
-	[propget, id(1), helpstring("property List")] HRESULT List([out, retval] IObjectCollection** List);
+	[propget, id(1), helpstring("A specific vintage that the product is related to.")]
+	HRESULT List([out, retval] IObjectCollection** List);
 };
 
 //*****************************************************************************
@@ -665,9 +828,14 @@ interface IVintages : IDispatch
 ]
 interface IWineType : IDispatch
 {
-	[propget, id(1), helpstring("property Id")] HRESULT Id([out, retval] long* Id);
-	[propget, id(2), helpstring("property Name")] HRESULT Name([out, retval] BSTR* Name);
-	[propget, id(3), helpstring("property Url")] HRESULT Url([out, retval] BSTR* Url);
+	[propget, id(1), helpstring("A unique (Endeca) identifier for the type of wine.")]
+	HRESULT Id([out, retval] long* Id);
+
+	[propget, id(2), helpstring("The name of the type of wine.")]
+	HRESULT Name([out, retval] BSTR* Name);
+
+	[propget, id(3), helpstring("The url to other products that have the same wine type.")]
+	HRESULT Url([out, retval] BSTR* Url);
 };
 
 //*****************************************************************************

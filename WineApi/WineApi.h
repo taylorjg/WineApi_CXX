@@ -2,7 +2,7 @@
 
 
 /* File created by MIDL compiler version 5.01.0164 */
-/* at Thu Dec 15 16:12:18 2011
+/* at Fri Dec 16 16:53:30 2011
  */
 /* Compiler settings for C:\Documents and Settings\jonathan.taylor\My Documents\TestPrograms\WineApi_CXX\WineApi\WineApi.idl:
     Oicf (OptLev=i2), W1, Zp8, env=Win32, ms_ext, c_ext
@@ -461,7 +461,7 @@ void __RPC_USER MIDL_user_free( void __RPC_FAR * );
 /* interface __MIDL_itf_WineApi_0000 */
 /* [local] */ 
 
-typedef /* [uuid] */ 
+typedef /* [helpstring][uuid] */ 
 enum ReturnCode
     {	ReturnCodeSuccess	= 0,
 	ReturnCodeCriticalError	= 100,
@@ -469,7 +469,7 @@ enum ReturnCode
 	ReturnCodeNoAccess	= 300
     }	ReturnCode;
 
-typedef /* [uuid] */ 
+typedef /* [helpstring][uuid] */ 
 enum SortOptions
     {	SortOptionPopularity	= 0,
 	SortOptionRating	= SortOptionPopularity + 1,
@@ -481,7 +481,7 @@ enum SortOptions
 	SortOptionJustIn	= SortOptionSaving + 1
     }	SortOptions;
 
-typedef /* [uuid] */ 
+typedef /* [helpstring][uuid] */ 
 enum SortDirection
     {	SortDirectionAscending	= 0,
 	SortDirectionDescending	= SortDirectionAscending + 1
