@@ -22,7 +22,7 @@ Sub AppendBuffer (strPropertyName, strPropertyValue)
 End Sub
 
 Set oConfig = CreateObject ("WineApi.Config")
-oConfig.ApiKey = ReadAPiKey ()
+oConfig.ApiKey = ReadApiKey ()
 
 Set oReferenceService = CreateObject ("WineApi.ReferenceService")
 
