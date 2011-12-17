@@ -72,7 +72,7 @@ BEGIN
         BEGIN
             VALUE "Comments", "\0"
             VALUE "CompanyName", "\0"
-            VALUE "FileDescription", "RESTful implementation of wine.com API.\0"
+            VALUE "FileDescription", "Wraps the entire wine.com RESTful API.\0"
             VALUE "FileVersion", "1, 0, 0, 2\0"
             VALUE "InternalName", "WineApi\0"
             VALUE "LegalCopyright", "\0"
