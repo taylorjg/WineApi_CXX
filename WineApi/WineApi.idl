@@ -100,7 +100,7 @@ interface IStringCollection;
 	object,
 	uuid(5D0DEF55-F950-4F6E-8B74-2F2B586561A1),
 	dual,
-	helpstring("IAppellation Interface"),
+	helpstring("An appellation."),
 	pointer_default(unique)
 ]
 interface IAppellation : IDispatch
@@ -152,7 +152,7 @@ interface IArea : IDispatch
 	object,
 	uuid(CD1AD367-5C42-4126-872C-4908AF7A87F5),
 	dual,
-	helpstring("IArticle Interface"),
+	helpstring("An article."),
 	pointer_default(unique)
 ]
 interface IArticle : IDispatch
@@ -227,7 +227,7 @@ interface ICatalog : IDispatch
 	object,
 	uuid(BD72D908-3638-41AF-A4BF-C1BBE08C29C5),
 	dual,
-	helpstring("ICategory Interface"),
+	helpstring("A category."),
 	pointer_default(unique)
 ]
 interface ICategory : IDispatch
@@ -290,7 +290,7 @@ interface ICommunity : IDispatch
 	object,
 	uuid(3A545728-BE93-4B5D-A1EF-3F48FF2DBF6B),
 	dual,
-	helpstring("ICommunityReview Interface"),
+	helpstring("A community review of a product."),
 	pointer_default(unique)
 ]
 interface ICommunityReview : IDispatch
@@ -342,7 +342,7 @@ interface ICommunityReviews : IDispatch
 	object,
 	uuid(19BD583B-F9A5-4F0A-9636-B8A9B2F9320E),
 	dual,
-	helpstring("IFootnote Interface"),
+	helpstring("A footnote."),
 	pointer_default(unique)
 ]
 interface IFootnote : IDispatch
@@ -388,7 +388,7 @@ interface IGeoLocation : IDispatch
 	object,
 	uuid(D89D3E74-681B-4B2F-8682-66EF2F925BBC),
 	dual,
-	helpstring("ILabel Interface"),
+	helpstring("A label for a product."),
 	pointer_default(unique)
 ]
 interface ILabel : IDispatch
@@ -411,14 +411,19 @@ interface ILabel : IDispatch
 	object,
 	uuid(6494BD88-BB53-4867-9F9D-0C9F0EEDA937),
 	dual,
-	helpstring("IObjectCollection Interface"),
+	helpstring("A collection of objects."),
 	pointer_default(unique)
 ]
 interface IObjectCollection : IDispatch
 {
-	[propget, id(1), helpstring("property Count")] HRESULT Count([out, retval] long* Count);
-	[propget, id(DISPID_VALUE), helpstring("property Item")] HRESULT Item([in] long Index, [out, retval] IDispatch** Item);
-	[propget, id(DISPID_NEWENUM), helpstring("property _NewEnum")] HRESULT _NewEnum([out, retval] IUnknown** Enum);
+	[propget, id(1), helpstring("The number of items in the collection.")]
+	HRESULT Count([out, retval] long* Count);
+
+	[propget, id(DISPID_VALUE), helpstring("Indexed property giving access to items in the collection. The index is 0-based.")]
+	HRESULT Item([in] long Index, [out, retval] IDispatch** Item);
+
+	[propget, id(DISPID_NEWENUM), helpstring("An enumerator that allows the collection to be iterated over.")]
+	HRESULT _NewEnum([out, retval] IUnknown** Enum);
 };
 
 //*****************************************************************************
@@ -429,7 +434,7 @@ interface IObjectCollection : IDispatch
 	object,
 	uuid(81BB218A-3DED-4941-8BDB-F773E82ED0F7),
 	dual,
-	helpstring("IProduct Interface"),
+	helpstring("This is the actual product object. When in a list format some of these values will be null. A full object will only be populated when the product identifier is specified in the query."),
 	pointer_default(unique)
 ]
 interface IProduct : IDispatch
@@ -549,7 +554,7 @@ interface IProducts : IDispatch
 	object,
 	uuid(D5B0979D-14EE-4DA9-BC95-9EEE539D8B8C),
 	dual,
-	helpstring("IRating Interface"),
+	helpstring("A product rating."),
 	pointer_default(unique)
 ]
 interface IRating : IDispatch
@@ -575,7 +580,7 @@ interface IRating : IDispatch
 	object,
 	uuid(07FAE185-EEBE-4C37-BFA6-A93F28990C1F),
 	dual,
-	helpstring("IRatings Interface"),
+	helpstring("A collection of ratings."),
 	pointer_default(unique)
 ]
 interface IRatings : IDispatch
@@ -638,7 +643,7 @@ interface IRefinement : IDispatch
 	object,
 	uuid(0BE22B32-DF39-47AD-B44C-A3DC8CD68C66),
 	dual,
-	helpstring("IRegion Interface"),
+	helpstring("A wine region."),
 	pointer_default(unique)
 ]
 interface IRegion : IDispatch
@@ -710,14 +715,19 @@ interface IStatus : IDispatch
 	object,
 	uuid(D8DBDB63-D035-4E3B-BB9F-611FAFFC2D2C),
 	dual,
-	helpstring("IStringCollection Interface"),
+	helpstring("A collection of strings."),
 	pointer_default(unique)
 ]
 interface IStringCollection : IDispatch
 {
-	[propget, id(1), helpstring("property Count")] HRESULT Count([out, retval] long* Count);
-	[propget, id(DISPID_VALUE), helpstring("property Item")] HRESULT Item([in] long Index, [out, retval] BSTR* Item);
-	[propget, id(DISPID_NEWENUM), helpstring("property _NewEnum")] HRESULT _NewEnum([out, retval] IUnknown** Enum);
+	[propget, id(1), helpstring("The number of items in the collection.")]
+	HRESULT Count([out, retval] long* Count);
+
+	[propget, id(DISPID_VALUE), helpstring("Indexed property giving access to items in the collection. The index is 0-based.")]
+	HRESULT Item([in] long Index, [out, retval] BSTR* Item);
+
+	[propget, id(DISPID_NEWENUM), helpstring("An enumerator that allows the collection to be iterated over.")]
+	HRESULT _NewEnum([out, retval] IUnknown** Enum);
 };
 
 //*****************************************************************************
@@ -728,7 +738,7 @@ interface IStringCollection : IDispatch
 	object,
 	uuid(F75590F1-8FFB-4560-A680-163B2AF00BE0),
 	dual,
-	helpstring("IVarietal Interface"),
+	helpstring("A varietal."),
 	pointer_default(unique)
 ]
 interface IVarietal : IDispatch
@@ -754,7 +764,7 @@ interface IVarietal : IDispatch
 	object,
 	uuid(A62234F2-AD0F-43BB-973E-8BE604602DCC),
 	dual,
-	helpstring("IVineyard Interface"),
+	helpstring("A vineyard."),
 	pointer_default(unique)
 ]
 interface IVineyard : IDispatch
@@ -823,7 +833,7 @@ interface IVintages : IDispatch
 	object,
 	uuid(F596011D-FF0A-4E91-814E-AF7A9B5FAB9D),
 	dual,
-	helpstring("IWineType Interface"),
+	helpstring("A wine type."),
 	pointer_default(unique)
 ]
 interface IWineType : IDispatch
@@ -846,15 +856,22 @@ interface IWineType : IDispatch
 	object,
 	uuid(BACF1BE0-7A6D-4DEE-BBEE-38C0CCB3BFE9),
 	dual,
-	helpstring("IConfig Interface"),
+	helpstring("Use this (singleton) class to configure WineApi."),
 	pointer_default(unique)
 ]
 interface IConfig : IDispatch
 {
-	[propget, id(1), helpstring("property ApiKey")] HRESULT ApiKey([out, retval] BSTR* ApiKey);
-	[propput, id(1), helpstring("property ApiKey")] HRESULT ApiKey([in] BSTR ApiKey);
-	[propget, id(2), helpstring("property Version")] HRESULT Version([out, retval] BSTR* Version);
-	[propput, id(2), helpstring("property Version")] HRESULT Version([in] BSTR Version);
+	[propget, id(1), helpstring("The key given to the developer that is requesting the resource.")]
+	HRESULT ApiKey([out, retval] BSTR* ApiKey);
+
+	[propput, id(1), helpstring("The key given to the developer that is requesting the resource.")]
+	HRESULT ApiKey([in] BSTR ApiKey);
+
+	[propget, id(2), helpstring("The version of the API to use.")]
+	HRESULT Version([out, retval] BSTR* Version);
+
+	[propput, id(2), helpstring("The version of the API to use.")]
+	HRESULT Version([in] BSTR Version);
 };
 
 //*****************************************************************************
@@ -865,25 +882,52 @@ interface IConfig : IDispatch
 	object,
 	uuid(618D119B-366C-486B-89C0-72B357837DE8),
 	dual,
-	helpstring("ICategoryMapService Interface"),
+	helpstring("This query returns the various categories and their children. These categories can then be used to retrieve products using the \"filter\" option."),
 	pointer_default(unique)
 ]
 interface ICategoryMapService : IDispatch
 {
-	[id(1),  helpstring("method Execute")] HRESULT Execute([out, retval] ICategoryMap** CategoryMap);
-	[id(2),  helpstring("method CategoryFilter1")] HRESULT CategoryFilter1([in] long Id1, [out, retval] ICategoryMapService** Self);
-	[id(3),  helpstring("method CategoryFilter2")] HRESULT CategoryFilter2([in] long Id1, [in] long Id2, [out, retval] ICategoryMapService** Self);
-	[id(4),  helpstring("method CategoryFilter3")] HRESULT CategoryFilter3([in] long Id1, [in] long Id2, [in] long Id3, [out, retval] ICategoryMapService** Self);
-	[id(5),  helpstring("method CategoryFilter4")] HRESULT CategoryFilter4([in] long Id1, [in] long Id2, [in] long Id3, [in] long Id4, [out, retval] ICategoryMapService** Self);
-	[id(6),  helpstring("method CategoryFilter5")] HRESULT CategoryFilter5([in] long Id1, [in] long Id2, [in] long Id3, [in] long Id4, [in] long Id5, [out, retval] ICategoryMapService** Self);
-	[id(7),  helpstring("method CategoryFilter"), vararg] HRESULT CategoryFilter([in] SAFEARRAY(VARIANT) Categories, [out, retval] ICategoryMapService** Self);
-	[id(8),  helpstring("method Search1")] HRESULT Search1([in] BSTR Term1, [out, retval] ICategoryMapService** Self);
-	[id(9),  helpstring("method Search2")] HRESULT Search2([in] BSTR Term1, [in] BSTR Term2, [out, retval] ICategoryMapService** Self);
-	[id(10), helpstring("method Search3")] HRESULT Search3([in] BSTR Term1, [in] BSTR Term2, [in] BSTR Term3, [out, retval] ICategoryMapService** Self);
-	[id(11), helpstring("method Search4")] HRESULT Search4([in] BSTR Term1, [in] BSTR Term2, [in] BSTR Term3, [in] BSTR Term4, [out, retval] ICategoryMapService** Self);
-	[id(12), helpstring("method Search5")] HRESULT Search5([in] BSTR Term1, [in] BSTR Term2, [in] BSTR Term3, [in] BSTR Term4, [in] BSTR Term5, [out, retval] ICategoryMapService** Self);
-	[id(13), helpstring("method Search"), vararg] HRESULT Search([in] SAFEARRAY(VARIANT) Terms, [out, retval] ICategoryMapService** Self);
-	[id(14), helpstring("method Show")] HRESULT Show([in] long Id, [out, retval] ICategoryMapService** Self);
+	[id(1),  helpstring("Executes the CategoryMap query and returns a CategoryMap object.")]
+	HRESULT Execute([out, retval] ICategoryMap** CategoryMap);
+
+	[id(2),  helpstring("Adds the \"filter\" custom parameter to the query. Specifically, it adds the \"categories\" filter. Convenience method taking 1 category.")]
+	HRESULT CategoryFilter1([in] long Id1, [out, retval] ICategoryMapService** Self);
+
+	[id(3),  helpstring("Adds the \"filter\" custom parameter to the query. Specifically, it adds the \"categories\" filter. Convenience method taking 2 categories.")]
+	HRESULT CategoryFilter2([in] long Id1, [in] long Id2, [out, retval] ICategoryMapService** Self);
+
+	[id(4),  helpstring("Adds the \"filter\" custom parameter to the query. Specifically, it adds the \"categories\" filter. Convenience method taking 3 categories.")]
+	HRESULT CategoryFilter3([in] long Id1, [in] long Id2, [in] long Id3, [out, retval] ICategoryMapService** Self);
+
+	[id(5),  helpstring("Adds the \"filter\" custom parameter to the query. Specifically, it adds the \"categories\" filter. Convenience method taking 4 categories.")]
+	HRESULT CategoryFilter4([in] long Id1, [in] long Id2, [in] long Id3, [in] long Id4, [out, retval] ICategoryMapService** Self);
+
+	[id(6),  helpstring("Adds the \"filter\" custom parameter to the query. Specifically, it adds the \"categories\" filter. Convenience method taking 5 categories.")]
+	HRESULT CategoryFilter5([in] long Id1, [in] long Id2, [in] long Id3, [in] long Id4, [in] long Id5, [out, retval] ICategoryMapService** Self);
+
+	[id(7),  helpstring("Adds the \"filter\" custom parameter to the query. Specifically, it adds the \"categories\" filter."), vararg]
+	HRESULT CategoryFilter([in] SAFEARRAY(VARIANT) Categories, [out, retval] ICategoryMapService** Self);
+
+	[id(8),  helpstring("Adds the \"search\" custom parameter to the query. Convenience method taking 1 search term.")]
+	HRESULT Search1([in] BSTR Term1, [out, retval] ICategoryMapService** Self);
+
+	[id(9),  helpstring("Adds the \"search\" custom parameter to the query. Convenience method taking 2 search terms.")]
+	HRESULT Search2([in] BSTR Term1, [in] BSTR Term2, [out, retval] ICategoryMapService** Self);
+
+	[id(10),  helpstring("Adds the \"search\" custom parameter to the query. Convenience method taking 3 search terms.")]
+	HRESULT Search3([in] BSTR Term1, [in] BSTR Term2, [in] BSTR Term3, [out, retval] ICategoryMapService** Self);
+
+	[id(11),  helpstring("Adds the \"search\" custom parameter to the query. Convenience method taking 4 search terms.")]
+	HRESULT Search4([in] BSTR Term1, [in] BSTR Term2, [in] BSTR Term3, [in] BSTR Term4, [out, retval] ICategoryMapService** Self);
+
+	[id(12),  helpstring("Adds the \"search\" custom parameter to the query. Convenience method taking 5 search terms.")]
+	HRESULT Search5([in] BSTR Term1, [in] BSTR Term2, [in] BSTR Term3, [in] BSTR Term4, [in] BSTR Term5, [out, retval] ICategoryMapService** Self);
+
+	[id(13),  helpstring("Adds the \"search\" custom parameter to the query."), vararg]
+	HRESULT Search([in] SAFEARRAY(VARIANT) Terms, [out, retval] ICategoryMapService** Self);
+
+	[id(14), helpstring("Lists all items in the given category.")]
+	HRESULT Show([in] long Id, [out, retval] ICategoryMapService** Self);
 };
 
 //*****************************************************************************
@@ -894,39 +938,94 @@ interface ICategoryMapService : IDispatch
 	object,
 	uuid(32DBCC18-E5F2-47F2-9394-08164842CBF8),
 	dual,
-	helpstring("ICatalogService Interface"),
+	helpstring("Catalog queries give complete access to the Wine.com product catalog, including professional ratings, labels, styles of wines, and all other attributes associated with Wines."),
 	pointer_default(unique)
 ]
 interface ICatalogService : IDispatch
 {
-	[id(1),  helpstring("method Execute")] HRESULT Execute([out, retval] ICatalog** Catalog);
-	[id(2),  helpstring("method Offset")] HRESULT Offset([in] long Offset, [out, retval] ICatalogService** Self);
-	[id(3),  helpstring("method Size")] HRESULT Size([in] long Size, [out, retval] ICatalogService** Self);
-	[id(4),  helpstring("method Search1")] HRESULT Search1([in] BSTR Term1, [out, retval] ICatalogService** Self);
-	[id(5),  helpstring("method Search2")] HRESULT Search2([in] BSTR Term1, [in] BSTR Term2, [out, retval] ICatalogService** Self);
-	[id(6),  helpstring("method Search3")] HRESULT Search3([in] BSTR Term1, [in] BSTR Term2, [in] BSTR Term3, [out, retval] ICatalogService** Self);
-	[id(7),  helpstring("method Search4")] HRESULT Search4([in] BSTR Term1, [in] BSTR Term2, [in] BSTR Term3, [in] BSTR Term4, [out, retval] ICatalogService** Self);
-	[id(8),  helpstring("method Search5")] HRESULT Search5([in] BSTR Term1, [in] BSTR Term2, [in] BSTR Term3, [in] BSTR Term4, [in] BSTR Term5, [out, retval] ICatalogService** Self);
-	[id(9),  helpstring("method Search"), vararg] HRESULT Search([in] SAFEARRAY(VARIANT) Terms, [out, retval] ICatalogService** Self);
-	[id(10), helpstring("method CategoryFilter1")] HRESULT CategoryFilter1([in] long Id1, [out, retval] ICatalogService** Self);
-	[id(11), helpstring("method CategoryFilter2")] HRESULT CategoryFilter2([in] long Id1, [in] long Id2, [out, retval] ICatalogService** Self);
-	[id(12), helpstring("method CategoryFilter3")] HRESULT CategoryFilter3([in] long Id1, [in] long Id2, [in] long Id3, [out, retval] ICatalogService** Self);
-	[id(13), helpstring("method CategoryFilter4")] HRESULT CategoryFilter4([in] long Id1, [in] long Id2, [in] long Id3, [in] long Id4, [out, retval] ICatalogService** Self);
-	[id(14), helpstring("method CategoryFilter5")] HRESULT CategoryFilter5([in] long Id1, [in] long Id2, [in] long Id3, [in] long Id4, [in] long Id5, [out, retval] ICatalogService** Self);
-	[id(15), helpstring("method CategoryFilter"), vararg] HRESULT CategoryFilter([in] SAFEARRAY(VARIANT) Categories, [out, retval] ICatalogService** Self);
-	[id(16), helpstring("method RatingFromFilter")] HRESULT RatingFromFilter([in] long From, [out, retval] ICatalogService** Self);
-	[id(17), helpstring("method RatingFromToFilter")] HRESULT RatingFromToFilter([in] long From, [in] long To, [out, retval] ICatalogService** Self);
-	[id(18), helpstring("method PriceFromFilter")] HRESULT PriceFromFilter([in] double From, [out, retval] ICatalogService** Self);
-	[id(19), helpstring("method PriceFromToFilter")] HRESULT PriceFromToFilter([in] double From, [in] double To, [out, retval] ICatalogService** Self);
-	[id(20), helpstring("method ProductFilter1")] HRESULT ProductFilter1([in] long Id1, [out, retval] ICatalogService** Self);
-	[id(21), helpstring("method ProductFilter2")] HRESULT ProductFilter2([in] long Id1, [in] long Id2, [out, retval] ICatalogService** Self);
-	[id(22), helpstring("method ProductFilter3")] HRESULT ProductFilter3([in] long Id1, [in] long Id2, [in] long Id3, [out, retval] ICatalogService** Self);
-	[id(23), helpstring("method ProductFilter4")] HRESULT ProductFilter4([in] long Id1, [in] long Id2, [in] long Id3, [in] long Id4, [out, retval] ICatalogService** Self);
-	[id(24), helpstring("method ProductFilter5")] HRESULT ProductFilter5([in] long Id1, [in] long Id2, [in] long Id3, [in] long Id4, [in] long Id5, [out, retval] ICatalogService** Self);
-	[id(25), helpstring("method ProductFilter"), vararg] HRESULT ProductFilter([in] SAFEARRAY(VARIANT) Products, [out, retval] ICatalogService** Self);
-	[id(26), helpstring("method State")] HRESULT State([in] BSTR State, [out, retval] ICatalogService** Self);
-	[id(27), helpstring("method SortBy")] HRESULT SortBy([in] enum SortOptions SortOption, [in] enum SortDirection SortDirection, [out, retval] ICatalogService** Self);
-	[id(28), helpstring("method InStock")] HRESULT InStock([in] VARIANT_BOOL InStock, [out, retval] ICatalogService** Self);
+	[id(1),  helpstring("Executes the Catalog query and returns a Catalog object.")]
+	HRESULT Execute([out, retval] ICatalog** Catalog);
+
+	[id(2),  helpstring("Adds the \"offset\" custom parameter to the query.")]
+	HRESULT Offset([in] long Offset, [out, retval] ICatalogService** Self);
+
+	[id(3),  helpstring("Adds the \"size\" custom parameter to the query. The number of records to return in a list. Max is 100, default is 5.")]
+	HRESULT Size([in] long Size, [out, retval] ICatalogService** Self);
+
+	[id(4),  helpstring("Adds the \"search\" custom parameter to the query. Convenience method taking 1 search term.")]
+	HRESULT Search1([in] BSTR Term1, [out, retval] ICatalogService** Self);
+
+	[id(5),  helpstring("Adds the \"search\" custom parameter to the query. Convenience method taking 2 search terms.")]
+	HRESULT Search2([in] BSTR Term1, [in] BSTR Term2, [out, retval] ICatalogService** Self);
+
+	[id(6),  helpstring("Adds the \"search\" custom parameter to the query. Convenience method taking 3 search terms.")]
+	HRESULT Search3([in] BSTR Term1, [in] BSTR Term2, [in] BSTR Term3, [out, retval] ICatalogService** Self);
+
+	[id(7),  helpstring("Adds the \"search\" custom parameter to the query. Convenience method taking 4 search terms.")]
+	HRESULT Search4([in] BSTR Term1, [in] BSTR Term2, [in] BSTR Term3, [in] BSTR Term4, [out, retval] ICatalogService** Self);
+
+	[id(8),  helpstring("Adds the \"search\" custom parameter to the query. Convenience method taking 5 search terms.")]
+	HRESULT Search5([in] BSTR Term1, [in] BSTR Term2, [in] BSTR Term3, [in] BSTR Term4, [in] BSTR Term5, [out, retval] ICatalogService** Self);
+
+	[id(9),  helpstring("Adds the \"search\" custom parameter to the query."), vararg]
+	HRESULT Search([in] SAFEARRAY(VARIANT) Terms, [out, retval] ICatalogService** Self);
+
+	[id(10), helpstring("Adds the \"filter\" custom parameter to the query. Specifically, it adds the \"categories\" filter. Convenience method taking 1 category.")]
+	HRESULT CategoryFilter1([in] long Id1, [out, retval] ICatalogService** Self);
+
+	[id(11), helpstring("Adds the \"filter\" custom parameter to the query. Specifically, it adds the \"categories\" filter. Convenience method taking 2 categories.")]
+	HRESULT CategoryFilter2([in] long Id1, [in] long Id2, [out, retval] ICatalogService** Self);
+
+	[id(12), helpstring("Adds the \"filter\" custom parameter to the query. Specifically, it adds the \"categories\" filter. Convenience method taking 3 categories.")]
+	HRESULT CategoryFilter3([in] long Id1, [in] long Id2, [in] long Id3, [out, retval] ICatalogService** Self);
+
+	[id(13), helpstring("Adds the \"filter\" custom parameter to the query. Specifically, it adds the \"categories\" filter. Convenience method taking 4 categories.")]
+	HRESULT CategoryFilter4([in] long Id1, [in] long Id2, [in] long Id3, [in] long Id4, [out, retval] ICatalogService** Self);
+
+	[id(14), helpstring("Adds the \"filter\" custom parameter to the query. Specifically, it adds the \"categories\" filter. Convenience method taking 5 categories.")]
+	HRESULT CategoryFilter5([in] long Id1, [in] long Id2, [in] long Id3, [in] long Id4, [in] long Id5, [out, retval] ICatalogService** Self);
+
+	[id(15), helpstring("Adds the \"filter\" custom parameter to the query. Specifically, it adds the \"categories\" filter."), vararg]
+	HRESULT CategoryFilter([in] SAFEARRAY(VARIANT) Categories, [out, retval] ICatalogService** Self);
+
+	[id(16), helpstring("Adds the \"filter\" custom parameter to the query. Specifically, it adds the \"rating\" filter.")]
+	HRESULT RatingFromFilter([in] long From, [out, retval] ICatalogService** Self);
+
+	[id(17), helpstring("Adds the \"filter\" custom parameter to the query. Specifically, it adds the \"rating\" filter.")]
+	HRESULT RatingFromToFilter([in] long From, [in] long To, [out, retval] ICatalogService** Self);
+
+	[id(18), helpstring("Adds the \"filter\" custom parameter to the query. Specifically, it adds the \"price\" filter. Only supported when the state parameter is provided.")]
+	HRESULT PriceFromFilter([in] double From, [out, retval] ICatalogService** Self);
+
+	[id(19), helpstring("Adds the \"filter\" custom parameter to the query. Specifically, it adds the \"price\" filter. Only supported when the state parameter is provided.")]
+	HRESULT PriceFromToFilter([in] double From, [in] double To, [out, retval] ICatalogService** Self);
+
+	[id(20), helpstring("Adds the \"filter\" custom parameter to the query. Specifically, it adds the \"product\" filter. When this is specified, full product details are provided. Convenience method taking 1 product.")]
+	HRESULT ProductFilter1([in] long Id1, [out, retval] ICatalogService** Self);
+
+	[id(21), helpstring("Adds the \"filter\" custom parameter to the query. Specifically, it adds the \"product\" filter. When this is specified, full product details are provided. Convenience method taking 2 products.")]
+	HRESULT ProductFilter2([in] long Id1, [in] long Id2, [out, retval] ICatalogService** Self);
+
+	[id(22), helpstring("Adds the \"filter\" custom parameter to the query. Specifically, it adds the \"product\" filter. When this is specified, full product details are provided. Convenience method taking 3 products.")]
+	HRESULT ProductFilter3([in] long Id1, [in] long Id2, [in] long Id3, [out, retval] ICatalogService** Self);
+
+	[id(23), helpstring("Adds the \"filter\" custom parameter to the query. Specifically, it adds the \"product\" filter. When this is specified, full product details are provided. Convenience method taking 4 products.")]
+	HRESULT ProductFilter4([in] long Id1, [in] long Id2, [in] long Id3, [in] long Id4, [out, retval] ICatalogService** Self);
+
+	[id(24), helpstring("Adds the \"filter\" custom parameter to the query. Specifically, it adds the \"product\" filter. When this is specified, full product details are provided. Convenience method taking 5 products.")]
+	HRESULT ProductFilter5([in] long Id1, [in] long Id2, [in] long Id3, [in] long Id4, [in] long Id5, [out, retval] ICatalogService** Self);
+
+	[id(25), helpstring("Adds the \"filter\" custom parameter to the query. Specifically, it adds the \"product\" filter. When this is specified, full product details are provided."), vararg]
+	HRESULT ProductFilter([in] SAFEARRAY(VARIANT) Products, [out, retval] ICatalogService** Self);
+
+	[id(26), helpstring("Adds the \"state\" custom parameter to the query. This is optional. If it is not present, retail information will not be displayed.")]
+	HRESULT State([in] BSTR State, [out, retval] ICatalogService** Self);
+
+	[id(27), helpstring("Adds the \"sort\" custom parameter to the query.")]
+	HRESULT SortBy([in] enum SortOptions SortOption, [in] enum SortDirection SortDirection, [out, retval] ICatalogService** Self);
+
+	[id(28), helpstring("Adds the \"instock\" custom parameter to the query. Limit the results to in stock products only (should be coupled with the state parameter).")]
+	HRESULT InStock([in] VARIANT_BOOL InStock, [out, retval] ICatalogService** Self);
 };
 
 //*****************************************************************************
@@ -937,18 +1036,31 @@ interface ICatalogService : IDispatch
 	object,
 	uuid(49A4F778-ECC9-40D1-BFBA-A64763AF276B),
 	dual,
-	helpstring("IReferenceService Interface"),
+	helpstring("The reference library API exposes all of the articles, blogs, and content Wine.com has about wine."),
 	pointer_default(unique)
 ]
 interface IReferenceService : IDispatch
 {
-	[id(1), helpstring("method Execute")] HRESULT Execute([out, retval] IReference** Reference);
-	[id(2), helpstring("method CategoryFilter1")] HRESULT CategoryFilter1([in] long Id1, [out, retval] IReferenceService** Self);
-	[id(3), helpstring("method CategoryFilter2")] HRESULT CategoryFilter2([in] long Id1, [in] long Id2, [out, retval] IReferenceService** Self);
-	[id(4), helpstring("method CategoryFilter3")] HRESULT CategoryFilter3([in] long Id1, [in] long Id2, [in] long Id3, [out, retval] IReferenceService** Self);
-	[id(5), helpstring("method CategoryFilter4")] HRESULT CategoryFilter4([in] long Id1, [in] long Id2, [in] long Id3, [in] long Id4, [out, retval] IReferenceService** Self);
-	[id(6), helpstring("method CategoryFilter5")] HRESULT CategoryFilter5([in] long Id1, [in] long Id2, [in] long Id3, [in] long Id4, [in] long Id5, [out, retval] IReferenceService** Self);
-	[id(7), helpstring("method CategoryFilter"), vararg] HRESULT CategoryFilter([in] SAFEARRAY(VARIANT) Categories, [out, retval] IReferenceService** Self);
+	[id(1), helpstring("Executes the Reference query and returns a Reference object.")]
+	HRESULT Execute([out, retval] IReference** Reference);
+
+	[id(2), helpstring("Adds the \"filter\" custom parameter to the query. Specifically, it adds the \"categories\" filter. Convenience method taking 1 category.")]
+	HRESULT CategoryFilter1([in] long Id1, [out, retval] IReferenceService** Self);
+
+	[id(3), helpstring("Adds the \"filter\" custom parameter to the query. Specifically, it adds the \"categories\" filter. Convenience method taking 2 categories.")]
+	HRESULT CategoryFilter2([in] long Id1, [in] long Id2, [out, retval] IReferenceService** Self);
+
+	[id(4), helpstring("Adds the \"filter\" custom parameter to the query. Specifically, it adds the \"categories\" filter. Convenience method taking 3 categories.")]
+	HRESULT CategoryFilter3([in] long Id1, [in] long Id2, [in] long Id3, [out, retval] IReferenceService** Self);
+
+	[id(5), helpstring("Adds the \"filter\" custom parameter to the query. Specifically, it adds the \"categories\" filter. Convenience method taking 4 categories.")]
+	HRESULT CategoryFilter4([in] long Id1, [in] long Id2, [in] long Id3, [in] long Id4, [out, retval] IReferenceService** Self);
+
+	[id(6), helpstring("Adds the \"filter\" custom parameter to the query. Specifically, it adds the \"categories\" filter. Convenience method taking 5 categories.")]
+	HRESULT CategoryFilter5([in] long Id1, [in] long Id2, [in] long Id3, [in] long Id4, [in] long Id5, [out, retval] IReferenceService** Self);
+
+	[id(7), helpstring("Adds the \"filter\" custom parameter to the query. Specifically, it adds the \"categories\" filter."), vararg]
+	HRESULT CategoryFilter([in] SAFEARRAY(VARIANT) Categories, [out, retval] IReferenceService** Self);
 };
 
 //*****************************************************************************
@@ -1003,7 +1115,7 @@ library WineApi
 
 	[
 		uuid(DE19ADA9-9E50-482C-B055-ECF7E51355C0),
-		helpstring("Config Class")
+		helpstring("Use this (singleton) class to configure WineApi.")
 	]
 	coclass Config
 	{
@@ -1016,7 +1128,7 @@ library WineApi
 
 	[
 		uuid(AF59A41C-084E-45B6-905E-29232E541B86),
-		helpstring("CategoryMapService Class")
+		helpstring("This query returns the various categories and their children. These categories can then be used to retrieve products using the \"filter\" option.")
 	]
 	coclass CategoryMapService
 	{
@@ -1029,7 +1141,7 @@ library WineApi
 
 	[
 		uuid(C54236C1-15ED-4F59-86C5-5CBF1C1B096F),
-		helpstring("CatalogService Class")
+		helpstring("Catalog queries give complete access to the Wine.com product catalog, including professional ratings, labels, styles of wines, and all other attributes associated with Wines.")
 	]
 	coclass CatalogService
 	{
@@ -1042,7 +1154,7 @@ library WineApi
 
 	[
 		uuid(287E784F-BD1F-458E-8A3D-58907F71E5EB),
-		helpstring("ReferenceService Class")
+		helpstring("The reference library API exposes all of the articles, blogs, and content Wine.com has about wine.")
 	]
 	coclass ReferenceService
 	{
