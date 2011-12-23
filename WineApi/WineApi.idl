@@ -89,8 +89,8 @@ interface IVintage;
 interface IVintages;
 interface IWineType;
 
-interface IObjectCollection;
-interface IStringCollection;
+interface IWineApiObjectCollection;
+interface IWineApiStringCollection;
 
 //*****************************************************************************
 //* interface IAppellation
@@ -173,7 +173,7 @@ interface IArticle : IDispatch
 	HRESULT Url([out, retval] BSTR* Url);
 
 	[propget, id(6), helpstring("Footnotes to other articles that are related to this article.")]
-	HRESULT Footnotes([out, retval] IObjectCollection** Footnotes);
+	HRESULT Footnotes([out, retval] IWineApiObjectCollection** Footnotes);
 };
 
 //*****************************************************************************
@@ -196,7 +196,7 @@ interface IBook : IDispatch
 	HRESULT Title([out, retval] BSTR* Title);
 
 	[propget, id(3), helpstring("The articles that make up the book.")]
-	HRESULT Articles([out, retval] IObjectCollection** Articles);
+	HRESULT Articles([out, retval] IWineApiObjectCollection** Articles);
 };
 
 //*****************************************************************************
@@ -239,7 +239,7 @@ interface ICategory : IDispatch
 	HRESULT Name([out, retval] BSTR* Name);
 
 	[propget, id(3), helpstring("The category options.")]
-	HRESULT Refinements([out, retval] IObjectCollection** Refinements);
+	HRESULT Refinements([out, retval] IWineApiObjectCollection** Refinements);
 };
 
 //*****************************************************************************
@@ -259,7 +259,7 @@ interface ICategoryMap : IDispatch
 	HRESULT Status([out, retval] IStatus** Status);
 
 	[propget, id(2), helpstring("A list of categories that match the provided query.")]
-	HRESULT Categories([out, retval] IObjectCollection** Categories);
+	HRESULT Categories([out, retval] IWineApiObjectCollection** Categories);
 };
 
 //*****************************************************************************
@@ -331,7 +331,7 @@ interface ICommunityReviews : IDispatch
 	HRESULT Url([out, retval] BSTR* Url);
 
 	[propget, id(3), helpstring("A collection of reviews that have been given to the product. Only available with \"partner\" access.")]
-	HRESULT List([out, retval] IObjectCollection** List);
+	HRESULT List([out, retval] IWineApiObjectCollection** List);
 };
 
 //*****************************************************************************
@@ -404,29 +404,6 @@ interface ILabel : IDispatch
 };
 
 //*****************************************************************************
-//* interface IObjectCollection
-//*****************************************************************************
-
-[
-	object,
-	uuid(6494BD88-BB53-4867-9F9D-0C9F0EEDA937),
-	dual,
-	helpstring("A collection of objects."),
-	pointer_default(unique)
-]
-interface IObjectCollection : IDispatch
-{
-	[propget, id(1), helpstring("The number of items in the collection.")]
-	HRESULT Count([out, retval] long* Count);
-
-	[propget, id(DISPID_VALUE), helpstring("Indexed property giving access to items in the collection. The index is 0-based.")]
-	HRESULT Item([in] long Index, [out, retval] IDispatch** Item);
-
-	[propget, id(DISPID_NEWENUM), helpstring("An enumerator that allows the collection to be iterated over.")]
-	HRESULT _NewEnum([out, retval] IUnknown** Enum);
-};
-
-//*****************************************************************************
 //* interface IProduct
 //*****************************************************************************
 
@@ -491,10 +468,10 @@ interface IProduct : IDispatch
 	HRESULT Community([out, retval] ICommunity** Community);
 
 	[propget, id(18), helpstring("A collection of additional attributes that define the product.")]
-	HRESULT ProductAttributes([out, retval] IObjectCollection** ProductAttributes);
+	HRESULT ProductAttributes([out, retval] IWineApiObjectCollection** ProductAttributes);
 
 	[propget, id(19), helpstring("A collection of labels that go with the product.")]
-	HRESULT Labels([out, retval] IObjectCollection** Labels);
+	HRESULT Labels([out, retval] IWineApiObjectCollection** Labels);
 };
 
 //*****************************************************************************
@@ -543,7 +520,7 @@ interface IProducts : IDispatch
 	HRESULT Url([out, retval] BSTR* Url);
 
 	[propget, id(4), helpstring("The actual list of products.")]
-	HRESULT List([out, retval] IObjectCollection** List);
+	HRESULT List([out, retval] IWineApiObjectCollection** List);
 };
 
 //*****************************************************************************
@@ -589,7 +566,7 @@ interface IRatings : IDispatch
 	HRESULT HighestScore([out, retval] long* HighestScore);
 
 	[propget, id(2), helpstring("A collection of ratings that have been given to the product. Only available with \"partner\" access.")]
-	HRESULT List([out, retval] IObjectCollection** List);
+	HRESULT List([out, retval] IWineApiObjectCollection** List);
 };
 
 //*****************************************************************************
@@ -609,7 +586,7 @@ interface IReference : IDispatch
 	HRESULT Status([out, retval] IStatus** Status);
 
 	[propget, id(2), helpstring("A list of reference sections, or books.")]
-	HRESULT Books([out, retval] IObjectCollection** Books);
+	HRESULT Books([out, retval] IWineApiObjectCollection** Books);
 };
 
 //*****************************************************************************
@@ -704,30 +681,7 @@ interface IStatus : IDispatch
 	HRESULT ReturnCode([out, retval] long* ReturnCode);
 
 	[propget, id(2), helpstring("Returns a list of messages that contain debugging information to assist with correcting the issue.")]
-	HRESULT Messages([out, retval] IStringCollection** Messages);
-};
-
-//*****************************************************************************
-//* interface IStringCollection
-//*****************************************************************************
-
-[
-	object,
-	uuid(D8DBDB63-D035-4E3B-BB9F-611FAFFC2D2C),
-	dual,
-	helpstring("A collection of strings."),
-	pointer_default(unique)
-]
-interface IStringCollection : IDispatch
-{
-	[propget, id(1), helpstring("The number of items in the collection.")]
-	HRESULT Count([out, retval] long* Count);
-
-	[propget, id(DISPID_VALUE), helpstring("Indexed property giving access to items in the collection. The index is 0-based.")]
-	HRESULT Item([in] long Index, [out, retval] BSTR* Item);
-
-	[propget, id(DISPID_NEWENUM), helpstring("An enumerator that allows the collection to be iterated over.")]
-	HRESULT _NewEnum([out, retval] IUnknown** Enum);
+	HRESULT Messages([out, retval] IWineApiStringCollection** Messages);
 };
 
 //*****************************************************************************
@@ -822,7 +776,53 @@ interface IVintage : IDispatch
 interface IVintages : IDispatch
 {
 	[propget, id(1), helpstring("A specific vintage that the product is related to.")]
-	HRESULT List([out, retval] IObjectCollection** List);
+	HRESULT List([out, retval] IWineApiObjectCollection** List);
+};
+
+//*****************************************************************************
+//* interface IWineApiObjectCollection
+//*****************************************************************************
+
+[
+	object,
+	uuid(BE2BB08A-58FE-40C8-9C29-F2B726B0C19A),
+	dual,
+	helpstring("IWineApiObjectCollection Interface"),
+	pointer_default(unique)
+]
+interface IWineApiObjectCollection : IDispatch
+{
+	[propget, id(1), helpstring("The number of items in the collection.")]
+	HRESULT Count([out, retval] long* Count);
+
+	[propget, id(DISPID_VALUE), helpstring("Indexed property giving access to items in the collection. The index is 0-based.")]
+	HRESULT Item([in] long Index, [out, retval] IDispatch** Item);
+
+	[propget, id(DISPID_NEWENUM), helpstring("An enumerator that allows the collection to be iterated over.")]
+	HRESULT _NewEnum([out, retval] IUnknown** Enum);
+};
+
+//*****************************************************************************
+//* interface IWineApiStringCollection
+//*****************************************************************************
+
+[
+	object,
+	uuid(7DE0C290-9E80-479F-8829-189B76E2B12D),
+	dual,
+	helpstring("IWineApiStringCollection Interface"),
+	pointer_default(unique)
+]
+interface IWineApiStringCollection : IDispatch
+{
+	[propget, id(1), helpstring("The number of items in the collection.")]
+	HRESULT Count([out, retval] long* Count);
+
+	[propget, id(DISPID_VALUE), helpstring("Indexed property giving access to items in the collection. The index is 0-based.")]
+	HRESULT Item([in] long Index, [out, retval] BSTR* Item);
+
+	[propget, id(DISPID_NEWENUM), helpstring("An enumerator that allows the collection to be iterated over.")]
+	HRESULT _NewEnum([out, retval] IUnknown** Enum);
 };
 
 //*****************************************************************************
@@ -872,6 +872,12 @@ interface IConfig : IDispatch
 
 	[propput, id(2), helpstring("The version of the API to use.")]
 	HRESULT Version([in] BSTR Version);
+
+	[propget, id(3), helpstring("After signing up with LinkShare, use the \"affiliateId\" parameter to pass your affiliate code to the API.")]
+	HRESULT AffiliateId([out, retval] BSTR* AffiliateId);
+
+	[propput, id(3), helpstring("After signing up with LinkShare, use the \"affiliateId\" parameter to pass your affiliate code to the API.")]
+	HRESULT AffiliateId([in] BSTR AffiliateId);
 };
 
 //*****************************************************************************

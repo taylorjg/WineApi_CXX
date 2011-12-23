@@ -1,15 +1,15 @@
 #include "stdafx.h"
-#include "StringCollection.h"
+#include "WineApiObjectCollection.h"
 #include "EnumHelpers.h"
 
 //*****************************************************************************
 //* Function Name: InterfaceSupportsErrorInfo
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CStringCollection::InterfaceSupportsErrorInfo (REFIID riid)
+STDMETHODIMP CWineApiObjectCollection::InterfaceSupportsErrorInfo (REFIID riid)
 {
 	static const IID* arr[] = {
-		&IID_IStringCollection
+		&IID_IWineApiObjectCollection
 	};
 
 	for (int i = 0; i < sizeof (arr) / sizeof (arr[0]); i++) {
@@ -25,9 +25,13 @@ STDMETHODIMP CStringCollection::InterfaceSupportsErrorInfo (REFIID riid)
 //* Function Name: get_Count
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CStringCollection::get_Count (long* p_lCount)
+STDMETHODIMP CWineApiObjectCollection::get_Count (long* p_lCount)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
+
+	if (p_lCount == NULL) {
+		return E_POINTER;
+	}
 
 	*p_lCount = m_lNumItems;
 
@@ -39,13 +43,29 @@ STDMETHODIMP CStringCollection::get_Count (long* p_lCount)
 //* Function Name: get_Item
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CStringCollection::get_Item (long p_lIndex, BSTR* p_pbstrItem)
+STDMETHODIMP CWineApiObjectCollection::get_Item (long p_lIndex, IDispatch** p_ppDispatch)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_pbstrItem = static_cast<_bstr_t>(m_svara[p_lIndex]).copy ();
+	if (p_lIndex < 0 || p_lIndex >= m_lNumItems) {
+		return E_INVALIDARG;
+	}
 
-	return S_OK;
+	if (p_ppDispatch == NULL) {
+		return E_POINTER;
+	}
+
+	HRESULT l_hr = S_OK;
+
+	try {
+		*p_ppDispatch = V_DISPATCH (&m_svara[p_lIndex]);
+		(*p_ppDispatch)->AddRef ();
+	}
+	catch (const _com_error& _ce) {
+		l_hr = _ce.Error ();
+	}
+
+	return l_hr;
 }
 
 
@@ -53,7 +73,7 @@ STDMETHODIMP CStringCollection::get_Item (long p_lIndex, BSTR* p_pbstrItem)
 //* Function Name: get__NewEnum
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CStringCollection::get__NewEnum (IUnknown** p_ppEnum)
+STDMETHODIMP CWineApiObjectCollection::get__NewEnum (IUnknown** p_ppEnum)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 

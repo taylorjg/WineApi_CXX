@@ -67,9 +67,9 @@ STDMETHODIMP CProducts::get_Url (BSTR* p_pUrl)
 //* Function Name: get_List
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CProducts::get_List (IObjectCollection** p_ppObjectCollection)
+STDMETHODIMP CProducts::get_List (IWineApiObjectCollection** p_ppWineApiObjectCollection)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	return MakeEnumForObjectCollection (m_vProducts, p_ppObjectCollection);
+	return MakeEnumForObjectCollection (m_vProducts, p_ppWineApiObjectCollection);
 }

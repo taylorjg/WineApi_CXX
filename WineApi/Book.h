@@ -36,7 +36,7 @@ public:
 public:
 	STDMETHOD(get_Id)(BSTR* p_pbstrId);
 	STDMETHOD(get_Title)(BSTR* p_pbstrTitle);
-	STDMETHOD(get_Articles)(IObjectCollection** p_ppObjectCollection);
+	STDMETHOD(get_Articles)(IWineApiObjectCollection** p_ppWineApiObjectCollection);
 
 DECLARE_CREATE_INSTANCE_METHODS (CBook, IBook, IBookPtr)
 

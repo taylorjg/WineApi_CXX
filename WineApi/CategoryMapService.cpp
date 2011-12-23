@@ -302,8 +302,13 @@ STDMETHODIMP CCategoryMapService::Show (long p_lId, ICategoryMapService** p_ppSe
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	wchar_t l_wszId[10] = {0};
-	(void) swprintf (l_wszId, L"%d", p_lId);
+	wchar_t l_wszId[20] = {0};
+
+#if _MSC_VER >= 1400
+	(void) _snwprintf_s (l_wszId, 20, L"%d", p_lId);
+#else
+	(void) _snwprintf (l_wszId, 20, L"%d", p_lId);
+#endif
 
 	AppendNameValueToQueryString (L"show", l_wszId);
 

@@ -95,9 +95,9 @@ STDMETHODIMP CArticle::get_Url (BSTR* p_pbstrUrl)
 //* Function Name: get_Footnotes
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CArticle::get_Footnotes (IObjectCollection** p_ppObjectCollection)
+STDMETHODIMP CArticle::get_Footnotes (IWineApiObjectCollection** p_ppWineApiObjectCollection)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	return MakeEnumForObjectCollection (m_vFootnotes, p_ppObjectCollection);
+	return MakeEnumForObjectCollection (m_vFootnotes, p_ppWineApiObjectCollection);
 }

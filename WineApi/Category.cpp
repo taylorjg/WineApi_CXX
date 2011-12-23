@@ -53,9 +53,9 @@ STDMETHODIMP CCategory::get_Name (BSTR* p_pName)
 //* Function Name: get_Refinements
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CCategory::get_Refinements (IObjectCollection** p_ppObjectCollection)
+STDMETHODIMP CCategory::get_Refinements (IWineApiObjectCollection** p_ppWineApiObjectCollection)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	return MakeEnumForObjectCollection (m_vRefinements, p_ppObjectCollection);
+	return MakeEnumForObjectCollection (m_vRefinements, p_ppWineApiObjectCollection);
 }

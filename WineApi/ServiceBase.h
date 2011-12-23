@@ -4,6 +4,7 @@
 #include "IUrlInvoker.h"
 #include "IResponseDecoder.h"
 #include "Config.h"
+#include "Utils.h"
 
 template<typename U, typename V>
 class CServiceBase
@@ -24,19 +25,14 @@ protected:
 		const _bstr_t& p_sbstrName,
 		const _bstr_t& p_sbstrValue)
 	{
-		m_sbstrUrl += L"&";
-		m_sbstrUrl += p_sbstrName;
-		m_sbstrUrl += L"=";
-		m_sbstrUrl += p_sbstrValue;
+		::UtilsAppendNameValueToQueryString (m_sbstrUrl, p_sbstrName, p_sbstrValue);
 	}
 
 	void AppendNameValueToQueryString (
 		const _bstr_t&	p_sbstrName,
 		long			p_lValue)
 	{
-		wchar_t l_wszValue[20] = {0};
-		(void) swprintf (l_wszValue, L"%ld", p_lValue);
-		AppendNameValueToQueryString (p_sbstrName, l_wszValue);
+		::UtilsAppendNameValueToQueryString (m_sbstrUrl, p_sbstrName, p_lValue);
 	}
 
 	V ExecuteHelper (void)
@@ -66,7 +62,9 @@ protected:
 
 		AppendNameValueToQueryString (L"filter", l_sbstrOverallValue);
 
-		return p_pUnknown->QueryInterface (__uuidof (*p_ppSelf), reinterpret_cast<void**>(p_ppSelf));
+		return p_pUnknown->QueryInterface (
+			__uuidof (*p_ppSelf),
+			reinterpret_cast<void**>(p_ppSelf));
 	}
 
 	_bstr_t JoinValues (const std::vector<_variant_t>& p_vValues)

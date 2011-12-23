@@ -341,7 +341,12 @@ STDMETHODIMP CCatalogService::RatingFromFilter (
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
 	wchar_t l_wszValue[100] = {0};
-	(void) swprintf (l_wszValue, L"rating(%ld)", p_lFrom);
+
+#if _MSC_VER >= 1400
+	(void) _snwprintf_s (l_wszValue, 100, L"rating(%ld)", p_lFrom);
+#else
+	(void) _snwprintf (l_wszValue, 100, L"rating(%ld)", p_lFrom);
+#endif
 
 	AppendNameValueToQueryString (L"filter", l_wszValue);
 
@@ -363,7 +368,12 @@ STDMETHODIMP CCatalogService::RatingFromToFilter (
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
 	wchar_t l_wszValue[100] = {0};
-	(void) swprintf (l_wszValue, L"rating(%ld|%ld)", p_lFrom, p_lTo);
+
+#if _MSC_VER >= 1400
+	(void) _snwprintf_s (l_wszValue, 100, L"rating(%ld|%ld)", p_lFrom, p_lTo);
+#else
+	(void) _snwprintf (l_wszValue, 100, L"rating(%ld|%ld)", p_lFrom, p_lTo);
+#endif
 
 	AppendNameValueToQueryString (L"filter", l_wszValue);
 
@@ -384,7 +394,12 @@ STDMETHODIMP CCatalogService::PriceFromFilter (
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
 	wchar_t l_wszValue[100] = {0};
-	(void) swprintf (l_wszValue, L"price(%f)", p_dblFrom);
+
+#if _MSC_VER >= 1400
+	(void) _snwprintf_s (l_wszValue, 100, L"price(%f)", p_dblFrom);
+#else
+	(void) _snwprintf (l_wszValue, 100, L"price(%f)", p_dblFrom);
+#endif
 
 	AppendNameValueToQueryString (L"filter", l_wszValue);
 
@@ -406,7 +421,12 @@ STDMETHODIMP CCatalogService::PriceFromToFilter (
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
 	wchar_t l_wszValue[100] = {0};
-	(void) swprintf (l_wszValue, L"price(%f|%f)", p_dblFrom, p_dblTo);
+
+#if _MSC_VER >= 1400
+	(void) _snwprintf_s (l_wszValue, 100, L"price(%f|%f)", p_dblFrom, p_dblTo);
+#else
+	(void) _snwprintf (l_wszValue, 100, L"price(%f|%f)", p_dblFrom, p_dblTo);
+#endif
 
 	AppendNameValueToQueryString (L"filter", l_wszValue);
 

@@ -25,9 +25,9 @@ STDMETHODIMP CVintages::InterfaceSupportsErrorInfo (REFIID riid)
 //* Function Name: get_List
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CVintages::get_List (IObjectCollection** p_ppObjectCollection)
+STDMETHODIMP CVintages::get_List (IWineApiObjectCollection** p_ppWineApiObjectCollection)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	return MakeEnumForObjectCollection (m_vVintages, p_ppObjectCollection);
+	return MakeEnumForObjectCollection (m_vVintages, p_ppWineApiObjectCollection);
 }

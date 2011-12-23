@@ -18,6 +18,7 @@ static void CatalogServiceTests (void)
 //	CatalogService_Execute_WithRatingFromFilter ();
 //	CatalogService_Execute_WithRatingFromToFilter ();
 	CatalogService_Execute_WithProductFilter1 ();
+//	CatalogService_Execute_WithBadVersion ();
 }
 
 
@@ -61,8 +62,8 @@ int main ()
 
 	try {
 		CatalogServiceTests ();
-		CategoryMapServiceTests ();
-		ReferenceServiceTests ();
+		//CategoryMapServiceTests ();
+		//ReferenceServiceTests ();
 	}
 	catch (const _com_error& _ce) {
 		(void) _ftprintf (stderr, _T("_com_error exception caught - HRESULT is 0x%08X\n"), _ce.Error ());

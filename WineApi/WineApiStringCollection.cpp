@@ -1,15 +1,16 @@
 #include "stdafx.h"
-#include "ObjectCollection.h"
+#include "WineApiStringCollection.h"
 #include "EnumHelpers.h"
+#include "Utils.h"
 
 //*****************************************************************************
 //* Function Name: InterfaceSupportsErrorInfo
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CObjectCollection::InterfaceSupportsErrorInfo (REFIID riid)
+STDMETHODIMP CWineApiStringCollection::InterfaceSupportsErrorInfo (REFIID riid)
 {
 	static const IID* arr[] = {
-		&IID_IObjectCollection
+		&IID_IWineApiStringCollection
 	};
 
 	for (int i = 0; i < sizeof (arr) / sizeof (arr[0]); i++) {
@@ -25,7 +26,7 @@ STDMETHODIMP CObjectCollection::InterfaceSupportsErrorInfo (REFIID riid)
 //* Function Name: get_Count
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CObjectCollection::get_Count (long* p_lCount)
+STDMETHODIMP CWineApiStringCollection::get_Count (long* p_lCount)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
@@ -39,14 +40,29 @@ STDMETHODIMP CObjectCollection::get_Count (long* p_lCount)
 //* Function Name: get_Item
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CObjectCollection::get_Item (long p_lIndex, IDispatch** p_ppDispatch)
+STDMETHODIMP CWineApiStringCollection::get_Item (long p_lIndex, BSTR* p_pbstrItem)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_ppDispatch = V_DISPATCH (&m_svara[p_lIndex]);
-	(*p_ppDispatch)->AddRef ();
+	if (p_lIndex < 0 || p_lIndex >= m_lNumItems) {
+		return E_INVALIDARG;
+	}
 
-	return S_OK;
+	if (p_pbstrItem == NULL) {
+		return E_POINTER;
+	}
+
+	HRESULT l_hr = S_OK;
+
+	try {
+		_bstr_t l_sbstrItem (m_svara[p_lIndex]);
+		*p_pbstrItem = l_sbstrItem.copy ();
+	}
+	catch (const _com_error& _ce) {
+		l_hr = _ce.Error ();
+	}
+
+	return l_hr;
 }
 
 
@@ -54,7 +70,7 @@ STDMETHODIMP CObjectCollection::get_Item (long p_lIndex, IDispatch** p_ppDispatc
 //* Function Name: get__NewEnum
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CObjectCollection::get__NewEnum (IUnknown** p_ppEnum)
+STDMETHODIMP CWineApiStringCollection::get__NewEnum (IUnknown** p_ppEnum)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 

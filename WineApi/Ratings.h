@@ -36,7 +36,7 @@ public:
 // IRatings
 public:
 	STDMETHOD(get_HighestScore)(long* p_plHighestScore);
-	STDMETHOD(get_List)(IObjectCollection** p_ppObjectCollection);
+	STDMETHOD(get_List)(IWineApiObjectCollection** p_ppWineApiObjectCollection);
 
 DECLARE_CREATE_INSTANCE_METHODS (CRatings, IRatings, IRatingsPtr)
 

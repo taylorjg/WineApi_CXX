@@ -287,11 +287,11 @@ STDMETHODIMP CProduct::get_Community (ICommunity** p_ppCommunity)
 //* Function Name: get_ProductAttributes
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CProduct::get_ProductAttributes (IObjectCollection** p_ppObjectCollection)
+STDMETHODIMP CProduct::get_ProductAttributes (IWineApiObjectCollection** p_ppWineApiObjectCollection)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	return MakeEnumForObjectCollection (m_vProductAttributes, p_ppObjectCollection);
+	return MakeEnumForObjectCollection (m_vProductAttributes, p_ppWineApiObjectCollection);
 }
 
 
@@ -299,9 +299,9 @@ STDMETHODIMP CProduct::get_ProductAttributes (IObjectCollection** p_ppObjectColl
 //* Function Name: get_Labels
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CProduct::get_Labels (IObjectCollection** p_ppObjectCollection)
+STDMETHODIMP CProduct::get_Labels (IWineApiObjectCollection** p_ppWineApiObjectCollection)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	return MakeEnumForObjectCollection (m_vLabels, p_ppObjectCollection);
+	return MakeEnumForObjectCollection (m_vLabels, p_ppWineApiObjectCollection);
 }

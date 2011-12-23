@@ -277,6 +277,7 @@ void CatalogService_Execute_WithProductFilter1 ()
 		l_hr = l_spCatalogService.CreateInstance (__uuidof (WineApi::CatalogService));
 
 		WineApi::ICatalogPtr l_spCatalog = l_spCatalogService
+			->State (L"CA")
 			->ProductFilter1 (74509)
 			->Execute ();
 
@@ -284,5 +285,36 @@ void CatalogService_Execute_WithProductFilter1 ()
 	}
 	catch (const _com_error& _ce) {
 		(void) _ftprintf (stderr, _T("CatalogService_Execute_WithProductFilter1 _com_error exception: 0x%08X\n"), _ce.Error ());
+	}
+}
+
+
+//*****************************************************************************
+//* Function Name: CatalogService_Execute_WithBadVersion
+//*   Description: 
+//*****************************************************************************
+void CatalogService_Execute_WithBadVersion ()
+{
+	try {
+		HRESULT l_hr;
+
+		WineApi::IConfigPtr l_spConfig;
+		l_hr = l_spConfig.CreateInstance (__uuidof (WineApi::Config));
+		if (FAILED (l_hr)) _com_issue_error (l_hr);
+
+		l_spConfig->ApiKey = API_KEY;
+		l_spConfig->Version = L"BogusVersion";
+
+		WineApi::ICatalogServicePtr l_spCatalogService;
+		l_hr = l_spCatalogService.CreateInstance (__uuidof (WineApi::CatalogService));
+
+		WineApi::ICatalogPtr l_spCatalog = l_spCatalogService
+			->ProductFilter1 (74509)
+			->Execute ();
+
+		PrintCatalog (l_spCatalog);
+	}
+	catch (const _com_error& _ce) {
+		(void) _ftprintf (stderr, _T("CatalogService_Execute_WithBadVersion _com_error exception: 0x%08X\n"), _ce.Error ());
 	}
 }

@@ -57,7 +57,6 @@ BSC32=bscmake.exe
 LINK32=link.exe
 # ADD BASE LINK32 /nologo /subsystem:windows /dll /debug /machine:I386 /pdbtype:sept
 # ADD LINK32 /nologo /subsystem:windows /dll /debug /machine:I386
-# SUBTRACT LINK32 /pdbtype:<none>
 # Begin Custom Build - Performing registration
 OutDir=.\Debug
 TargetPath=.\Debug\WineApi.dll
@@ -390,10 +389,6 @@ SOURCE=.\Label.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\ObjectCollection.cpp
-# End Source File
-# Begin Source File
-
 SOURCE=.\Product.cpp
 # End Source File
 # Begin Source File
@@ -447,7 +442,7 @@ SOURCE=.\StdAfx.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\StringCollection.cpp
+SOURCE=.\Utils.cpp
 # End Source File
 # Begin Source File
 
@@ -481,6 +476,14 @@ SOURCE=.\WineApi.idl
 # Begin Source File
 
 SOURCE=.\WineApi.rc
+# End Source File
+# Begin Source File
+
+SOURCE=.\WineApiObjectCollection.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\WineApiStringCollection.cpp
 # End Source File
 # Begin Source File
 
@@ -588,10 +591,6 @@ SOURCE=.\Label.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\ObjectCollection.h
-# End Source File
-# Begin Source File
-
 SOURCE=.\Product.h
 # End Source File
 # Begin Source File
@@ -652,7 +651,7 @@ SOURCE=.\StdAfx.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\StringCollection.h
+SOURCE=.\Utils.h
 # End Source File
 # Begin Source File
 
@@ -669,6 +668,14 @@ SOURCE=.\Vintage.h
 # Begin Source File
 
 SOURCE=.\Vintages.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\WineApiObjectCollection.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\WineApiStringCollection.h
 # End Source File
 # Begin Source File
 

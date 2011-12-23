@@ -37,7 +37,7 @@ public:
 public:
 	STDMETHOD(get_HighestScore)(long* p_plHighestScore);
 	STDMETHOD(get_Url)(BSTR* p_pbstrUrl);
-	STDMETHOD(get_List)(IObjectCollection** p_ppObjectCollection);
+	STDMETHOD(get_List)(IWineApiObjectCollection** p_ppWineApiObjectCollection);
 
 DECLARE_CREATE_INSTANCE_METHODS (CCommunityReviews, ICommunityReviews, ICommunityReviewsPtr)
 

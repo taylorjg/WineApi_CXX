@@ -1,32 +1,32 @@
 #ifndef _EnumHelpers_h_
 #define _EnumHelpers_h_
 
-#include "ObjectCollection.h"
-#include "StringCollection.h"
+#include "WineApiObjectCollection.h"
+#include "WineApiStringCollection.h"
 
 //*****************************************************************************
 //* Function Name: MakeEnumForObjectCollection
 //*   Description: Take a vector of smart pointers (e.g. IBookPtr) and copy
-//*                the elements into a vector of _variant_t. Then, create an
-//*                instance of the COM object CObjectCollection which implements
-//*                IObjectCollection. Pass the vector of _variant_t to this
-//*                COM object.
+//*                the elements into a vector of _variant_t where each
+//*                _variant_t holds an IDispatch interface pointer. Then,
+//*                create an instance of a collection object passing in the
+//*                vector of _variant_t.
 //*****************************************************************************
 template<typename T>
 HRESULT MakeEnumForObjectCollection (
-	const std::vector<T>&	p_v,
-	IObjectCollection**		p_ppObjectCollection)
+	const std::vector<T>&		p_v,
+	IWineApiObjectCollection**	p_ppWineApiObjectCollection)
 {
 	HRESULT l_hr = S_OK;
 
-	*p_ppObjectCollection = NULL;
+	*p_ppWineApiObjectCollection = NULL;
 
-	CComObject<CObjectCollection>* l_pCXXObjectCollection = NULL;
-	l_hr = CComObject<CObjectCollection>::CreateInstance (&l_pCXXObjectCollection);
+	CComObject<CWineApiObjectCollection>* l_pCXXWineApiObjectCollection = NULL;
+	l_hr = CComObject<CWineApiObjectCollection>::CreateInstance (&l_pCXXWineApiObjectCollection);
 
 	if (SUCCEEDED (l_hr)) {
 
-		l_pCXXObjectCollection->AddRef ();
+		l_pCXXWineApiObjectCollection->AddRef ();
 
 		long l_lNumItems = p_v.size ();
 		_variant_t* l_svara = new _variant_t[l_lNumItems];
@@ -42,15 +42,15 @@ HRESULT MakeEnumForObjectCollection (
 				V_DISPATCH (l_psvar)->AddRef ();
 			}
 
-			l_pCXXObjectCollection->Init (l_lNumItems, l_svara);
+			l_pCXXWineApiObjectCollection->Init (l_lNumItems, l_svara);
 
-			l_hr = l_pCXXObjectCollection->QueryInterface (p_ppObjectCollection);
+			l_hr = l_pCXXWineApiObjectCollection->QueryInterface (p_ppWineApiObjectCollection);
 		}
 		else {
 			l_hr = E_OUTOFMEMORY;
 		}
 
-		l_pCXXObjectCollection->Release ();
+		l_pCXXWineApiObjectCollection->Release ();
 	}
 
 	return l_hr;
@@ -58,6 +58,6 @@ HRESULT MakeEnumForObjectCollection (
 
 extern HRESULT MakeEnumForStringCollection (
 	const std::vector<_bstr_t>&	p_v,
-	IStringCollection**			p_ppStringCollection);
+	IWineApiStringCollection**	p_ppWineApiStringCollection);
 
 #endif

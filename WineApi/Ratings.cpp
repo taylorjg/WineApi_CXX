@@ -39,9 +39,9 @@ STDMETHODIMP CRatings::get_HighestScore (long* p_plHighestScore)
 //* Function Name: get_List
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CRatings::get_List (IObjectCollection** p_ppObjectCollection)
+STDMETHODIMP CRatings::get_List (IWineApiObjectCollection** p_ppWineApiObjectCollection)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	return MakeEnumForObjectCollection (m_vRatings, p_ppObjectCollection);
+	return MakeEnumForObjectCollection (m_vRatings, p_ppWineApiObjectCollection);
 }

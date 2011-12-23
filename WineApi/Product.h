@@ -64,8 +64,8 @@ public:
 	STDMETHOD(get_Retail)(IRetail** p_ppRetail);
 	STDMETHOD(get_Vintages)(IVintages** p_ppVintages);
 	STDMETHOD(get_Community)(ICommunity** p_ppCommunity);
-	STDMETHOD(get_ProductAttributes)(IObjectCollection** p_ppObjectCollection);
-	STDMETHOD(get_Labels)(IObjectCollection** p_ppObjectCollection);
+	STDMETHOD(get_ProductAttributes)(IWineApiObjectCollection** p_ppWineApiObjectCollection);
+	STDMETHOD(get_Labels)(IWineApiObjectCollection** p_ppWineApiObjectCollection);
 
 DECLARE_CREATE_INSTANCE_METHODS (CProduct, IProduct, IProductPtr)
 

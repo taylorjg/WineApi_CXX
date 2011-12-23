@@ -39,7 +39,7 @@ public:
 	STDMETHOD(get_Abstract)(BSTR* p_pbstrAbstract);
 	STDMETHOD(get_Content)(BSTR* p_pbstrContent);
 	STDMETHOD(get_Url)(BSTR* p_pbstrUrl);
-	STDMETHOD(get_Footnotes)(IObjectCollection** p_ppObjectCollection);
+	STDMETHOD(get_Footnotes)(IWineApiObjectCollection** p_ppWineApiObjectCollection);
 
 DECLARE_CREATE_INSTANCE_METHODS (CArticle, IArticle, IArticlePtr)
 

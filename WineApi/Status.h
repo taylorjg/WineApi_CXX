@@ -35,7 +35,7 @@ public:
 // IStatus
 public:
 	STDMETHOD(get_ReturnCode)(long* p_plReturnCode);
-	STDMETHOD(get_Messages)(IStringCollection** p_ppStringCollection);
+	STDMETHOD(get_Messages)(IWineApiStringCollection** p_ppWineApiStringCollection);
 
 DECLARE_CREATE_INSTANCE_METHODS (CStatus, IStatus, IStatusPtr)
 

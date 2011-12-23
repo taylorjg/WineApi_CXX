@@ -34,7 +34,7 @@ public:
 
 // IVintages
 public:
-	STDMETHOD(get_List)(IObjectCollection** p_ppObjectCollection);
+	STDMETHOD(get_List)(IWineApiObjectCollection** p_ppWineApiObjectCollection);
 
 DECLARE_CREATE_INSTANCE_METHODS (CVintages, IVintages, IVintagesPtr)
 

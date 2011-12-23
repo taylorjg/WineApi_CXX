@@ -15,3 +15,8 @@ WineApips.mk
 Debug
 Release
 Notes
+*.sdf
+*.suo
+ipch
+*.vcxproj.filters
+*.vcxproj.user

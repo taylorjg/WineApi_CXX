@@ -39,9 +39,9 @@ STDMETHODIMP CStatus::get_ReturnCode (long* p_plReturnCode)
 //* Function Name: get_Messages
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CStatus::get_Messages (IStringCollection** p_ppStringCollection)
+STDMETHODIMP CStatus::get_Messages (IWineApiStringCollection** p_ppWineApiStringCollection)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	return MakeEnumForStringCollection (m_vMessages, p_ppStringCollection);
+	return MakeEnumForStringCollection (m_vMessages, p_ppWineApiStringCollection);
 }

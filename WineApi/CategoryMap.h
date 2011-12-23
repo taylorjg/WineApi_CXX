@@ -36,7 +36,7 @@ public:
 // ICategoryMap
 public:
 	STDMETHOD(get_Status)(IStatus** p_ppStatus);
-	STDMETHOD(get_Categories)(IObjectCollection** p_ppObjectCollection);
+	STDMETHOD(get_Categories)(IWineApiObjectCollection** p_ppWineApiObjectCollection);
 
 DECLARE_CREATE_INSTANCE_METHODS (CCategoryMap, ICategoryMap, ICategoryMapPtr)
 

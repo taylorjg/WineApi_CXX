@@ -39,16 +39,20 @@ public:
 	STDMETHOD(put_ApiKey)(BSTR p_bstrApiKey);
 	STDMETHOD(get_Version)(BSTR* p_pbstrVersion);
 	STDMETHOD(put_Version)(BSTR p_bstrVersion);
+	STDMETHOD(get_AffiliateId)(BSTR* p_pbstrAffiliateId);
+	STDMETHOD(put_AffiliateId)(BSTR p_bstrAffiliateId);
 
 public:
 	static const _bstr_t& GetApiKey (void) { return m_s_sbstrApiKey; }
 	static const _bstr_t& GetVersion (void) { return m_s_sbstrVersion; }
+	static const _bstr_t& GetAffiliateId (void) { return m_s_sbstrAffiliateId; }
 
 	static _bstr_t GetBaseUrl (const _bstr_t& p_sbstrResource);
 
 private:
 	static _bstr_t m_s_sbstrApiKey;
 	static _bstr_t m_s_sbstrVersion;
+	static _bstr_t m_s_sbstrAffiliateId;
 };
 
 #endif

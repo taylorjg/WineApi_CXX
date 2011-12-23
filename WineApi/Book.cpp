@@ -53,9 +53,9 @@ STDMETHODIMP CBook::get_Title (BSTR* p_pbstrTitle)
 //* Function Name: get_Articles
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CBook::get_Articles (IObjectCollection** p_ppObjectCollection)
+STDMETHODIMP CBook::get_Articles (IWineApiObjectCollection** p_ppWineApiObjectCollection)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	return MakeEnumForObjectCollection (m_vArticles, p_ppObjectCollection);
+	return MakeEnumForObjectCollection (m_vArticles, p_ppWineApiObjectCollection);
 }

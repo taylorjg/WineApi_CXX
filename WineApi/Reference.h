@@ -36,7 +36,7 @@ public:
 // IReference
 public:
 	STDMETHOD(get_Status)(IStatus** p_ppStatus);
-	STDMETHOD(get_Books)(IObjectCollection** p_ppObjectCollection);
+	STDMETHOD(get_Books)(IWineApiObjectCollection** p_ppWineApiObjectCollection);
 
 DECLARE_CREATE_INSTANCE_METHODS (CReference, IReference, IReferencePtr)
 

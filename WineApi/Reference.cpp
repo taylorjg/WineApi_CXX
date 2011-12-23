@@ -42,9 +42,9 @@ STDMETHODIMP CReference::get_Status (IStatus** p_ppStatus)
 //* Function Name: get_Books
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CReference::get_Books (IObjectCollection** p_ppObjectCollection)
+STDMETHODIMP CReference::get_Books (IWineApiObjectCollection** p_ppWineApiObjectCollection)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	return MakeEnumForObjectCollection (m_vBooks, p_ppObjectCollection);
+	return MakeEnumForObjectCollection (m_vBooks, p_ppWineApiObjectCollection);
 }

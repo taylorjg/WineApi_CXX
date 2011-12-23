@@ -42,9 +42,9 @@ STDMETHODIMP CCategoryMap::get_Status (IStatus** p_ppStatus)
 //* Function Name: get_Categories
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CCategoryMap::get_Categories (IObjectCollection** p_ppObjectCollection)
+STDMETHODIMP CCategoryMap::get_Categories (IWineApiObjectCollection** p_ppWineApiObjectCollection)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	return MakeEnumForObjectCollection (m_vCategories, p_ppObjectCollection);
+	return MakeEnumForObjectCollection (m_vCategories, p_ppWineApiObjectCollection);
 }

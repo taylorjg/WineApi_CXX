@@ -40,7 +40,7 @@ public:
 public:
 	STDMETHOD(get_Id)(long* p_plId);
 	STDMETHOD(get_Name)(BSTR* p_pName);
-	STDMETHOD(get_Refinements)(IObjectCollection** p_ppObjectCollection);
+	STDMETHOD(get_Refinements)(IWineApiObjectCollection** p_ppWineApiObjectCollection);
 
 DECLARE_CREATE_INSTANCE_METHODS (CCategory, ICategory, ICategoryPtr)
 

@@ -53,9 +53,9 @@ STDMETHODIMP CCommunityReviews::get_Url (BSTR* p_pbstrUrl)
 //* Function Name: get_List
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CCommunityReviews::get_List (IObjectCollection** p_ppObjectCollection)
+STDMETHODIMP CCommunityReviews::get_List (IWineApiObjectCollection** p_ppWineApiObjectCollection)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	return MakeEnumForObjectCollection (m_vCommunityReviews, p_ppObjectCollection);
+	return MakeEnumForObjectCollection (m_vCommunityReviews, p_ppWineApiObjectCollection);
 }

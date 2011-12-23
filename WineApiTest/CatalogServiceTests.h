@@ -10,5 +10,6 @@ extern void CatalogService_Execute_WithCategoryFilter4SortByPriceDescending ();
 extern void CatalogService_Execute_WithRatingFromFilter ();
 extern void CatalogService_Execute_WithRatingFromToFilter ();
 extern void CatalogService_Execute_WithProductFilter1 ();
+extern void CatalogService_Execute_WithBadVersion ();
 
 #endif

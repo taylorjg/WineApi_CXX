@@ -10,13 +10,11 @@ void PrintStatus (const WineApi::IStatusPtr& p_spStatus)
 	long l_lReturnCode = p_spStatus->ReturnCode;
 	(void) _tprintf (_T("Return Code: %ld\n"), l_lReturnCode);
 
-	WineApi::IStringCollectionPtr l_spStringCollection = p_spStatus->Messages;
-
-	long l_lMessageCount = l_spStringCollection->Count;
+	long l_lMessageCount = p_spStatus->Messages->Count;
 	(void) _tprintf (_T("Message Count: %ld\n"), l_lMessageCount);
 
 	for (long l_lMessageIndex = 0; l_lMessageIndex < l_lMessageCount; l_lMessageIndex++) {
-		_bstr_t l_sbstrMessage = l_spStringCollection->Item[l_lMessageIndex];
+		_bstr_t l_sbstrMessage = p_spStatus->Messages->Item[l_lMessageIndex];
 		(void) _tprintf (_T("Message: \"%s\"\n"), static_cast<LPCTSTR>(l_sbstrMessage));
 	}
 }
@@ -33,9 +31,9 @@ void PrintStatusEnum (const WineApi::IStatusPtr& p_spStatus)
 
 	if (l_lReturnCode != WineApi::ReturnCodeSuccess) {
 
-		WineApi::IStringCollectionPtr l_spStringCollection = p_spStatus->Messages;
+		WineApi::IWineApiStringCollectionPtr l_spWineApiStringCollection = p_spStatus->Messages;
 
-		IUnknownPtr l_spUnknown = l_spStringCollection->_NewEnum;
+		IUnknownPtr l_spUnknown = l_spWineApiStringCollection->_NewEnum;
 		IEnumVARIANTPtr l_spEnumVARIANT (l_spUnknown);
 
 		if (l_spEnumVARIANT) {
@@ -62,13 +60,11 @@ void PrintCategoryMap (const WineApi::ICategoryMapPtr& p_spCategoryMap)
 	WineApi::IStatusPtr l_spStatus = p_spCategoryMap->Status;
 	PrintStatus (l_spStatus);
 
-	WineApi::IObjectCollectionPtr l_spObjectCollection = p_spCategoryMap->Categories;
-
-	long l_lCategoryCount = l_spObjectCollection->Count;
+	long l_lCategoryCount = p_spCategoryMap->Categories->Count;
 	(void) _tprintf (_T("Category Count: %ld\n"), l_lCategoryCount);
 
 	for (long l_lCategoryIndex = 0; l_lCategoryIndex < l_lCategoryCount; l_lCategoryIndex++) {
-		WineApi::ICategoryPtr l_spCategory = l_spObjectCollection->Item[l_lCategoryIndex];
+		WineApi::ICategoryPtr l_spCategory = p_spCategoryMap->Categories->Item[l_lCategoryIndex];
 		PrintCategory (l_spCategory);
 	}
 }
@@ -83,9 +79,9 @@ void PrintCategoryMapEnum (const WineApi::ICategoryMapPtr& p_spCategoryMap)
 	WineApi::IStatusPtr l_spStatus = p_spCategoryMap->Status;
 	PrintStatus (l_spStatus);
 
-	WineApi::IObjectCollectionPtr l_spObjectCollection = p_spCategoryMap->Categories;
+	WineApi::IWineApiObjectCollectionPtr l_spWineApiObjectCollection = p_spCategoryMap->Categories;
 
-	IUnknownPtr l_spUnknown = l_spObjectCollection->_NewEnum;
+	IUnknownPtr l_spUnknown = l_spWineApiObjectCollection->_NewEnum;
 	IEnumVARIANTPtr l_spEnumVARIANT (l_spUnknown);
 
 	if (l_spEnumVARIANT) {
@@ -114,13 +110,11 @@ void PrintCategory (const WineApi::ICategoryPtr& p_spCategory)
 	_bstr_t l_sbstrName = p_spCategory->Name;
 	(void) _tprintf (_T("Category Name: \"%s\"\n"), static_cast<LPCTSTR>(l_sbstrName));
 
-	WineApi::IObjectCollectionPtr l_spObjectCollection = p_spCategory->Refinements;
-
-	long l_lRefinementCount = l_spObjectCollection->Count;
+	long l_lRefinementCount = p_spCategory->Refinements->Count;
 	(void) _tprintf (_T("Refinement Count: %ld\n"), l_lRefinementCount);
 
 	for (long l_lRefinementIndex = 0; l_lRefinementIndex < l_lRefinementCount; l_lRefinementIndex++) {
-		WineApi::IRefinementPtr l_spRefinement = l_spObjectCollection->Item[l_lRefinementIndex];
+		WineApi::IRefinementPtr l_spRefinement = p_spCategory->Refinements->Item[l_lRefinementIndex];
 		PrintRefinement (l_spRefinement);
 	}
 }
@@ -138,9 +132,9 @@ void PrintCategoryEnum (const WineApi::ICategoryPtr& p_spCategory)
 	_bstr_t l_sbstrName = p_spCategory->Name;
 	(void) _tprintf (_T("Category Name: \"%s\"\n"), static_cast<LPCTSTR>(l_sbstrName));
 
-	WineApi::IObjectCollectionPtr l_spObjectCollection = p_spCategory->Refinements;
+	WineApi::IWineApiObjectCollectionPtr l_spWineApiObjectCollection = p_spCategory->Refinements;
 
-	IUnknownPtr l_spUnknown = l_spObjectCollection->_NewEnum;
+	IUnknownPtr l_spUnknown = l_spWineApiObjectCollection->_NewEnum;
 	IEnumVARIANTPtr l_spEnumVARIANT (l_spUnknown);
 
 	if (l_spEnumVARIANT) {
@@ -194,8 +188,6 @@ void PrintCatalog (const WineApi::ICatalogPtr& p_spCatalog)
 //*****************************************************************************
 void PrintProducts (const WineApi::IProductsPtr& p_spProducts)
 {
-	WineApi::IObjectCollectionPtr l_spObjectCollection = p_spProducts->List;
-
 	long l_lTotal = p_spProducts->Total;
 	(void) _tprintf (_T("Products Total: %ld\n"), l_lTotal);
 
@@ -205,11 +197,11 @@ void PrintProducts (const WineApi::IProductsPtr& p_spProducts)
 	_bstr_t l_sbstrUrl = p_spProducts->Url;
 	(void) _tprintf (_T("Product Url: \"%s\"\n"), static_cast<LPCTSTR>(l_sbstrUrl));
 
-	long l_lProductCount = l_spObjectCollection->Count;
+	long l_lProductCount = p_spProducts->List->Count;
 	(void) _tprintf (_T("Product Count: %ld\n"), l_lProductCount);
 
 	for (long l_lProductIndex = 0; l_lProductIndex < l_lProductCount; l_lProductIndex++) {
-		WineApi::IProductPtr l_spProduct = l_spObjectCollection->Item[l_lProductIndex];
+		WineApi::IProductPtr l_spProduct = p_spProducts->List->Item[l_lProductIndex];
 		PrintProduct (l_spProduct);
 	}
 }
@@ -289,13 +281,11 @@ void PrintRatings (const WineApi::IRatingsPtr& p_spRatings)
 	long l_lHighestScore = p_spRatings->HighestScore;
 	(void) _tprintf (_T("Ratings HighestScore: %ld\n"), l_lHighestScore);
 
-	WineApi::IObjectCollectionPtr l_spObjectCollection = p_spRatings->List;
-
-	long l_lRatingCount = l_spObjectCollection->Count;
+	long l_lRatingCount = p_spRatings->List->Count;
 	(void) _tprintf (_T("Rating Count: %ld\n"), l_lRatingCount);
 
 	for (long l_lRatingIndex = 0; l_lRatingIndex < l_lRatingCount; l_lRatingIndex++) {
-		WineApi::IRatingPtr l_spRating = l_spObjectCollection->Item[l_lRatingIndex];
+		WineApi::IRatingPtr l_spRating = p_spRatings->List->Item[l_lRatingIndex];
 		PrintRating (l_spRating);
 	}
 }
@@ -330,13 +320,11 @@ void PrintReference (const WineApi::IReferencePtr& p_spReference)
 	WineApi::IStatusPtr l_spStatus = p_spReference->Status;
 	PrintStatus (l_spStatus);
 
-	WineApi::IObjectCollectionPtr l_spObjectCollection = p_spReference->Books;
-
-	long l_lBookCount = l_spObjectCollection->Count;
+	long l_lBookCount = p_spReference->Books->Count;
 	(void) _tprintf (_T("Book Count: %ld\n"), l_lBookCount);
 
 	for (long l_lBookIndex = 0; l_lBookIndex < l_lBookCount; l_lBookIndex++) {
-		WineApi::IBookPtr l_spBook = l_spObjectCollection->Item[l_lBookIndex];
+		WineApi::IBookPtr l_spBook = p_spReference->Books->Item[l_lBookIndex];
 		PrintBook (l_spBook);
 	}
 }
@@ -354,13 +342,11 @@ void PrintBook (const WineApi::IBookPtr& p_spBook)
 	_bstr_t l_sbstrTitle = p_spBook->Title;
 	(void) _tprintf (_T("Book Title: \"%s\"\n"), static_cast<LPCTSTR>(l_sbstrTitle));
 
-	WineApi::IObjectCollectionPtr l_spObjectCollection = p_spBook->Articles;
-
-	long l_lArticleCount = l_spObjectCollection->Count;
+	long l_lArticleCount = p_spBook->Articles->Count;
 	(void) _tprintf (_T("Article Count: %ld\n"), l_lArticleCount);
 
 	for (long l_lArticleIndex = 0; l_lArticleIndex < l_lArticleCount; l_lArticleIndex++) {
-		WineApi::IArticlePtr l_spArticle = l_spObjectCollection->Item[l_lArticleIndex];
+		WineApi::IArticlePtr l_spArticle = p_spBook->Articles->Item[l_lArticleIndex];
 		PrintArticle (l_spArticle);
 	}
 }
@@ -387,13 +373,11 @@ void PrintArticle (const WineApi::IArticlePtr& p_spArticle)
 	_bstr_t l_sbstrUrl = p_spArticle->Url;
 	(void) _tprintf (_T("Article Url: \"%s\"\n"), static_cast<LPCTSTR>(l_sbstrUrl));
 
-	WineApi::IObjectCollectionPtr l_spObjectCollection = p_spArticle->Footnotes;
-
-	long l_lFootnoteCount = l_spObjectCollection->Count;
+	long l_lFootnoteCount = p_spArticle->Footnotes->Count;
 	(void) _tprintf (_T("Footnote Count: %ld\n"), l_lFootnoteCount);
 
 	for (long l_lFootnoteIndex = 0; l_lFootnoteIndex < l_lFootnoteCount; l_lFootnoteIndex++) {
-		WineApi::IFootnotePtr l_spFootnote = l_spObjectCollection->Item[l_lFootnoteIndex];
+		WineApi::IFootnotePtr l_spFootnote = p_spArticle->Footnotes->Item[l_lFootnoteIndex];
 		PrintFootnote (l_spFootnote);
 	}
 }

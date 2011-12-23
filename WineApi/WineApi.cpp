@@ -19,10 +19,10 @@
 CComModule _Module;
 
 BEGIN_OBJECT_MAP(ObjectMap)
-	OBJECT_ENTRY(CLSID_Config, CConfig)
-	OBJECT_ENTRY(CLSID_CategoryMapService, CCategoryMapService)
-	OBJECT_ENTRY(CLSID_CatalogService, CCatalogService)
-	OBJECT_ENTRY(CLSID_ReferenceService, CReferenceService)
+	OBJECT_ENTRY(CLSID_Config,				CConfig)
+	OBJECT_ENTRY(CLSID_CategoryMapService,	CCategoryMapService)
+	OBJECT_ENTRY(CLSID_CatalogService,		CCatalogService)
+	OBJECT_ENTRY(CLSID_ReferenceService,	CReferenceService)
 END_OBJECT_MAP()
 
 class CWineApiApp : public CWinApp
@@ -33,8 +33,8 @@ public:
 	// ClassWizard generated virtual function overrides
 	//{{AFX_VIRTUAL(CWineApiApp)
 	public:
-    virtual BOOL InitInstance();
-    virtual int ExitInstance();
+    virtual BOOL InitInstance ();
+    virtual int ExitInstance ();
 	//}}AFX_VIRTUAL
 
 	//{{AFX_MSG(CWineApiApp)
@@ -53,48 +53,66 @@ END_MESSAGE_MAP()
 
 CWineApiApp theApp;
 
-BOOL CWineApiApp::InitInstance()
+//*****************************************************************************
+//* Function Name: InitInstance
+//*   Description: 
+//*****************************************************************************
+BOOL CWineApiApp::InitInstance ()
 {
-    _Module.Init(ObjectMap, m_hInstance, &LIBID_WineApi);
-    return CWinApp::InitInstance();
+    _Module.Init (ObjectMap, m_hInstance, &LIBID_WineApi);
+    return CWinApp::InitInstance ();
 }
 
-int CWineApiApp::ExitInstance()
+
+//*****************************************************************************
+//* Function Name: ExitInstance
+//*   Description: 
+//*****************************************************************************
+int CWineApiApp::ExitInstance ()
 {
-    _Module.Term();
-    return CWinApp::ExitInstance();
+    _Module.Term ();
+    return CWinApp::ExitInstance ();
 }
 
-/////////////////////////////////////////////////////////////////////////////
-// Used to determine whether the DLL can be unloaded by OLE
 
-STDAPI DllCanUnloadNow(void)
+//*****************************************************************************
+//* Function Name: DllCanUnloadNow
+//*   Description: Used to determine whether the DLL can be unloaded by OLE.
+//*****************************************************************************
+STDAPI DllCanUnloadNow (void)
 {
-    AFX_MANAGE_STATE(AfxGetStaticModuleState());
-    return (AfxDllCanUnloadNow()==S_OK && _Module.GetLockCount()==0) ? S_OK : S_FALSE;
+    AFX_MANAGE_STATE (AfxGetStaticModuleState ());
+    return (AfxDllCanUnloadNow () == S_OK && _Module.GetLockCount () == 0) ? S_OK : S_FALSE;
 }
 
-/////////////////////////////////////////////////////////////////////////////
-// Returns a class factory to create an object of the requested type
 
-STDAPI DllGetClassObject(REFCLSID rclsid, REFIID riid, LPVOID* ppv)
+//*****************************************************************************
+//* Function Name: DllGetClassObject
+//*   Description: Returns a class factory to create an object of the requested
+//*                type.
+//*****************************************************************************
+STDAPI DllGetClassObject (REFCLSID rclsid, REFIID riid, LPVOID* ppv)
 {
-    return _Module.GetClassObject(rclsid, riid, ppv);
+    return _Module.GetClassObject (rclsid, riid, ppv);
 }
 
-/////////////////////////////////////////////////////////////////////////////
-// DllRegisterServer - Adds entries to the system registry
 
-STDAPI DllRegisterServer(void)
+//*****************************************************************************
+//* Function Name: DllRegisterServer
+//*   Description: Adds entries to the system registry.
+//*****************************************************************************
+STDAPI DllRegisterServer (void)
 {
     // registers object, typelib and all interfaces in typelib
-    return _Module.RegisterServer(TRUE);
+    return _Module.RegisterServer (TRUE);
 }
 
-/////////////////////////////////////////////////////////////////////////////
-// DllUnregisterServer - Removes entries from the system registry
 
-STDAPI DllUnregisterServer(void)
+//*****************************************************************************
+//* Function Name: DllUnregisterServer
+//*   Description: Removes entries from the system registry.
+//*****************************************************************************
+STDAPI DllUnregisterServer (void)
 {
-    return _Module.UnregisterServer(TRUE);
+    return _Module.UnregisterServer (TRUE);
 }
