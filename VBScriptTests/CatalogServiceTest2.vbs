@@ -15,7 +15,7 @@ Const SortOptionSaving = 6
 Const SortOptionJustIn = 7
 
 Const SortOptionAscending = 0
-Const SortOptionDecending = 1
+Const SortOptionDescending = 1
 
 Function ReadApiKey
 
@@ -41,7 +41,7 @@ Set oCatalogService = CreateObject ("WineApi.CatalogService")
 Set oCatalog = oCatalogService _
 	.Search ("Merlot") _
 	.RatingFromToFilter (90, 96) _
-	.SortBy (SortOptionRating, SortOptionDecending) _
+	.SortBy (SortOptionRating, SortOptionDescending) _
 	.State ("CA") _
 	.InStock (True) _
 	.Size (3) _

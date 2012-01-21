@@ -15,7 +15,7 @@ Const SortOptionSaving = 6
 Const SortOptionJustIn = 7
 
 Const SortOptionAscending = 0
-Const SortOptionDecending = 1
+Const SortOptionDescending = 1
 
 Function ReadApiKey
 
