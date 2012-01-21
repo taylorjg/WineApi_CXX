@@ -1,0 +1,64 @@
+<CategoryMap xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+  <Status>
+    <Messages xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    <ReturnCode>0</ReturnCode>
+  </Status>
+  <Categories>
+    <Category>
+      <Id>4</Id>
+      <Name>Wine Type</Name>
+      <Refinements>
+        <Refinement>
+          <Id>124</Id>
+          <Name>Red Wine</Name>
+          <Url />
+        </Refinement>
+        <Refinement>
+          <Id>125</Id>
+          <Name>White Wine</Name>
+          <Url />
+        </Refinement>
+        <Refinement>
+          <Id>126</Id>
+          <Name>Ros&#195;&#169; Wine</Name>
+          <Url />
+        </Refinement>
+        <Refinement>
+          <Id>123</Id>
+          <Name>Champagne &amp; Sparkling</Name>
+          <Url />
+        </Refinement>
+        <Refinement>
+          <Id>134</Id>
+          <Name>Sak&#195;&#169;</Name>
+          <Url />
+        </Refinement>
+        <Refinement>
+          <Id>128</Id>
+          <Name>Dessert, Sherry &amp; Port</Name>
+          <Url />
+        </Refinement>
+        <Refinement>
+          <Id>131</Id>
+          <Name>Wine Gift Sets</Name>
+          <Url />
+        </Refinement>
+        <Refinement>
+          <Id>133</Id>
+          <Name>Monthly Wine Clubs</Name>
+          <Url />
+        </Refinement>
+        <Refinement>
+          <Id>10090</Id>
+          <Name>Wine Glassware</Name>
+          <Url />
+        </Refinement>
+        <Refinement>
+          <Id>129</Id>
+          <Name>Wine Accessories</Name>
+          <Url />
+        </Refinement>
+      </Refinements>
+    </Category>
+  </Categories>
+</CategoryMap>

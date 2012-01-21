@@ -1,0 +1,1084 @@
+<Catalog xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+  <Status>
+    <Messages xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    <ReturnCode>0</ReturnCode>
+  </Status>
+  <Products>
+    <List>
+      <Product>
+        <Id>110337</Id>
+        <Name>Caymus Napa Valley Cabernet Sauvignon 2009</Name>
+        <Url>
+        http://www.wine.com/V6/Caymus-Napa-Valley-Cabernet-Sauvignon-2009/wine/110337/detail.aspx</Url>
+        <Appellation>
+          <Id>2398</Id>
+          <Name>Napa Valley</Name>
+          <Url>
+          http://www.wine.com/v6/Napa-Valley/wine/list.aspx?N=7155+101+2398</Url>
+          <Region>
+            <Id>101</Id>
+            <Name>California</Name>
+            <Url>
+            http://www.wine.com/v6/California/wine/list.aspx?N=7155+101</Url>
+            <Area i:nil="true" />
+          </Region>
+        </Appellation>
+        <Labels>
+          <Label>
+            <Id>110337m</Id>
+            <Name>thumbnail</Name>
+            <Url>http://cache.wine.com/labels/110337m.jpg</Url>
+          </Label>
+        </Labels>
+        <Type>Wine</Type>
+        <Varietal>
+          <Id>139</Id>
+          <Name>Cabernet Sauvignon</Name>
+          <Url>
+          http://www.wine.com/v6/Cabernet-Sauvignon/wine/list.aspx?N=7155+124+139</Url>
+          <WineType>
+            <Id>124</Id>
+            <Name>Red Wines</Name>
+            <Url>
+            http://www.wine.com/v6/Red-Wines/wine/list.aspx?N=7155+124</Url>
+          </WineType>
+        </Varietal>
+        <Vineyard>
+          <Id>8626</Id>
+          <Name>Caymus</Name>
+          <Url>
+          http://www.wine.com/v6/Caymus/learnabout.aspx?winery=14</Url>
+          <ImageUrl>
+          http://cache.wine.com/aboutwine/basics/images/winerypics/14.jpg</ImageUrl>
+          <GeoLocation>
+            <Latitude>-360</Latitude>
+            <Longitude>-360</Longitude>
+            <Url>
+            http://www.wine.com/v6/aboutwine/mapof.aspx?winery=14</Url>
+          </GeoLocation>
+        </Vineyard>
+        <Vintage />
+        <Community>
+          <Reviews>
+            <HighestScore>0</HighestScore>
+            <List />
+            <Url>
+            http://www.wine.com/V6/Caymus-Napa-Valley-Cabernet-Sauvignon-2009/wine/110337/detail.aspx?pageType=reviews</Url>
+          </Reviews>
+          <Url>
+          http://www.wine.com/V6/Caymus-Napa-Valley-Cabernet-Sauvignon-2009/wine/110337/detail.aspx</Url>
+        </Community>
+        <Description />
+        <GeoLocation>
+          <Latitude>-360</Latitude>
+          <Longitude>-360</Longitude>
+          <Url>
+          http://www.wine.com/v6/aboutwine/mapof.aspx?winery=14</Url>
+        </GeoLocation>
+        <PriceMax>72.9900</PriceMax>
+        <PriceMin>59.9900</PriceMin>
+        <PriceRetail>70.0000</PriceRetail>
+        <ProductAttributes>
+          <ProductAttribute>
+            <Id>613</Id>
+            <Name>Big &amp;amp; Bold</Name>
+            <Url>
+            http://www.wine.com/v6/Big-andamp-Bold/wine/list.aspx?N=7155+613</Url>
+            <ImageUrl />
+          </ProductAttribute>
+          <ProductAttribute>
+            <Id>36</Id>
+            <Name>Collectible Wines</Name>
+            <Url>
+            http://www.wine.com/v6/Collectible-Wines/wine/list.aspx?N=7155+36</Url>
+            <ImageUrl>
+            http://cache.wine.com/images/glo_icon_collectable_big.gif</ImageUrl>
+          </ProductAttribute>
+          <ProductAttribute>
+            <Id>15419</Id>
+            <Name>Great Bottles to Give</Name>
+            <Url>
+            http://www.wine.com/v6/Great-Bottles-to-Give/gift/list.aspx?N=7151+15419</Url>
+            <ImageUrl>
+            http://cache.wine.com/images/glo_icon_gift_big.gif</ImageUrl>
+          </ProductAttribute>
+          <ProductAttribute>
+            <Id>0</Id>
+            <Name>Corporate Gifts</Name>
+            <Url />
+            <ImageUrl />
+          </ProductAttribute>
+        </ProductAttributes>
+        <Ratings>
+          <HighestScore>91</HighestScore>
+          <List />
+        </Ratings>
+        <Retail>
+          <InStock>true</InStock>
+          <Price>59.9900</Price>
+          <Sku>SWS168258_2009</Sku>
+          <State>CA</State>
+          <Url>
+          http://www.wine.com/checkout/default.aspx?mode=add&amp;pproduct_id=SWS168258_2009&amp;state=CA</Url>
+        </Retail>
+        <Vintages>
+          <List />
+        </Vintages>
+      </Product>
+      <Product>
+        <Id>113321</Id>
+        <Name>Conn Creek Cabernet Sauvignon 2007</Name>
+        <Url>
+        http://www.wine.com/V6/Conn-Creek-Cabernet-Sauvignon-2007/wine/113321/detail.aspx</Url>
+        <Appellation>
+          <Id>2398</Id>
+          <Name>Napa Valley</Name>
+          <Url>
+          http://www.wine.com/v6/Napa-Valley/wine/list.aspx?N=7155+101+2398</Url>
+          <Region>
+            <Id>101</Id>
+            <Name>California</Name>
+            <Url>
+            http://www.wine.com/v6/California/wine/list.aspx?N=7155+101</Url>
+            <Area i:nil="true" />
+          </Region>
+        </Appellation>
+        <Labels>
+          <Label>
+            <Id>113321m</Id>
+            <Name>thumbnail</Name>
+            <Url>http://cache.wine.com/labels/113321m.jpg</Url>
+          </Label>
+        </Labels>
+        <Type>Wine</Type>
+        <Varietal>
+          <Id>139</Id>
+          <Name>Cabernet Sauvignon</Name>
+          <Url>
+          http://www.wine.com/v6/Cabernet-Sauvignon/wine/list.aspx?N=7155+124+139</Url>
+          <WineType>
+            <Id>124</Id>
+            <Name>Red Wines</Name>
+            <Url>
+            http://www.wine.com/v6/Red-Wines/wine/list.aspx?N=7155+124</Url>
+          </WineType>
+        </Varietal>
+        <Vineyard>
+          <Id>7833</Id>
+          <Name>Conn Creek Winery</Name>
+          <Url>
+          http://www.wine.com/v6/Conn-Creek-Winery/learnabout.aspx?winery=2208</Url>
+          <ImageUrl>
+          http://cache.wine.com/aboutwine/basics/images/winerypics/2208.jpg</ImageUrl>
+          <GeoLocation>
+            <Latitude>-360</Latitude>
+            <Longitude>-360</Longitude>
+            <Url>
+            http://www.wine.com/v6/aboutwine/mapof.aspx?winery=2208</Url>
+          </GeoLocation>
+        </Vineyard>
+        <Vintage />
+        <Community>
+          <Reviews>
+            <HighestScore>0</HighestScore>
+            <List />
+            <Url>
+            http://www.wine.com/V6/Conn-Creek-Cabernet-Sauvignon-2007/wine/113321/detail.aspx?pageType=reviews</Url>
+          </Reviews>
+          <Url>
+          http://www.wine.com/V6/Conn-Creek-Cabernet-Sauvignon-2007/wine/113321/detail.aspx</Url>
+        </Community>
+        <Description />
+        <GeoLocation>
+          <Latitude>-360</Latitude>
+          <Longitude>-360</Longitude>
+          <Url>
+          http://www.wine.com/v6/aboutwine/mapof.aspx?winery=2208</Url>
+        </GeoLocation>
+        <PriceMax>64.9900</PriceMax>
+        <PriceMin>19.9900</PriceMin>
+        <PriceRetail>25.0000</PriceRetail>
+        <ProductAttributes>
+          <ProductAttribute>
+            <Id>613</Id>
+            <Name>Big &amp;amp; Bold</Name>
+            <Url>
+            http://www.wine.com/v6/Big-andamp-Bold/wine/list.aspx?N=7155+613</Url>
+            <ImageUrl />
+          </ProductAttribute>
+        </ProductAttributes>
+        <Ratings>
+          <HighestScore>93</HighestScore>
+          <List />
+        </Ratings>
+        <Retail>
+          <InStock>true</InStock>
+          <Price>19.9900</Price>
+          <Sku>SWS239467_2007</Sku>
+          <State>CA</State>
+          <Url>
+          http://www.wine.com/checkout/default.aspx?mode=add&amp;pproduct_id=SWS239467_2007&amp;state=CA</Url>
+        </Retail>
+        <Vintages>
+          <List />
+        </Vintages>
+      </Product>
+      <Product>
+        <Id>110439</Id>
+        <Name>Jordan Cabernet Sauvignon 2007</Name>
+        <Url>
+        http://www.wine.com/V6/Jordan-Cabernet-Sauvignon-2007/wine/110439/detail.aspx</Url>
+        <Appellation>
+          <Id>2371</Id>
+          <Name>Sonoma County</Name>
+          <Url>
+          http://www.wine.com/v6/Sonoma-County/wine/list.aspx?N=7155+101+2371</Url>
+          <Region>
+            <Id>101</Id>
+            <Name>California</Name>
+            <Url>
+            http://www.wine.com/v6/California/wine/list.aspx?N=7155+101</Url>
+            <Area i:nil="true" />
+          </Region>
+        </Appellation>
+        <Labels>
+          <Label>
+            <Id>110439m</Id>
+            <Name>thumbnail</Name>
+            <Url>http://cache.wine.com/labels/110439m.jpg</Url>
+          </Label>
+        </Labels>
+        <Type>Wine</Type>
+        <Varietal>
+          <Id>139</Id>
+          <Name>Cabernet Sauvignon</Name>
+          <Url>
+          http://www.wine.com/v6/Cabernet-Sauvignon/wine/list.aspx?N=7155+124+139</Url>
+          <WineType>
+            <Id>124</Id>
+            <Name>Red Wines</Name>
+            <Url>
+            http://www.wine.com/v6/Red-Wines/wine/list.aspx?N=7155+124</Url>
+          </WineType>
+        </Varietal>
+        <Vineyard>
+          <Id>8485</Id>
+          <Name>Jordan</Name>
+          <Url>
+          http://www.wine.com/v6/Jordan/learnabout.aspx?winery=469</Url>
+          <ImageUrl>
+          http://cache.wine.com/aboutwine/basics/images/winerypics/469.jpg</ImageUrl>
+          <GeoLocation>
+            <Latitude>-360</Latitude>
+            <Longitude>-360</Longitude>
+            <Url>
+            http://www.wine.com/v6/aboutwine/mapof.aspx?winery=469</Url>
+          </GeoLocation>
+        </Vineyard>
+        <Vintage />
+        <Community>
+          <Reviews>
+            <HighestScore>0</HighestScore>
+            <List />
+            <Url>
+            http://www.wine.com/V6/Jordan-Cabernet-Sauvignon-2007/wine/110439/detail.aspx?pageType=reviews</Url>
+          </Reviews>
+          <Url>
+          http://www.wine.com/V6/Jordan-Cabernet-Sauvignon-2007/wine/110439/detail.aspx</Url>
+        </Community>
+        <Description />
+        <GeoLocation>
+          <Latitude>-360</Latitude>
+          <Longitude>-360</Longitude>
+          <Url>
+          http://www.wine.com/v6/aboutwine/mapof.aspx?winery=469</Url>
+        </GeoLocation>
+        <PriceMax>39.9900</PriceMax>
+        <PriceMin>39.9900</PriceMin>
+        <PriceRetail>52.0000</PriceRetail>
+        <ProductAttributes>
+          <ProductAttribute>
+            <Id>611</Id>
+            <Name>Smooth &amp;amp; Supple</Name>
+            <Url>
+            http://www.wine.com/v6/Smooth-andamp-Supple/wine/list.aspx?N=7155+611</Url>
+            <ImageUrl />
+          </ProductAttribute>
+          <ProductAttribute>
+            <Id>15419</Id>
+            <Name>Great Bottles to Give</Name>
+            <Url>
+            http://www.wine.com/v6/Great-Bottles-to-Give/gift/list.aspx?N=7151+15419</Url>
+            <ImageUrl>
+            http://cache.wine.com/images/glo_icon_gift_big.gif</ImageUrl>
+          </ProductAttribute>
+          <ProductAttribute>
+            <Id>0</Id>
+            <Name>Corporate Gifts</Name>
+            <Url />
+            <ImageUrl />
+          </ProductAttribute>
+        </ProductAttributes>
+        <Ratings>
+          <HighestScore>0</HighestScore>
+          <List />
+        </Ratings>
+        <Retail>
+          <InStock>true</InStock>
+          <Price>39.9900</Price>
+          <Sku>SWS239414_2007</Sku>
+          <State>CA</State>
+          <Url>
+          http://www.wine.com/checkout/default.aspx?mode=add&amp;pproduct_id=SWS239414_2007&amp;state=CA</Url>
+        </Retail>
+        <Vintages>
+          <List />
+        </Vintages>
+      </Product>
+      <Product>
+        <Id>105748</Id>
+        <Name>Tilia Cabernet Sauvignon 2009</Name>
+        <Url>
+        http://www.wine.com/V6/Tilia-Cabernet-Sauvignon-2009/wine/105748/detail.aspx</Url>
+        <Appellation>
+          <Id>2089</Id>
+          <Name>Argentina</Name>
+          <Url>
+          http://www.wine.com/v6/Argentina/wine/list.aspx?N=7155+112+2089</Url>
+          <Region>
+            <Id>112</Id>
+            <Name>South America</Name>
+            <Url>
+            http://www.wine.com/v6/South-America/wine/list.aspx?N=7155+112</Url>
+            <Area i:nil="true" />
+          </Region>
+        </Appellation>
+        <Labels>
+          <Label>
+            <Id>105748m</Id>
+            <Name>thumbnail</Name>
+            <Url>http://cache.wine.com/labels/105748m.jpg</Url>
+          </Label>
+        </Labels>
+        <Type>Wine</Type>
+        <Varietal>
+          <Id>139</Id>
+          <Name>Cabernet Sauvignon</Name>
+          <Url>
+          http://www.wine.com/v6/Cabernet-Sauvignon/wine/list.aspx?N=7155+124+139</Url>
+          <WineType>
+            <Id>124</Id>
+            <Name>Red Wines</Name>
+            <Url>
+            http://www.wine.com/v6/Red-Wines/wine/list.aspx?N=7155+124</Url>
+          </WineType>
+        </Varietal>
+        <Vineyard>
+          <Id>999998869</Id>
+          <Name>Tilia</Name>
+          <Url>
+          http://www.wine.com/v6/Tilia/learnabout.aspx?winery=18877</Url>
+          <ImageUrl />
+          <GeoLocation>
+            <Latitude>-360</Latitude>
+            <Longitude>-360</Longitude>
+            <Url />
+          </GeoLocation>
+        </Vineyard>
+        <Vintage />
+        <Community>
+          <Reviews>
+            <HighestScore>0</HighestScore>
+            <List />
+            <Url>
+            http://www.wine.com/V6/Tilia-Cabernet-Sauvignon-2009/wine/105748/detail.aspx?pageType=reviews</Url>
+          </Reviews>
+          <Url>
+          http://www.wine.com/V6/Tilia-Cabernet-Sauvignon-2009/wine/105748/detail.aspx</Url>
+        </Community>
+        <Description />
+        <GeoLocation>
+          <Latitude>-360</Latitude>
+          <Longitude>-360</Longitude>
+          <Url />
+        </GeoLocation>
+        <PriceMax>10.0000</PriceMax>
+        <PriceMin>8.9900</PriceMin>
+        <PriceRetail>10.0000</PriceRetail>
+        <ProductAttributes>
+          <ProductAttribute>
+            <Id>610</Id>
+            <Name>Light &amp;amp; Fruity</Name>
+            <Url>
+            http://www.wine.com/v6/Light-andamp-Fruity/wine/list.aspx?N=7155+610</Url>
+            <ImageUrl />
+          </ProductAttribute>
+          <ProductAttribute>
+            <Id>44</Id>
+            <Name>Screw Cap Wines</Name>
+            <Url>
+            http://www.wine.com/v6/Screw-Cap-Wines/wine/list.aspx?N=7155+44</Url>
+            <ImageUrl>
+            http://cache.wine.com/images/glo_icon_screwcap_big.gif</ImageUrl>
+          </ProductAttribute>
+          <ProductAttribute>
+            <Id>38</Id>
+            <Name>Green Wines</Name>
+            <Url>
+            http://www.wine.com/v6/Green-Wines/wine/list.aspx?N=7155+38</Url>
+            <ImageUrl>
+            http://cache.wine.com/images/glo_icon_organic_big.gif</ImageUrl>
+          </ProductAttribute>
+        </ProductAttributes>
+        <Ratings>
+          <HighestScore>91</HighestScore>
+          <List />
+        </Ratings>
+        <Retail>
+          <InStock>true</InStock>
+          <Price>8.9900</Price>
+          <Sku>YNG534728_2009</Sku>
+          <State>CA</State>
+          <Url>
+          http://www.wine.com/checkout/default.aspx?mode=add&amp;pproduct_id=YNG534728_2009&amp;state=CA</Url>
+        </Retail>
+        <Vintages>
+          <List />
+        </Vintages>
+      </Product>
+      <Product>
+        <Id>111056</Id>
+        <Name>Columbia Crest Two Vines Cabernet Sauvignon
+        2009</Name>
+        <Url>
+        http://www.wine.com/V6/Columbia-Crest-Two-Vines-Cabernet-Sauvignon-2009/wine/111056/detail.aspx</Url>
+        <Appellation>
+          <Id>2414</Id>
+          <Name>Columbia Valley</Name>
+          <Url>
+          http://www.wine.com/v6/Columbia-Valley/wine/list.aspx?N=7155+104+2414</Url>
+          <Region>
+            <Id>104</Id>
+            <Name>Washington</Name>
+            <Url>
+            http://www.wine.com/v6/Washington/wine/list.aspx?N=7155+104</Url>
+            <Area i:nil="true" />
+          </Region>
+        </Appellation>
+        <Labels>
+          <Label>
+            <Id>111056m</Id>
+            <Name>thumbnail</Name>
+            <Url>http://cache.wine.com/labels/111056m.jpg</Url>
+          </Label>
+        </Labels>
+        <Type>Wine</Type>
+        <Varietal>
+          <Id>139</Id>
+          <Name>Cabernet Sauvignon</Name>
+          <Url>
+          http://www.wine.com/v6/Cabernet-Sauvignon/wine/list.aspx?N=7155+124+139</Url>
+          <WineType>
+            <Id>124</Id>
+            <Name>Red Wines</Name>
+            <Url>
+            http://www.wine.com/v6/Red-Wines/wine/list.aspx?N=7155+124</Url>
+          </WineType>
+        </Varietal>
+        <Vineyard>
+          <Id>8853</Id>
+          <Name>Columbia Crest</Name>
+          <Url>
+          http://www.wine.com/v6/Columbia-Crest/learnabout.aspx?winery=47</Url>
+          <ImageUrl>
+          http://cache.wine.com/aboutwine/basics/images/winerypics/47.jpg</ImageUrl>
+          <GeoLocation>
+            <Latitude>-360</Latitude>
+            <Longitude>-360</Longitude>
+            <Url>
+            http://www.wine.com/v6/aboutwine/mapof.aspx?winery=47</Url>
+          </GeoLocation>
+        </Vineyard>
+        <Vintage />
+        <Community>
+          <Reviews>
+            <HighestScore>0</HighestScore>
+            <List />
+            <Url>
+            http://www.wine.com/V6/Columbia-Crest-Two-Vines-Cabernet-Sauvignon-2009/wine/111056/detail.aspx?pageType=reviews</Url>
+          </Reviews>
+          <Url>
+          http://www.wine.com/V6/Columbia-Crest-Two-Vines-Cabernet-Sauvignon-2009/wine/111056/detail.aspx</Url>
+        </Community>
+        <Description />
+        <GeoLocation>
+          <Latitude>-360</Latitude>
+          <Longitude>-360</Longitude>
+          <Url>
+          http://www.wine.com/v6/aboutwine/mapof.aspx?winery=47</Url>
+        </GeoLocation>
+        <PriceMax>8.9900</PriceMax>
+        <PriceMin>7.9900</PriceMin>
+        <PriceRetail>8.9900</PriceRetail>
+        <ProductAttributes>
+          <ProductAttribute>
+            <Id>611</Id>
+            <Name>Smooth &amp;amp; Supple</Name>
+            <Url>
+            http://www.wine.com/v6/Smooth-andamp-Supple/wine/list.aspx?N=7155+611</Url>
+            <ImageUrl />
+          </ProductAttribute>
+        </ProductAttributes>
+        <Ratings>
+          <HighestScore>90</HighestScore>
+          <List />
+        </Ratings>
+        <Retail>
+          <InStock>true</InStock>
+          <Price>8.9900</Price>
+          <Sku>SWS53641_2009</Sku>
+          <State>CA</State>
+          <Url>
+          http://www.wine.com/checkout/default.aspx?mode=add&amp;pproduct_id=SWS53641_2009&amp;state=CA</Url>
+        </Retail>
+        <Vintages>
+          <List />
+        </Vintages>
+      </Product>
+      <Product>
+        <Id>111047</Id>
+        <Name>Franciscan Cabernet Sauvignon 2008</Name>
+        <Url>
+        http://www.wine.com/V6/Franciscan-Cabernet-Sauvignon-2008/wine/111047/detail.aspx</Url>
+        <Appellation>
+          <Id>2398</Id>
+          <Name>Napa Valley</Name>
+          <Url>
+          http://www.wine.com/v6/Napa-Valley/wine/list.aspx?N=7155+101+2398</Url>
+          <Region>
+            <Id>101</Id>
+            <Name>California</Name>
+            <Url>
+            http://www.wine.com/v6/California/wine/list.aspx?N=7155+101</Url>
+            <Area i:nil="true" />
+          </Region>
+        </Appellation>
+        <Labels>
+          <Label>
+            <Id>111047m</Id>
+            <Name>thumbnail</Name>
+            <Url>http://cache.wine.com/labels/111047m.jpg</Url>
+          </Label>
+        </Labels>
+        <Type>Wine</Type>
+        <Varietal>
+          <Id>139</Id>
+          <Name>Cabernet Sauvignon</Name>
+          <Url>
+          http://www.wine.com/v6/Cabernet-Sauvignon/wine/list.aspx?N=7155+124+139</Url>
+          <WineType>
+            <Id>124</Id>
+            <Name>Red Wines</Name>
+            <Url>
+            http://www.wine.com/v6/Red-Wines/wine/list.aspx?N=7155+124</Url>
+          </WineType>
+        </Varietal>
+        <Vineyard>
+          <Id>8800</Id>
+          <Name>Franciscan Oakville Estate</Name>
+          <Url>
+          http://www.wine.com/v6/Franciscan-Oakville-Estate/learnabout.aspx?winery=20</Url>
+          <ImageUrl>
+          http://cache.wine.com/aboutwine/basics/images/winerypics/20.jpg</ImageUrl>
+          <GeoLocation>
+            <Latitude>-360</Latitude>
+            <Longitude>-360</Longitude>
+            <Url>
+            http://www.wine.com/v6/aboutwine/mapof.aspx?winery=20</Url>
+          </GeoLocation>
+        </Vineyard>
+        <Vintage />
+        <Community>
+          <Reviews>
+            <HighestScore>0</HighestScore>
+            <List />
+            <Url>
+            http://www.wine.com/V6/Franciscan-Cabernet-Sauvignon-2008/wine/111047/detail.aspx?pageType=reviews</Url>
+          </Reviews>
+          <Url>
+          http://www.wine.com/V6/Franciscan-Cabernet-Sauvignon-2008/wine/111047/detail.aspx</Url>
+        </Community>
+        <Description />
+        <GeoLocation>
+          <Latitude>-360</Latitude>
+          <Longitude>-360</Longitude>
+          <Url>
+          http://www.wine.com/v6/aboutwine/mapof.aspx?winery=20</Url>
+        </GeoLocation>
+        <PriceMax>28.9900</PriceMax>
+        <PriceMin>26.9900</PriceMin>
+        <PriceRetail>28.0000</PriceRetail>
+        <ProductAttributes>
+          <ProductAttribute>
+            <Id>611</Id>
+            <Name>Smooth &amp;amp; Supple</Name>
+            <Url>
+            http://www.wine.com/v6/Smooth-andamp-Supple/wine/list.aspx?N=7155+611</Url>
+            <ImageUrl />
+          </ProductAttribute>
+        </ProductAttributes>
+        <Ratings>
+          <HighestScore>91</HighestScore>
+          <List />
+        </Ratings>
+        <Retail>
+          <InStock>true</InStock>
+          <Price>24.9900</Price>
+          <Sku>SWS162487_2008</Sku>
+          <State>CA</State>
+          <Url>
+          http://www.wine.com/checkout/default.aspx?mode=add&amp;pproduct_id=SWS162487_2008&amp;state=CA</Url>
+        </Retail>
+        <Vintages>
+          <List />
+        </Vintages>
+      </Product>
+      <Product>
+        <Id>109404</Id>
+        <Name>Antinori Santa Cristina 2009</Name>
+        <Url>
+        http://www.wine.com/V6/Antinori-Santa-Cristina-2009/wine/109404/detail.aspx</Url>
+        <Appellation>
+          <Id>2452</Id>
+          <Name>Tuscany</Name>
+          <Url>
+          http://www.wine.com/v6/Tuscany/wine/list.aspx?N=7155+105+2452</Url>
+          <Region>
+            <Id>105</Id>
+            <Name>Italy</Name>
+            <Url>
+            http://www.wine.com/v6/Italy/wine/list.aspx?N=7155+105</Url>
+            <Area i:nil="true" />
+          </Region>
+        </Appellation>
+        <Labels>
+          <Label>
+            <Id>109404m</Id>
+            <Name>thumbnail</Name>
+            <Url>http://cache.wine.com/labels/109404m.jpg</Url>
+          </Label>
+        </Labels>
+        <Type>Wine</Type>
+        <Varietal>
+          <Id>163</Id>
+          <Name>Sangiovese</Name>
+          <Url>
+          http://www.wine.com/v6/Sangiovese/wine/list.aspx?N=7155+124+163</Url>
+          <WineType>
+            <Id>124</Id>
+            <Name>Red Wines</Name>
+            <Url>
+            http://www.wine.com/v6/Red-Wines/wine/list.aspx?N=7155+124</Url>
+          </WineType>
+        </Varietal>
+        <Vineyard>
+          <Id>8966</Id>
+          <Name>Antinori</Name>
+          <Url>
+          http://www.wine.com/v6/Antinori/learnabout.aspx?winery=599</Url>
+          <ImageUrl>
+          http://cache.wine.com/aboutwine/basics/images/winerypics/599.jpg</ImageUrl>
+          <GeoLocation>
+            <Latitude>-360</Latitude>
+            <Longitude>-360</Longitude>
+            <Url>
+            http://www.wine.com/v6/aboutwine/mapof.aspx?winery=599</Url>
+          </GeoLocation>
+        </Vineyard>
+        <Vintage />
+        <Community>
+          <Reviews>
+            <HighestScore>0</HighestScore>
+            <List />
+            <Url>
+            http://www.wine.com/V6/Antinori-Santa-Cristina-2009/wine/109404/detail.aspx?pageType=reviews</Url>
+          </Reviews>
+          <Url>
+          http://www.wine.com/V6/Antinori-Santa-Cristina-2009/wine/109404/detail.aspx</Url>
+        </Community>
+        <Description />
+        <GeoLocation>
+          <Latitude>-360</Latitude>
+          <Longitude>-360</Longitude>
+          <Url>
+          http://www.wine.com/v6/aboutwine/mapof.aspx?winery=599</Url>
+        </GeoLocation>
+        <PriceMax>16.0000</PriceMax>
+        <PriceMin>12.7900</PriceMin>
+        <PriceRetail>16.0000</PriceRetail>
+        <ProductAttributes>
+          <ProductAttribute>
+            <Id>611</Id>
+            <Name>Smooth &amp;amp; Supple</Name>
+            <Url>
+            http://www.wine.com/v6/Smooth-andamp-Supple/wine/list.aspx?N=7155+611</Url>
+            <ImageUrl />
+          </ProductAttribute>
+        </ProductAttributes>
+        <Ratings>
+          <HighestScore>0</HighestScore>
+          <List />
+        </Ratings>
+        <Retail>
+          <InStock>true</InStock>
+          <Price>11.9900</Price>
+          <Sku>SWS88268_2009</Sku>
+          <State>CA</State>
+          <Url>
+          http://www.wine.com/checkout/default.aspx?mode=add&amp;pproduct_id=SWS88268_2009&amp;state=CA</Url>
+        </Retail>
+        <Vintages>
+          <List />
+        </Vintages>
+      </Product>
+      <Product>
+        <Id>105883</Id>
+        <Name>King Estate Acrobat Pinot Noir 2009</Name>
+        <Url>
+        http://www.wine.com/V6/King-Estate-Acrobat-Pinot-Noir-2009/wine/105883/detail.aspx</Url>
+        <Appellation>
+          <Id>2158</Id>
+          <Name>Other Oregon</Name>
+          <Url>
+          http://www.wine.com/v6/Other-Oregon/wine/list.aspx?N=7155+103+2158</Url>
+          <Region>
+            <Id>103</Id>
+            <Name>Oregon</Name>
+            <Url>
+            http://www.wine.com/v6/Oregon/wine/list.aspx?N=7155+103</Url>
+            <Area i:nil="true" />
+          </Region>
+        </Appellation>
+        <Labels>
+          <Label>
+            <Id>105883m</Id>
+            <Name>thumbnail</Name>
+            <Url>http://cache.wine.com/labels/105883m.jpg</Url>
+          </Label>
+        </Labels>
+        <Type>Wine</Type>
+        <Varietal>
+          <Id>143</Id>
+          <Name>Pinot Noir</Name>
+          <Url>
+          http://www.wine.com/v6/Pinot-Noir/wine/list.aspx?N=7155+124+143</Url>
+          <WineType>
+            <Id>124</Id>
+            <Name>Red Wines</Name>
+            <Url>
+            http://www.wine.com/v6/Red-Wines/wine/list.aspx?N=7155+124</Url>
+          </WineType>
+        </Varietal>
+        <Vineyard>
+          <Id>8496</Id>
+          <Name>King Estate</Name>
+          <Url>
+          http://www.wine.com/v6/King-Estate/learnabout.aspx?winery=72</Url>
+          <ImageUrl>
+          http://cache.wine.com/aboutwine/basics/images/winerypics/72.jpg</ImageUrl>
+          <GeoLocation>
+            <Latitude>-360</Latitude>
+            <Longitude>-360</Longitude>
+            <Url>
+            http://www.wine.com/v6/aboutwine/mapof.aspx?winery=72</Url>
+          </GeoLocation>
+        </Vineyard>
+        <Vintage />
+        <Community>
+          <Reviews>
+            <HighestScore>0</HighestScore>
+            <List />
+            <Url>
+            http://www.wine.com/V6/King-Estate-Acrobat-Pinot-Noir-2009/wine/105883/detail.aspx?pageType=reviews</Url>
+          </Reviews>
+          <Url>
+          http://www.wine.com/V6/King-Estate-Acrobat-Pinot-Noir-2009/wine/105883/detail.aspx</Url>
+        </Community>
+        <Description />
+        <GeoLocation>
+          <Latitude>-360</Latitude>
+          <Longitude>-360</Longitude>
+          <Url>
+          http://www.wine.com/v6/aboutwine/mapof.aspx?winery=72</Url>
+        </GeoLocation>
+        <PriceMax>29.9900</PriceMax>
+        <PriceMin>17.7900</PriceMin>
+        <PriceRetail>20.0000</PriceRetail>
+        <ProductAttributes>
+          <ProductAttribute>
+            <Id>611</Id>
+            <Name>Smooth &amp;amp; Supple</Name>
+            <Url>
+            http://www.wine.com/v6/Smooth-andamp-Supple/wine/list.aspx?N=7155+611</Url>
+            <ImageUrl />
+          </ProductAttribute>
+          <ProductAttribute>
+            <Id>44</Id>
+            <Name>Screw Cap Wines</Name>
+            <Url>
+            http://www.wine.com/v6/Screw-Cap-Wines/wine/list.aspx?N=7155+44</Url>
+            <ImageUrl>
+            http://cache.wine.com/images/glo_icon_screwcap_big.gif</ImageUrl>
+          </ProductAttribute>
+          <ProductAttribute>
+            <Id>15424</Id>
+            <Name>Has Video</Name>
+            <Url>
+            http://www.wine.com/v6/Has-Video/wine/list.aspx?N=7155+15424</Url>
+            <ImageUrl>
+            http://cache.wine.com/images/glo_icon_video.gif</ImageUrl>
+          </ProductAttribute>
+          <ProductAttribute>
+            <Id>15424</Id>
+            <Name>Has Video</Name>
+            <Url>
+            http://www.wine.com/v6/Has-Video/wine/list.aspx?N=7155+15424</Url>
+            <ImageUrl>
+            http://cache.wine.com/images/glo_icon_video.gif</ImageUrl>
+          </ProductAttribute>
+        </ProductAttributes>
+        <Ratings>
+          <HighestScore>91</HighestScore>
+          <List />
+        </Ratings>
+        <Retail>
+          <InStock>true</InStock>
+          <Price>17.7900</Price>
+          <Sku>YNG108823_2009</Sku>
+          <State>CA</State>
+          <Url>
+          http://www.wine.com/checkout/default.aspx?mode=add&amp;pproduct_id=YNG108823_2009&amp;state=CA</Url>
+        </Retail>
+        <Vintages>
+          <List />
+        </Vintages>
+      </Product>
+      <Product>
+        <Id>112044</Id>
+        <Name>Beringer Howell Mountain Bancroft Ranch Merlot
+        2005</Name>
+        <Url>
+        http://www.wine.com/V6/Beringer-Howell-Mountain-Bancroft-Ranch-Merlot-2005/wine/112044/detail.aspx</Url>
+        <Appellation>
+          <Id>2398</Id>
+          <Name>Napa Valley</Name>
+          <Url>
+          http://www.wine.com/v6/Napa-Valley/wine/list.aspx?N=7155+101+2398</Url>
+          <Region>
+            <Id>101</Id>
+            <Name>California</Name>
+            <Url>
+            http://www.wine.com/v6/California/wine/list.aspx?N=7155+101</Url>
+            <Area i:nil="true" />
+          </Region>
+        </Appellation>
+        <Labels>
+          <Label>
+            <Id>112044m</Id>
+            <Name>thumbnail</Name>
+            <Url>http://cache.wine.com/labels/112044m.jpg</Url>
+          </Label>
+        </Labels>
+        <Type>Wine</Type>
+        <Varietal>
+          <Id>138</Id>
+          <Name>Merlot</Name>
+          <Url>
+          http://www.wine.com/v6/Merlot/wine/list.aspx?N=7155+124+138</Url>
+          <WineType>
+            <Id>124</Id>
+            <Name>Red Wines</Name>
+            <Url>
+            http://www.wine.com/v6/Red-Wines/wine/list.aspx?N=7155+124</Url>
+          </WineType>
+        </Varietal>
+        <Vineyard>
+          <Id>8866</Id>
+          <Name>Beringer Vineyards</Name>
+          <Url>
+          http://www.wine.com/v6/Beringer-Vineyards/learnabout.aspx?winery=51</Url>
+          <ImageUrl>
+          http://cache.wine.com/aboutwine/basics/images/winerypics/51.jpg</ImageUrl>
+          <GeoLocation>
+            <Latitude>-360</Latitude>
+            <Longitude>-360</Longitude>
+            <Url>
+            http://www.wine.com/v6/aboutwine/mapof.aspx?winery=51</Url>
+          </GeoLocation>
+        </Vineyard>
+        <Vintage />
+        <Community>
+          <Reviews>
+            <HighestScore>0</HighestScore>
+            <List />
+            <Url>
+            http://www.wine.com/V6/Beringer-Howell-Mountain-Bancroft-Ranch-Merlot-2005/wine/112044/detail.aspx?pageType=reviews</Url>
+          </Reviews>
+          <Url>
+          http://www.wine.com/V6/Beringer-Howell-Mountain-Bancroft-Ranch-Merlot-2005/wine/112044/detail.aspx</Url>
+        </Community>
+        <Description />
+        <GeoLocation>
+          <Latitude>-360</Latitude>
+          <Longitude>-360</Longitude>
+          <Url>
+          http://www.wine.com/v6/aboutwine/mapof.aspx?winery=51</Url>
+        </GeoLocation>
+        <PriceMax>34.9900</PriceMax>
+        <PriceMin>34.9900</PriceMin>
+        <PriceRetail>75.0000</PriceRetail>
+        <ProductAttributes>
+          <ProductAttribute>
+            <Id>36</Id>
+            <Name>Collectible Wines</Name>
+            <Url>
+            http://www.wine.com/v6/Collectible-Wines/wine/list.aspx?N=7155+36</Url>
+            <ImageUrl>
+            http://cache.wine.com/images/glo_icon_collectable_big.gif</ImageUrl>
+          </ProductAttribute>
+          <ProductAttribute>
+            <Id>613</Id>
+            <Name>Big &amp;amp; Bold</Name>
+            <Url>
+            http://www.wine.com/v6/Big-andamp-Bold/wine/list.aspx?N=7155+613</Url>
+            <ImageUrl />
+          </ProductAttribute>
+        </ProductAttributes>
+        <Ratings>
+          <HighestScore>94</HighestScore>
+          <List />
+        </Ratings>
+        <Retail>
+          <InStock>true</InStock>
+          <Price>34.9900</Price>
+          <Sku>SWS236632_2005</Sku>
+          <State>CA</State>
+          <Url>
+          http://www.wine.com/checkout/default.aspx?mode=add&amp;pproduct_id=SWS236632_2005&amp;state=CA</Url>
+        </Retail>
+        <Vintages>
+          <List />
+        </Vintages>
+      </Product>
+      <Product>
+        <Id>111417</Id>
+        <Name>Penley Estate Phoenix Cabernet Sauvignon 2009</Name>
+        <Url>
+        http://www.wine.com/V6/Penley-Estate-Phoenix-Cabernet-Sauvignon-2009/wine/111417/detail.aspx</Url>
+        <Appellation>
+          <Id>9060</Id>
+          <Name>Coonawarra</Name>
+          <Url>
+          http://www.wine.com/v6/Coonawarra/wine/list.aspx?N=7155+108+9060</Url>
+          <Region>
+            <Id>108</Id>
+            <Name>Australia</Name>
+            <Url>
+            http://www.wine.com/v6/Australia/wine/list.aspx?N=7155+108</Url>
+            <Area i:nil="true" />
+          </Region>
+        </Appellation>
+        <Labels>
+          <Label>
+            <Id>111417m</Id>
+            <Name>thumbnail</Name>
+            <Url>http://cache.wine.com/labels/111417m.jpg</Url>
+          </Label>
+        </Labels>
+        <Type>Wine</Type>
+        <Varietal>
+          <Id>139</Id>
+          <Name>Cabernet Sauvignon</Name>
+          <Url>
+          http://www.wine.com/v6/Cabernet-Sauvignon/wine/list.aspx?N=7155+124+139</Url>
+          <WineType>
+            <Id>124</Id>
+            <Name>Red Wines</Name>
+            <Url>
+            http://www.wine.com/v6/Red-Wines/wine/list.aspx?N=7155+124</Url>
+          </WineType>
+        </Varietal>
+        <Vineyard>
+          <Id>8481</Id>
+          <Name>Penley Estate</Name>
+          <Url>
+          http://www.wine.com/v6/Penley-Estate/learnabout.aspx?winery=2743</Url>
+          <ImageUrl>
+          http://cache.wine.com/aboutwine/basics/images/winerypics/2743.jpg</ImageUrl>
+          <GeoLocation>
+            <Latitude>-360</Latitude>
+            <Longitude>-360</Longitude>
+            <Url>
+            http://www.wine.com/v6/aboutwine/mapof.aspx?winery=2743</Url>
+          </GeoLocation>
+        </Vineyard>
+        <Vintage />
+        <Community>
+          <Reviews>
+            <HighestScore>0</HighestScore>
+            <List />
+            <Url>
+            http://www.wine.com/V6/Penley-Estate-Phoenix-Cabernet-Sauvignon-2009/wine/111417/detail.aspx?pageType=reviews</Url>
+          </Reviews>
+          <Url>
+          http://www.wine.com/V6/Penley-Estate-Phoenix-Cabernet-Sauvignon-2009/wine/111417/detail.aspx</Url>
+        </Community>
+        <Description />
+        <GeoLocation>
+          <Latitude>-360</Latitude>
+          <Longitude>-360</Longitude>
+          <Url>
+          http://www.wine.com/v6/aboutwine/mapof.aspx?winery=2743</Url>
+        </GeoLocation>
+        <PriceMax>19.9900</PriceMax>
+        <PriceMin>19.9900</PriceMin>
+        <PriceRetail>19.9900</PriceRetail>
+        <ProductAttributes>
+          <ProductAttribute>
+            <Id>44</Id>
+            <Name>Screw Cap Wines</Name>
+            <Url>
+            http://www.wine.com/v6/Screw-Cap-Wines/wine/list.aspx?N=7155+44</Url>
+            <ImageUrl>
+            http://cache.wine.com/images/glo_icon_screwcap_big.gif</ImageUrl>
+          </ProductAttribute>
+          <ProductAttribute>
+            <Id>611</Id>
+            <Name>Smooth &amp;amp; Supple</Name>
+            <Url>
+            http://www.wine.com/v6/Smooth-andamp-Supple/wine/list.aspx?N=7155+611</Url>
+            <ImageUrl />
+          </ProductAttribute>
+        </ProductAttributes>
+        <Ratings>
+          <HighestScore>94</HighestScore>
+          <List />
+        </Ratings>
+        <Retail>
+          <InStock>true</InStock>
+          <Price>19.9900</Price>
+          <Sku>YNG726528_2009</Sku>
+          <State>CA</State>
+          <Url>
+          http://www.wine.com/checkout/default.aspx?mode=add&amp;pproduct_id=YNG726528_2009&amp;state=CA</Url>
+        </Retail>
+        <Vintages>
+          <List />
+        </Vintages>
+      </Product>
+    </List>
+    <Offset>0</Offset>
+    <Total>1749</Total>
+    <Url />
+  </Products>
+</Catalog>

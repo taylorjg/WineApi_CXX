@@ -26,9 +26,18 @@ public:
 		*l_pT = p_Value;
 	}
 
+	CPropertyDescriptor& operator= (const CPropertyDescriptor& rhs)
+	{
+		this->m_lpszXPath			= rhs.m_lpszXPath;
+		this->m_anyPropertyValue	= rhs.m_anyPropertyValue;
+		this->m_ptiPropertyType		= rhs.m_ptiPropertyType;
+
+		return *this;
+	}
+
 private:
 	LPCTSTR				m_lpszXPath;
-	boost::any			m_anyPropertyValue;
+	mutable boost::any	m_anyPropertyValue;
 	const type_info*	m_ptiPropertyType;
 };
 
@@ -60,9 +69,18 @@ public:
 		l_pvProperties->push_back (p_Value);
 	}
 
+	CPropertyArrayDescriptor& operator= (const CPropertyArrayDescriptor& rhs)
+	{
+		this->m_lpszXPath		= rhs.m_lpszXPath;
+		this->m_anyProperties	= rhs.m_anyProperties;
+		this->m_ptiPropertyType	= rhs.m_ptiPropertyType;
+
+		return *this;
+	}
+
 private:
 	LPCTSTR				m_lpszXPath;
-	boost::any			m_anyProperties;
+	mutable boost::any	m_anyProperties;
 	const type_info*	m_ptiPropertyType;
 };
 
@@ -93,6 +111,15 @@ public:
 	IEntityMetadata* CreateInstance (void) const
 	{
 		return m_pfnCreateInstanceProc (m_anyEntity);
+	}
+
+	CChildEntityDescriptor& operator= (const CChildEntityDescriptor& rhs)
+	{
+		this->m_lpszXPath				= rhs.m_lpszXPath;
+		this->m_anyEntity				= rhs.m_anyEntity;
+		this->m_pfnCreateInstanceProc	= rhs.m_pfnCreateInstanceProc;
+
+		return *this;
 	}
 
 private:
@@ -136,6 +163,15 @@ public:
 	IEntityMetadata* CreateInstance (void) const
 	{
 		return m_pfnCreateInstanceProc (m_anyEntities);
+	}
+
+	CChildEntityArrayDescriptor& operator= (const CChildEntityArrayDescriptor& rhs)
+	{
+		this->m_lpszXPath				= rhs.m_lpszXPath;
+		this->m_anyEntities				= rhs.m_anyEntities;
+		this->m_pfnCreateInstanceProc	= rhs.m_pfnCreateInstanceProc;
+
+		return *this;
 	}
 
 private:

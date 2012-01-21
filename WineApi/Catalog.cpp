@@ -1,22 +1,14 @@
 #include "stdafx.h"
 #include "Catalog.h"
+#include "Utils.h"
 
 //*****************************************************************************
 //* Function Name: InterfaceSupportsErrorInfo
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CCatalog::InterfaceSupportsErrorInfo (REFIID riid)
+STDMETHODIMP CCatalog::InterfaceSupportsErrorInfo (REFIID p_riid)
 {
-	static const IID* arr[] = {
-		&IID_ICatalog
-	};
-
-	for (int i = 0; i < sizeof (arr) / sizeof (arr[0]); i++) {
-		if (InlineIsEqualGUID (*arr[i], riid))
-			return S_OK;
-	}
-
-	return S_FALSE;
+	return UtilsInterfaceSupportsErrorInfo (p_riid, IID_ICatalog);
 }
 
 
@@ -28,12 +20,7 @@ STDMETHODIMP CCatalog::get_Status (IStatus** p_ppStatus)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	if (p_ppStatus) {
-		*p_ppStatus = m_spStatus;
-		(*p_ppStatus)->AddRef ();
-	}
-
-	return S_OK;
+	return UtilsGetInterfacePointerHelper (p_ppStatus, m_spStatus);
 }
 
 
@@ -45,10 +32,5 @@ STDMETHODIMP CCatalog::get_Products (IProducts** p_ppProducts)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	if (m_spProducts) {
-		*p_ppProducts = m_spProducts;
-		(*p_ppProducts)->AddRef ();
-	}
-
-	return S_OK;
+	return UtilsGetInterfacePointerHelper (p_ppProducts, m_spProducts);
 }

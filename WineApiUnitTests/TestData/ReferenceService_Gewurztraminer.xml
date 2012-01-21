@@ -1,0 +1,70 @@
+<Reference xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+  <Status>
+    <Messages xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    <ReturnCode>0</ReturnCode>
+  </Status>
+  <Blog />
+  <Books>
+    <Book>
+      <Id>5</Id>
+      <Title>Varietal</Title>
+      <Articles>
+        <Article>
+          <Id>166</Id>
+          <Title>Gewurztraminer</Title>
+          <Abstract>Gewurztraminer
+ (Guh-WERTZ-trah-meen-ehr)
+          
+
+Related Links:
+ Shop for Gewurztraminer 
+ Spice is Nice
+          
+ If you've ever smelled a lychee, you'll probably
+          recognize a wine made from Gewurztraminer....</Abstract>
+          <Content>Gewurztraminer
+ (Guh-WERTZ-trah-meen-ehr)
+          
+
+Related Links:
+ Shop for Gewurztraminer 
+ Spice is Nice
+          
+ If you've ever smelled a lychee, you'll probably
+          recognize a wine made from Gewurztraminer. Gewurz, the
+          german term for spice, adequately describes the aromas
+          and flavors that permeate wines made from the grape.
+          Mostly grown in Alsace and Germany's Pfalz region,
+          Gewurztraminer is not the easiest vine to tend. While it
+          ripens quickly, it also needs some time on the vine to
+          get all of its aromas and acids balanced - which, in turn
+          makes it more suitable for cooler climates and constant
+          attention. 
+
+ Notable Facts 
+ Acidity is the maker or
+          breaker of this grape. The distinct aromas and flavors
+          give the wine depth and body, but without good acid they
+          can be cloying and flat. Most Gewurtztraminers are dry,
+          but so heady in aromas and texture, that they can seem
+          sweet to one's senses. You'll also notice that the wines
+          are deep and rich in color - the skins of the
+          Gewurtztraminer are pinkish-red. Other than lychee,
+          typical descriptors of Gewurztraminer are roses and
+          perfume. It's blend of fruits and acid make it a perfect
+          match for spicy food like Indian and Thai. 
+
+Summing it
+          up
+ Successful Sites: Alsace, Germany
+
+Common
+          Descriptors: lychee nut, floral, perfume</Content>
+          <Url>http://www.wine.com/v6/Gewurztraminer/White-Wines/learnabout.aspx?class=2&amp;varietal=10</Url>
+          <Footnotes />
+        </Article>
+      </Articles>
+    </Book>
+  </Books>
+  <Vineyards />
+</Reference>

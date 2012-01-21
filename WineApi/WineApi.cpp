@@ -15,6 +15,7 @@
 #include "CategoryMapService.h"
 #include "CatalogService.h"
 #include "ReferenceService.h"
+#include "ActiveMethodGUIDs.h"
 
 CComModule _Module;
 
@@ -60,6 +61,7 @@ CWineApiApp theApp;
 BOOL CWineApiApp::InitInstance ()
 {
     _Module.Init (ObjectMap, m_hInstance, &LIBID_WineApi);
+	CActiveMethodGUIDs::ProcessInitialise();
     return CWinApp::InitInstance ();
 }
 
@@ -71,6 +73,7 @@ BOOL CWineApiApp::InitInstance ()
 int CWineApiApp::ExitInstance ()
 {
     _Module.Term ();
+	CActiveMethodGUIDs::ProcessUninitialise();
     return CWinApp::ExitInstance ();
 }
 

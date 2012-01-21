@@ -1,23 +1,15 @@
 #include "stdafx.h"
 #include "WineApiObjectCollection.h"
 #include "EnumHelpers.h"
+#include "Utils.h"
 
 //*****************************************************************************
 //* Function Name: InterfaceSupportsErrorInfo
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CWineApiObjectCollection::InterfaceSupportsErrorInfo (REFIID riid)
+STDMETHODIMP CWineApiObjectCollection::InterfaceSupportsErrorInfo (REFIID p_riid)
 {
-	static const IID* arr[] = {
-		&IID_IWineApiObjectCollection
-	};
-
-	for (int i = 0; i < sizeof (arr) / sizeof (arr[0]); i++) {
-		if (InlineIsEqualGUID (*arr[i], riid))
-			return S_OK;
-	}
-
-	return S_FALSE;
+	return UtilsInterfaceSupportsErrorInfo (p_riid, IID_IWineApiObjectCollection);
 }
 
 
@@ -25,17 +17,11 @@ STDMETHODIMP CWineApiObjectCollection::InterfaceSupportsErrorInfo (REFIID riid)
 //* Function Name: get_Count
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CWineApiObjectCollection::get_Count (long* p_lCount)
+STDMETHODIMP CWineApiObjectCollection::get_Count (long* p_plCount)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	if (p_lCount == NULL) {
-		return E_POINTER;
-	}
-
-	*p_lCount = m_lNumItems;
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_plCount, m_lNumItems);
 }
 
 
@@ -55,14 +41,16 @@ STDMETHODIMP CWineApiObjectCollection::get_Item (long p_lIndex, IDispatch** p_pp
 		return E_POINTER;
 	}
 
+	*p_ppDispatch = NULL;
+
 	HRESULT l_hr = S_OK;
 
 	try {
-		*p_ppDispatch = V_DISPATCH (&m_svara[p_lIndex]);
-		(*p_ppDispatch)->AddRef ();
+		IDispatchPtr l_spDispatch = m_svara[p_lIndex];
+		l_hr = UtilsGetInterfacePointerHelper (p_ppDispatch, l_spDispatch);
 	}
-	catch (const _com_error& _ce) {
-		l_hr = _ce.Error ();
+	catch (const _com_error& l_ce) {
+		l_hr = l_ce.Error ();
 	}
 
 	return l_hr;
@@ -76,6 +64,10 @@ STDMETHODIMP CWineApiObjectCollection::get_Item (long p_lIndex, IDispatch** p_pp
 STDMETHODIMP CWineApiObjectCollection::get__NewEnum (IUnknown** p_ppEnum)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
+
+	if (p_ppEnum == NULL) {
+		return E_POINTER;
+	}
 
 	*p_ppEnum = NULL;
 

@@ -1,23 +1,15 @@
 #include "stdafx.h"
 #include "Product.h"
 #include "EnumHelpers.h"
+#include "Utils.h"
 
 //*****************************************************************************
 //* Function Name: InterfaceSupportsErrorInfo
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CProduct::InterfaceSupportsErrorInfo (REFIID riid)
+STDMETHODIMP CProduct::InterfaceSupportsErrorInfo (REFIID p_riid)
 {
-	static const IID* arr[] = {
-		&IID_IProduct
-	};
-
-	for (int i = 0; i < sizeof (arr) / sizeof (arr[0]); i++) {
-		if (InlineIsEqualGUID (*arr[i], riid))
-			return S_OK;
-	}
-
-	return S_FALSE;
+	return UtilsInterfaceSupportsErrorInfo (p_riid, IID_IProduct);
 }
 
 
@@ -29,9 +21,7 @@ STDMETHODIMP CProduct::get_Id (long* p_plId)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_plId = m_lId;
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_plId, m_lId);
 }
 
 
@@ -43,9 +33,7 @@ STDMETHODIMP CProduct::get_Name (BSTR* p_pbstrName)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_pbstrName = m_sbstrName.copy ();
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_pbstrName, m_sbstrName);
 }
 
 
@@ -57,9 +45,7 @@ STDMETHODIMP CProduct::get_Description (BSTR* p_pbstrDescription)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_pbstrDescription = m_sbstrDescription.copy ();
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_pbstrDescription, m_sbstrDescription);
 }
 
 
@@ -71,9 +57,7 @@ STDMETHODIMP CProduct::get_PriceMin (double* p_dblPriceMin)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_dblPriceMin = m_dblPriceMin;
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_dblPriceMin, m_dblPriceMin);
 }
 
 
@@ -85,9 +69,7 @@ STDMETHODIMP CProduct::get_PriceMax (double* p_dblPriceMax)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_dblPriceMax = m_dblPriceMax;
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_dblPriceMax, m_dblPriceMax);
 }
 
 
@@ -99,9 +81,7 @@ STDMETHODIMP CProduct::get_PriceRetail (double* p_dblPriceRetail)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_dblPriceRetail = m_dblPriceRetail;
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_dblPriceRetail, m_dblPriceRetail);
 }
 
 
@@ -113,9 +93,7 @@ STDMETHODIMP CProduct::get_Url (BSTR* p_pbstrUrl)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_pbstrUrl = m_sbstrUrl.copy ();
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_pbstrUrl, m_sbstrUrl);
 }
 
 
@@ -127,9 +105,7 @@ STDMETHODIMP CProduct::get_Type (BSTR* p_pbstrType)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_pbstrType = m_sbstrType.copy ();
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_pbstrType, m_sbstrType);
 }
 
 
@@ -141,9 +117,7 @@ STDMETHODIMP CProduct::get_Year (BSTR* p_pbstrYear)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_pbstrYear = m_sbstrYear.copy ();
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_pbstrYear, m_sbstrYear);
 }
 
 
@@ -155,12 +129,7 @@ STDMETHODIMP CProduct::get_GeoLocation (IGeoLocation** p_ppGeoLocation)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	if (m_spGeoLocation) {
-		*p_ppGeoLocation = m_spGeoLocation;
-		(*p_ppGeoLocation)->AddRef ();
-	}
-
-	return S_OK;
+	return UtilsGetInterfacePointerHelper (p_ppGeoLocation, m_spGeoLocation);
 }
 
 
@@ -172,12 +141,7 @@ STDMETHODIMP CProduct::get_Appellation (IAppellation** p_ppAppellation)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	if (m_spAppellation) {
-		*p_ppAppellation = m_spAppellation;
-		(*p_ppAppellation)->AddRef ();
-	}
-
-	return S_OK;
+	return UtilsGetInterfacePointerHelper (p_ppAppellation, m_spAppellation);
 }
 
 
@@ -189,12 +153,7 @@ STDMETHODIMP CProduct::get_Varietal (IVarietal** p_ppVarietal)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	if (m_spVarietal) {
-		*p_ppVarietal = m_spVarietal;
-		(*p_ppVarietal)->AddRef ();
-	}
-
-	return S_OK;
+	return UtilsGetInterfacePointerHelper (p_ppVarietal, m_spVarietal);
 }
 
 
@@ -206,12 +165,7 @@ STDMETHODIMP CProduct::get_Vineyard (IVineyard** p_ppVineyard)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	if (m_spVineyard) {
-		*p_ppVineyard = m_spVineyard;
-		(*p_ppVineyard)->AddRef ();
-	}
-
-	return S_OK;
+	return UtilsGetInterfacePointerHelper (p_ppVineyard, m_spVineyard);
 }
 
 
@@ -223,12 +177,7 @@ STDMETHODIMP CProduct::get_Ratings (IRatings** p_ppRatings)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	if (m_spRatings) {
-		*p_ppRatings = m_spRatings;
-		(*p_ppRatings)->AddRef ();
-	}
-
-	return S_OK;
+	return UtilsGetInterfacePointerHelper (p_ppRatings, m_spRatings);
 }
 
 
@@ -240,12 +189,7 @@ STDMETHODIMP CProduct::get_Retail (IRetail** p_ppRetail)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	if (m_spRetail) {
-		*p_ppRetail = m_spRetail;
-		(*p_ppRetail)->AddRef ();
-	}
-
-	return S_OK;
+	return UtilsGetInterfacePointerHelper (p_ppRetail, m_spRetail);
 }
 
 
@@ -257,12 +201,7 @@ STDMETHODIMP CProduct::get_Vintages (IVintages** p_ppVintages)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	if (m_spVintages) {
-		*p_ppVintages = m_spVintages;
-		(*p_ppVintages)->AddRef ();
-	}
-
-	return S_OK;
+	return UtilsGetInterfacePointerHelper (p_ppVintages, m_spVintages);
 }
 
 
@@ -274,12 +213,7 @@ STDMETHODIMP CProduct::get_Community (ICommunity** p_ppCommunity)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	if (m_spCommunity) {
-		*p_ppCommunity = m_spCommunity;
-		(*p_ppCommunity)->AddRef ();
-	}
-
-	return S_OK;
+	return UtilsGetInterfacePointerHelper (p_ppCommunity, m_spCommunity);
 }
 
 

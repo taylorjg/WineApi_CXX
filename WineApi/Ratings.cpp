@@ -1,23 +1,15 @@
 #include "stdafx.h"
 #include "Ratings.h"
 #include "EnumHelpers.h"
+#include "Utils.h"
 
 //*****************************************************************************
 //* Function Name: InterfaceSupportsErrorInfo
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CRatings::InterfaceSupportsErrorInfo (REFIID riid)
+STDMETHODIMP CRatings::InterfaceSupportsErrorInfo (REFIID p_riid)
 {
-	static const IID* arr[] = {
-		&IID_IRatings
-	};
-
-	for (int i = 0; i < sizeof (arr) / sizeof (arr[0]); i++) {
-		if (InlineIsEqualGUID (*arr[i], riid))
-			return S_OK;
-	}
-
-	return S_FALSE;
+	return UtilsInterfaceSupportsErrorInfo (p_riid, IID_IRatings);
 }
 
 
@@ -29,9 +21,7 @@ STDMETHODIMP CRatings::get_HighestScore (long* p_plHighestScore)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_plHighestScore = m_lHighestScore;
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_plHighestScore, m_lHighestScore);
 }
 
 

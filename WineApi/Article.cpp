@@ -1,23 +1,15 @@
 #include "stdafx.h"
 #include "Article.h"
 #include "EnumHelpers.h"
+#include "Utils.h"
 
 //*****************************************************************************
 //* Function Name: InterfaceSupportsErrorInfo
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CArticle::InterfaceSupportsErrorInfo (REFIID riid)
+STDMETHODIMP CArticle::InterfaceSupportsErrorInfo (REFIID p_riid)
 {
-	static const IID* arr[] = {
-		&IID_IArticle
-	};
-
-	for (int i = 0; i < sizeof (arr) / sizeof (arr[0]); i++) {
-		if (InlineIsEqualGUID (*arr[i], riid))
-			return S_OK;
-	}
-
-	return S_FALSE;
+	return UtilsInterfaceSupportsErrorInfo (p_riid, IID_IArticle);
 }
 
 
@@ -29,9 +21,7 @@ STDMETHODIMP CArticle::get_Id (BSTR* p_pbstrId)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_pbstrId = m_sbstrId.copy ();
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_pbstrId, m_sbstrId);
 }
 
 
@@ -43,9 +33,7 @@ STDMETHODIMP CArticle::get_Title (BSTR* p_pbstrTitle)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_pbstrTitle = m_sbstrTitle.copy ();
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_pbstrTitle, m_sbstrTitle);
 }
 
 
@@ -57,9 +45,7 @@ STDMETHODIMP CArticle::get_Abstract (BSTR* p_pbstrAbstract)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_pbstrAbstract = m_sbstrAbstract.copy ();
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_pbstrAbstract, m_sbstrAbstract);
 }
 
 
@@ -71,9 +57,7 @@ STDMETHODIMP CArticle::get_Content (BSTR* p_pbstrContent)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_pbstrContent = m_sbstrContent.copy ();
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_pbstrContent, m_sbstrContent);
 }
 
 
@@ -85,9 +69,7 @@ STDMETHODIMP CArticle::get_Url (BSTR* p_pbstrUrl)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_pbstrUrl = m_sbstrUrl.copy ();
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_pbstrUrl, m_sbstrUrl);
 }
 
 

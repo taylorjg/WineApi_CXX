@@ -1,22 +1,14 @@
 #include "stdafx.h"
 #include "CommunityReview.h"
+#include "Utils.h"
 
 //*****************************************************************************
 //* Function Name: InterfaceSupportsErrorInfo
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CCommunityReview::InterfaceSupportsErrorInfo (REFIID riid)
+STDMETHODIMP CCommunityReview::InterfaceSupportsErrorInfo (REFIID p_riid)
 {
-	static const IID* arr[] = {
-		&IID_ICommunityReview
-	};
-
-	for (int i = 0; i < sizeof (arr) / sizeof (arr[0]); i++) {
-		if (InlineIsEqualGUID (*arr[i], riid))
-			return S_OK;
-	}
-
-	return S_FALSE;
+	return UtilsInterfaceSupportsErrorInfo (p_riid, IID_ICommunityReview);
 }
 
 
@@ -28,9 +20,7 @@ STDMETHODIMP CCommunityReview::get_Id (long* p_plId)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_plId = m_lId;
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_plId, m_lId);
 }
 
 
@@ -42,9 +32,7 @@ STDMETHODIMP CCommunityReview::get_Name (BSTR* p_pbstrName)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_pbstrName = m_sbstrName.copy ();
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_pbstrName, m_sbstrName);
 }
 
 
@@ -56,9 +44,7 @@ STDMETHODIMP CCommunityReview::get_Score (long* p_plScore)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_plScore = m_lScore;
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_plScore, m_lScore);
 }
 
 
@@ -70,9 +56,7 @@ STDMETHODIMP CCommunityReview::get_Description (BSTR* p_pbstrDescription)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_pbstrDescription = m_sbstrDescription.copy ();
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_pbstrDescription, m_sbstrDescription);
 }
 
 
@@ -84,7 +68,5 @@ STDMETHODIMP CCommunityReview::get_Url (BSTR* p_pbstrUrl)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_pbstrUrl = m_sbstrUrl.copy ();
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_pbstrUrl, m_sbstrUrl);
 }

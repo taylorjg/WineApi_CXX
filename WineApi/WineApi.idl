@@ -495,6 +495,9 @@ interface IProductAttribute : IDispatch
 
 	[propget, id(3), helpstring("A url to other products that have the same attribute.")]
 	HRESULT Url([out, retval] BSTR* Url);
+
+	[propget, id(4), helpstring("The url to an icon for the product attribute.")]
+	HRESULT ImageUrl([out, retval] BSTR* ImageUrl);
 };
 
 //*****************************************************************************
@@ -662,6 +665,9 @@ interface IRetail : IDispatch
 
 	[propget, id(4), helpstring("The url for purchasing this product.")]
 	HRESULT Url([out, retval] BSTR* Url);
+
+	[propget, id(5), helpstring("The desired ship to state.")]
+	HRESULT State([out, retval] BSTR* State);
 };
 
 //*****************************************************************************
@@ -732,7 +738,10 @@ interface IVineyard : IDispatch
 	[propget, id(3), helpstring("The url to the description of the vineyard.")]
 	HRESULT Url([out, retval] BSTR* Url);
 
-	[propget, id(4), helpstring("The location of the vineyard. Only available with \"partner\" access.")]
+	[propget, id(4), helpstring("The url to an image of the vineyard.")]
+	HRESULT ImageUrl([out, retval] BSTR* ImageUrl);
+
+	[propget, id(5), helpstring("The location of the vineyard. Only available with \"partner\" access.")]
 	HRESULT GeoLocation([out, retval] IGeoLocation** GeoLocation);
 };
 
@@ -932,8 +941,23 @@ interface ICategoryMapService : IDispatch
 	[id(13),  helpstring("Adds the \"search\" custom parameter to the query."), vararg]
 	HRESULT Search([in] SAFEARRAY(VARIANT) Terms, [out, retval] ICategoryMapService** Self);
 
-	[id(14), helpstring("Lists all items in the given category.")]
-	HRESULT Show([in] long Id, [out, retval] ICategoryMapService** Self);
+	[id(14),  helpstring("Lists all items in the given category. Convenience method taking 1 category.")]
+	HRESULT Show1([in] long Category1, [out, retval] ICategoryMapService** Self);
+
+	[id(15),  helpstring("Lists all items in the given categories. Convenience method taking 2 categories.")]
+	HRESULT Show2([in] long Category1, [in] long Category2, [out, retval] ICategoryMapService** Self);
+
+	[id(16),  helpstring("Lists all items in the given categories. Convenience method taking 3 categories.")]
+	HRESULT Show3([in] long Category1, [in] long Category2, [in] long Category3, [out, retval] ICategoryMapService** Self);
+
+	[id(17),  helpstring("Lists all items in the given categories. Convenience method taking 4 categories.")]
+	HRESULT Show4([in] long Category1, [in] long Category2, [in] long Category3, [in] long Category4, [out, retval] ICategoryMapService** Self);
+
+	[id(18),  helpstring("Lists all items in the given categories. Convenience method taking 5 categories.")]
+	HRESULT Show5([in] long Category1, [in] long Category2, [in] long Category3, [in] long Category4, [in] long Category5, [out, retval] ICategoryMapService** Self);
+
+	[id(19),  helpstring("Lists all items in the given categories."), vararg]
+	HRESULT Show([in] SAFEARRAY(VARIANT) Categories, [out, retval] ICategoryMapService** Self);
 };
 
 //*****************************************************************************

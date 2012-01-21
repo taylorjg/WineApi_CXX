@@ -6,6 +6,10 @@
 #include "Config.h"
 #include "Utils.h"
 
+extern const wchar_t RESOURCE_CATALOG[];
+extern const wchar_t RESOURCE_CATEGORYMAP[];
+extern const wchar_t RESOURCE_REFERENCE[];
+
 template<typename U, typename V>
 class CServiceBase
 {
@@ -39,7 +43,13 @@ protected:
 	{
 		V l_pResult;
 
-		_bstr_t l_sbstrResponse = m_pUrlInvoker->InvokeUrl (L"GET", m_sbstrUrl);
+		IUrlInvoker* l_pUrlInvoker = GetExternalUrlInvoker ();
+
+		if (l_pUrlInvoker == NULL) {
+			l_pUrlInvoker = m_pUrlInvoker.get ();
+		}
+
+		_bstr_t l_sbstrResponse = l_pUrlInvoker->InvokeUrl (L"GET", m_sbstrUrl);
 		m_pResponseDecoder->DecodeResponse (l_sbstrResponse, l_pResult);
 
 		return l_pResult;
@@ -52,6 +62,10 @@ protected:
 		IUnknown*						p_pUnknown,
 		T**								p_ppSelf)
 	{
+		if (p_ppSelf == NULL) {
+			return E_POINTER;
+		}
+
 		_bstr_t l_sbstrJoinedValues = JoinValues (p_vValues);
 
 		_bstr_t l_sbstrOverallValue;
@@ -93,6 +107,22 @@ private:
 
 	boost::scoped_ptr<IUrlInvoker>				m_pUrlInvoker;
 	boost::scoped_ptr<IResponseDecoder<U, V> >	m_pResponseDecoder;
+
 };
+
+//*****************************************************************************
+//* Support for unit testing. Unit tests can pass in a stub implementation of
+//* the IUrlInvoker interface via SetExternalUrlInvoker().
+//*****************************************************************************
+
+extern IUrlInvoker* g_s_pExternalUrlInvoker;
+
+extern "C" {
+	__declspec(dllexport) void SetExternalUrlInvoker (IUrlInvoker* p_pExternalUrlInvoker);
+	__declspec(dllexport) IUrlInvoker* GetExternalUrlInvoker (void);
+	__declspec(dllexport) IUrlInvoker* GetInternalUrlInvoker (void);
+	__declspec(dllexport) BSTR GetBaseUrl (BSTR p_bstrResource);
+	__declspec(dllexport) void ResetConfig (void);
+}
 
 #endif

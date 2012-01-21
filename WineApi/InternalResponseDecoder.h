@@ -23,6 +23,7 @@ void CInternalResponseDecoder<U, V>::DecodeResponse (
 {
 	CComObject<U>* l_pCXXEntity = NULL;
 	HRESULT l_hr = CComObject<U>::CreateInstance (&l_pCXXEntity);
+	if (FAILED (l_hr)) _com_issue_error (l_hr);
 
 	IEntityMetadata* l_pEntityMetadata = static_cast<IEntityMetadata*>(l_pCXXEntity);
 
@@ -45,10 +46,9 @@ void CInternalResponseDecoder<U, V>::DecodeResponse (
 
 	V l_spEntity;
 	l_hr = l_pCXXEntity->QueryInterface (&l_spEntity);
+	if (FAILED (l_hr)) _com_issue_error (l_hr);
 
-	if (SUCCEEDED (l_hr)) {
-		p_pResult = l_spEntity;
-	}
+	p_pResult = l_spEntity;
 }
 
 #endif

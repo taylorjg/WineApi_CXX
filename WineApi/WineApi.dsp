@@ -45,9 +45,10 @@ RSC=rc.exe
 # PROP Use_Debug_Libraries 1
 # PROP Output_Dir "Debug"
 # PROP Intermediate_Dir "Debug"
+# PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /Yu"stdafx.h" /FD /GZ /c
-# ADD CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_USRDLL" /Yu"stdafx.h" /FD /GZ /c
+# ADD CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /I "..\lib\boost_1_47_0" /D "_DEBUG" /D "_MBCS" /D "WIN32" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_USRDLL" /Yu"stdafx.h" /FD /GZ /c
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x809 /d "_DEBUG" /d "_AFXDLL"
 # ADD RSC /l 0x809 /d "_DEBUG" /d "_AFXDLL"
@@ -82,7 +83,7 @@ SOURCE="$(InputPath)"
 # PROP Intermediate_Dir "DebugU"
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_USRDLL" /Yu"stdafx.h" /FD /GZ /c
-# ADD CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_USRDLL" /D "_UNICODE" /Yu"stdafx.h" /FD /GZ /c
+# ADD CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /I "..\lib\boost_1_47_0" /D "_DEBUG" /D "_UNICODE" /D "WIN32" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_USRDLL" /Yu"stdafx.h" /FD /GZ /c
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x809 /d "_DEBUG" /d "_AFXDLL"
 # ADD RSC /l 0x809 /d "_DEBUG" /d "_AFXDLL"
@@ -123,7 +124,7 @@ SOURCE="$(InputPath)"
 # PROP Intermediate_Dir "ReleaseMinSize"
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MD /W3 /GX /O1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_USRDLL" /Yu"stdafx.h" /FD /c
-# ADD CPP /nologo /MD /W3 /GX /O1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_USRDLL" /D "_ATL_DLL" /Yu"stdafx.h" /FD /c
+# ADD CPP /nologo /MD /W3 /GX /O1 /I "..\lib\boost_1_47_0" /D "NDEBUG" /D "_MBCS" /D "_ATL_DLL" /D "WIN32" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_USRDLL" /Yu"stdafx.h" /FD /c
 # ADD BASE MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x809 /d "NDEBUG" /d "_AFXDLL"
 # ADD RSC /l 0x809 /d "NDEBUG" /d "_AFXDLL"
@@ -158,7 +159,7 @@ SOURCE="$(InputPath)"
 # PROP Intermediate_Dir "ReleaseMinDependency"
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MD /W3 /GX /O1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_USRDLL" /Yu"stdafx.h" /FD /c
-# ADD CPP /nologo /MD /W3 /GX /O1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_USRDLL" /D "_ATL_STATIC_REGISTRY" /Yu"stdafx.h" /FD /c
+# ADD CPP /nologo /MD /W3 /GX /O1 /I "..\lib\boost_1_47_0" /D "NDEBUG" /D "_MBCS" /D "_ATL_STATIC_REGISTRY" /D "WIN32" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_USRDLL" /Yu"stdafx.h" /FD /c
 # ADD BASE MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x809 /d "NDEBUG" /d "_AFXDLL"
 # ADD RSC /l 0x809 /d "NDEBUG" /d "_AFXDLL"
@@ -193,7 +194,7 @@ SOURCE="$(InputPath)"
 # PROP Intermediate_Dir "ReleaseUMinSize"
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MD /W3 /GX /O1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_USRDLL" /D "_UNICODE" /Yu"stdafx.h" /FD /c
-# ADD CPP /nologo /MD /W3 /GX /O1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_USRDLL" /D "_UNICODE" /D "_ATL_DLL" /Yu"stdafx.h" /FD /c
+# ADD CPP /nologo /MD /W3 /GX /O1 /I "..\lib\boost_1_47_0" /D "NDEBUG" /D "_UNICODE" /D "_ATL_DLL" /D "WIN32" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_USRDLL" /Yu"stdafx.h" /FD /c
 # ADD BASE MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x809 /d "NDEBUG" /d "_AFXDLL"
 # ADD RSC /l 0x809 /d "NDEBUG" /d "_AFXDLL"
@@ -234,7 +235,7 @@ SOURCE="$(InputPath)"
 # PROP Intermediate_Dir "ReleaseUMinDependency"
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MD /W3 /GX /O1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_USRDLL" /D "_UNICODE" /Yu"stdafx.h" /FD /c
-# ADD CPP /nologo /MD /W3 /GX /O1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_USRDLL" /D "_UNICODE" /D "_ATL_STATIC_REGISTRY" /Yu"stdafx.h" /FD /c
+# ADD CPP /nologo /MD /W3 /GX /O1 /I "..\lib\boost_1_47_0" /D "NDEBUG" /D "_UNICODE" /D "_ATL_STATIC_REGISTRY" /D "WIN32" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_USRDLL" /Yu"stdafx.h" /FD /c
 # ADD BASE MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x809 /d "NDEBUG" /d "_AFXDLL"
 # ADD RSC /l 0x809 /d "NDEBUG" /d "_AFXDLL"
@@ -276,7 +277,7 @@ SOURCE="$(InputPath)"
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MD /W3 /GX /O1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_USRDLL" /D "_ATL_DLL" /Yu"stdafx.h" /FD /c
-# ADD CPP /nologo /MD /W3 /GX /Zi /O1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_USRDLL" /D "_ATL_DLL" /Yu"stdafx.h" /FD /c
+# ADD CPP /nologo /MD /W3 /GX /Zi /O1 /I "..\lib\boost_1_47_0" /D "NDEBUG" /D "_MBCS" /D "_ATL_DLL" /D "WIN32" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_USRDLL" /Yu"stdafx.h" /FD /c
 # ADD BASE RSC /l 0x809 /d "NDEBUG" /d "_AFXDLL"
 # ADD RSC /l 0x809 /d "NDEBUG" /d "_AFXDLL"
 BSC32=bscmake.exe
@@ -313,6 +314,10 @@ SOURCE="$(InputPath)"
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 
+SOURCE=.\ActiveMethodGUIDs.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\Appellation.cpp
 # End Source File
 # Begin Source File
@@ -346,6 +351,10 @@ SOURCE=.\CategoryMap.cpp
 # Begin Source File
 
 SOURCE=.\CategoryMapService.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\ComErrorHandling.cpp
 # End Source File
 # Begin Source File
 
@@ -433,6 +442,10 @@ SOURCE=.\SafeArrayHelpers.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\ServiceBase.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\Status.cpp
 # End Source File
 # Begin Source File
@@ -495,6 +508,10 @@ SOURCE=.\WineType.cpp
 # PROP Default_Filter "h;hpp;hxx;hm;inl"
 # Begin Source File
 
+SOURCE=.\ActiveMethodGUIDs.h
+# End Source File
+# Begin Source File
+
 SOURCE=.\Appellation.h
 # End Source File
 # Begin Source File
@@ -528,6 +545,10 @@ SOURCE=.\CategoryMap.h
 # Begin Source File
 
 SOURCE=.\CategoryMapService.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\ComErrorHandling.h
 # End Source File
 # Begin Source File
 

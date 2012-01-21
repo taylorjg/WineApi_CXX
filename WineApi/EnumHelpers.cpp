@@ -14,6 +14,10 @@ HRESULT MakeEnumForStringCollection (
 {
 	HRESULT l_hr = S_OK;
 
+	if (p_ppWineApiStringCollection == NULL) {
+		return E_POINTER;
+	}
+
 	*p_ppWineApiStringCollection = NULL;
 
 	CComObject<CWineApiStringCollection>* l_pCXXWineApiStringCollection = NULL;

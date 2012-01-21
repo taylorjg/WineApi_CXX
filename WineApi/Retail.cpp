@@ -1,22 +1,14 @@
 #include "stdafx.h"
 #include "Retail.h"
+#include "Utils.h"
 
 //*****************************************************************************
 //* Function Name: InterfaceSupportsErrorInfo
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CRetail::InterfaceSupportsErrorInfo (REFIID riid)
+STDMETHODIMP CRetail::InterfaceSupportsErrorInfo (REFIID p_riid)
 {
-	static const IID* arr[] = {
-		&IID_IRetail
-	};
-
-	for (int i = 0; i < sizeof (arr) / sizeof (arr[0]); i++) {
-		if (InlineIsEqualGUID (*arr[i], riid))
-			return S_OK;
-	}
-
-	return S_FALSE;
+	return UtilsInterfaceSupportsErrorInfo (p_riid, IID_IRetail);
 }
 
 
@@ -28,9 +20,7 @@ STDMETHODIMP CRetail::get_Sku (BSTR* p_pbstrSku)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_pbstrSku = m_sbstrSku.copy ();
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_pbstrSku, m_sbstrSku);
 }
 
 
@@ -42,9 +32,7 @@ STDMETHODIMP CRetail::get_InStock (VARIANT_BOOL* p_pvbInStock)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_pvbInStock = (m_bInStock == false) ? VARIANT_FALSE : VARIANT_TRUE;
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_pvbInStock, m_bInStock);
 }
 
 
@@ -56,9 +44,7 @@ STDMETHODIMP CRetail::get_Price (double* p_pdblPrice)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_pdblPrice = m_dblPrice;
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_pdblPrice, m_dblPrice);
 }
 
 
@@ -70,7 +56,17 @@ STDMETHODIMP CRetail::get_Url (BSTR* p_pbstrUrl)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_pbstrUrl = m_sbstrUrl.copy ();
+	return UtilsPropertyGetHelper (p_pbstrUrl, m_sbstrUrl);
+}
 
-	return S_OK;
+
+//*****************************************************************************
+//* Function Name: get_State
+//*   Description: 
+//*****************************************************************************
+STDMETHODIMP CRetail::get_State (BSTR* p_pbstrState)
+{
+	AFX_MANAGE_STATE(AfxGetStaticModuleState())
+
+	return UtilsPropertyGetHelper (p_pbstrState, m_sbstrState);
 }

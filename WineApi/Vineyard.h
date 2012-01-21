@@ -38,14 +38,16 @@ public:
 	STDMETHOD(get_Id)(long* p_plId);
 	STDMETHOD(get_Name)(BSTR* p_pbstrName);
 	STDMETHOD(get_Url)(BSTR* p_pbstrUrl);
+	STDMETHOD(get_ImageUrl)(BSTR* p_pbstrImageUrl);
 	STDMETHOD(get_GeoLocation)(IGeoLocation** p_ppGeoLocation);
 
 DECLARE_CREATE_INSTANCE_METHODS (CVineyard, IVineyard, IVineyardPtr)
 
 BEGIN_PROPERTY_DESCRIPTOR_TABLE ()
-    PROPERTY_DESCRIPTOR_TABLE_ENTRY (_T("Id"),		&m_lId)
-    PROPERTY_DESCRIPTOR_TABLE_ENTRY (_T("Name"),	&m_sbstrName)
-    PROPERTY_DESCRIPTOR_TABLE_ENTRY (_T("Url"),		&m_sbstrUrl)
+    PROPERTY_DESCRIPTOR_TABLE_ENTRY (_T("Id"),			&m_lId)
+    PROPERTY_DESCRIPTOR_TABLE_ENTRY (_T("Name"),		&m_sbstrName)
+    PROPERTY_DESCRIPTOR_TABLE_ENTRY (_T("Url"),			&m_sbstrUrl)
+    PROPERTY_DESCRIPTOR_TABLE_ENTRY (_T("ImageUrl"),	&m_sbstrImageUrl)
 END_PROPERTY_DESCRIPTOR_TABLE ()
 
 BEGIN_CHILD_ENTITY_DESCRIPTOR_TABLE ()
@@ -56,6 +58,7 @@ private:
 	long			m_lId;
 	_bstr_t			m_sbstrName;
 	_bstr_t			m_sbstrUrl;
+	_bstr_t			m_sbstrImageUrl;
 	IGeoLocationPtr	m_spGeoLocation;
 };
 

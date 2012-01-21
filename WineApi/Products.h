@@ -38,7 +38,7 @@ public:
 public:
 	STDMETHOD(get_Total)(long* p_plTotal);
 	STDMETHOD(get_Offset)(long* p_plOffset);
-	STDMETHOD(get_Url)(BSTR* p_pUrl);
+	STDMETHOD(get_Url)(BSTR* p_pbstrUrl);
 	STDMETHOD(get_List)(IWineApiObjectCollection** p_ppWineApiObjectCollection);
 
 DECLARE_CREATE_INSTANCE_METHODS (CProducts, IProducts, IProductsPtr)

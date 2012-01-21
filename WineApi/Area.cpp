@@ -1,22 +1,14 @@
 #include "stdafx.h"
 #include "Area.h"
+#include "Utils.h"
 
 //*****************************************************************************
 //* Function Name: InterfaceSupportsErrorInfo
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CArea::InterfaceSupportsErrorInfo (REFIID riid)
+STDMETHODIMP CArea::InterfaceSupportsErrorInfo (REFIID p_riid)
 {
-	static const IID* arr[] = {
-		&IID_IArea
-	};
-
-	for (int i = 0; i < sizeof (arr) / sizeof (arr[0]); i++) {
-		if (InlineIsEqualGUID (*arr[i], riid))
-			return S_OK;
-	}
-
-	return S_FALSE;
+	return UtilsInterfaceSupportsErrorInfo (p_riid, IID_IArea);
 }
 
 
@@ -28,9 +20,7 @@ STDMETHODIMP CArea::get_Id (long* p_plId)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_plId = m_lId;
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_plId, m_lId);
 }
 
 
@@ -42,9 +32,7 @@ STDMETHODIMP CArea::get_Name (BSTR* p_pbstrName)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_pbstrName = m_sbstrName.copy ();
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_pbstrName, m_sbstrName);
 }
 
 
@@ -56,9 +44,7 @@ STDMETHODIMP CArea::get_Url (BSTR* p_pbstrUrl)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_pbstrUrl = m_sbstrUrl.copy ();
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_pbstrUrl, m_sbstrUrl);
 }
 
 
@@ -70,10 +56,5 @@ STDMETHODIMP CArea::get_Parent (IArea** p_ppParent)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	if (m_spParent) {
-		*p_ppParent = m_spParent;
-		(*p_ppParent)->AddRef ();
-	}
-
-	return S_OK;
+	return UtilsGetInterfacePointerHelper (p_ppParent, m_spParent);
 }

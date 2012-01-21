@@ -19,7 +19,7 @@ public:
 		CServiceBase<CCategoryMap, ICategoryMapPtr> (
 			new CInternalUrlInvoker (),
 			new CInternalResponseDecoder<CCategoryMap, ICategoryMapPtr> (),
-			L"categorymap")
+			RESOURCE_CATEGORYMAP)
 	{
 		ATLTRACE (_T("CCategoryMapService::CCategoryMapService - %p\n"), this);
 	}
@@ -57,7 +57,12 @@ public:
 	STDMETHOD(Search4)(BSTR p_bstrTerm1, BSTR p_bstrTerm2, BSTR p_bstrTerm3, BSTR p_bstrTerm4, ICategoryMapService** p_ppSelf);
 	STDMETHOD(Search5)(BSTR p_bstrTerm1, BSTR p_bstrTerm2, BSTR p_bstrTerm3, BSTR p_bstrTerm4, BSTR p_bstrTerm5, ICategoryMapService** p_ppSelf);
 	STDMETHOD(Search)(SAFEARRAY* p_psa, ICategoryMapService** p_ppSelf);
-	STDMETHOD(Show)(long p_lId, ICategoryMapService** p_ppSelf);
+	STDMETHOD(Show1)(long p_lCategory1, ICategoryMapService** p_ppSelf);
+	STDMETHOD(Show2)(long p_lCategory1, long p_lCategory2, ICategoryMapService** p_ppSelf);
+	STDMETHOD(Show3)(long p_lCategory1, long p_lCategory2, long p_lCategory3, ICategoryMapService** p_ppSelf);
+	STDMETHOD(Show4)(long p_lCategory1, long p_lCategory2, long p_lCategory3, long p_lCategory4, ICategoryMapService** p_ppSelf);
+	STDMETHOD(Show5)(long p_lCategory1, long p_lCategory2, long p_lCategory3, long p_lCategory4, long p_lCategory5, ICategoryMapService** p_ppSelf);
+	STDMETHOD(Show)(SAFEARRAY* p_psa, ICategoryMapService** p_ppSelf);
 
 private:
 	HRESULT AppendCategoryFilter (
@@ -65,6 +70,10 @@ private:
 		ICategoryMapService**			p_ppSelf);
 
 	HRESULT AppendSearch (
+		const std::vector<_variant_t>&	p_vValues,
+		ICategoryMapService**			p_ppSelf);
+
+	HRESULT AppendShow (
 		const std::vector<_variant_t>&	p_vValues,
 		ICategoryMapService**			p_ppSelf);
 };

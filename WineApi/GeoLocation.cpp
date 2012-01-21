@@ -1,22 +1,14 @@
 #include "stdafx.h"
 #include "GeoLocation.h"
+#include "Utils.h"
 
 //*****************************************************************************
 //* Function Name: InterfaceSupportsErrorInfo
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CGeoLocation::InterfaceSupportsErrorInfo (REFIID riid)
+STDMETHODIMP CGeoLocation::InterfaceSupportsErrorInfo (REFIID p_riid)
 {
-	static const IID* arr[] = {
-		&IID_IGeoLocation
-	};
-
-	for (int i = 0; i < sizeof (arr) / sizeof (arr[0]); i++) {
-		if (InlineIsEqualGUID (*arr[i], riid))
-			return S_OK;
-	}
-
-	return S_FALSE;
+	return UtilsInterfaceSupportsErrorInfo (p_riid, IID_IGeoLocation);
 }
 
 
@@ -28,9 +20,7 @@ STDMETHODIMP CGeoLocation::get_Latitude (long* p_plLatitude)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_plLatitude = m_lLatitude;
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_plLatitude, m_lLatitude);
 }
 
 
@@ -42,9 +32,7 @@ STDMETHODIMP CGeoLocation::get_Longitude (long* p_plLongitude)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_plLongitude = m_lLongitude;
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_plLongitude, m_lLongitude);
 }
 
 
@@ -56,7 +44,5 @@ STDMETHODIMP CGeoLocation::get_Url (BSTR* p_pbstrUrl)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_pbstrUrl = m_sbstrUrl.copy ();
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_pbstrUrl, m_sbstrUrl);
 }

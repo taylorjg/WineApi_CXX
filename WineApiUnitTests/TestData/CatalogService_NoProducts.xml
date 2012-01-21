@@ -1,0 +1,13 @@
+<Catalog xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+  <Status>
+    <Messages xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    <ReturnCode>0</ReturnCode>
+  </Status>
+  <Products>
+    <List>
+    </List>
+    <Offset>0</Offset>
+    <Total>0</Total>
+    <Url />
+  </Products>
+</Catalog>

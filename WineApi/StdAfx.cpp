@@ -6,7 +6,11 @@
 
 #ifdef _ATL_STATIC_REGISTRY
 #include <statreg.h>
+#if _MSC_VER < 1400
 #include <statreg.cpp>
 #endif
+#endif
 
+#if _MSC_VER < 1400
 #include <atlimpl.cpp>
+#endif

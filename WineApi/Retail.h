@@ -39,6 +39,7 @@ public:
 	STDMETHOD(get_InStock)(VARIANT_BOOL* p_pvbInStock);
 	STDMETHOD(get_Price)(double* p_pdblPrice);
 	STDMETHOD(get_Url)(BSTR* p_pbstrUrl);
+	STDMETHOD(get_State)(BSTR* p_pbstrState);
 
 DECLARE_CREATE_INSTANCE_METHODS (CRetail, IRetail, IRetailPtr)
 
@@ -47,6 +48,7 @@ BEGIN_PROPERTY_DESCRIPTOR_TABLE ()
     PROPERTY_DESCRIPTOR_TABLE_ENTRY (_T("InStock"),	&m_bInStock)
     PROPERTY_DESCRIPTOR_TABLE_ENTRY (_T("Price"),	&m_dblPrice)
     PROPERTY_DESCRIPTOR_TABLE_ENTRY (_T("Url"),		&m_sbstrUrl)
+    PROPERTY_DESCRIPTOR_TABLE_ENTRY (_T("State"),	&m_sbstrState)
 END_PROPERTY_DESCRIPTOR_TABLE ()
 
 private:
@@ -54,6 +56,7 @@ private:
 	bool	m_bInStock;
 	double	m_dblPrice;
 	_bstr_t	m_sbstrUrl;
+	_bstr_t	m_sbstrState;
 };
 
 #endif

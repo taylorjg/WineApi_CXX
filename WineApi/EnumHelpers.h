@@ -19,6 +19,10 @@ HRESULT MakeEnumForObjectCollection (
 {
 	HRESULT l_hr = S_OK;
 
+	if (p_ppWineApiObjectCollection == NULL) {
+		return E_POINTER;
+	}
+
 	*p_ppWineApiObjectCollection = NULL;
 
 	CComObject<CWineApiObjectCollection>* l_pCXXWineApiObjectCollection = NULL;

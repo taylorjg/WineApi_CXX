@@ -1,22 +1,14 @@
 #include "stdafx.h"
 #include "Label.h"
+#include "Utils.h"
 
 //*****************************************************************************
 //* Function Name: InterfaceSupportsErrorInfo
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CLabel::InterfaceSupportsErrorInfo (REFIID riid)
+STDMETHODIMP CLabel::InterfaceSupportsErrorInfo (REFIID p_riid)
 {
-	static const IID* arr[] = {
-		&IID_ILabel
-	};
-
-	for (int i = 0; i < sizeof (arr) / sizeof (arr[0]); i++) {
-		if (InlineIsEqualGUID (*arr[i], riid))
-			return S_OK;
-	}
-
-	return S_FALSE;
+	return UtilsInterfaceSupportsErrorInfo (p_riid, IID_ILabel);
 }
 
 
@@ -28,9 +20,7 @@ STDMETHODIMP CLabel::get_Id (BSTR* p_pbstrId)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_pbstrId = m_sbstrId.copy ();
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_pbstrId, m_sbstrId);
 }
 
 
@@ -42,9 +32,7 @@ STDMETHODIMP CLabel::get_Name (BSTR* p_pbstrName)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_pbstrName = m_sbstrName.copy ();
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_pbstrName, m_sbstrName);
 }
 
 
@@ -56,7 +44,5 @@ STDMETHODIMP CLabel::get_Url (BSTR* p_pbstrUrl)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_pbstrUrl = m_sbstrUrl.copy ();
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_pbstrUrl, m_sbstrUrl);
 }

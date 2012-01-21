@@ -8,8 +8,20 @@ static char THIS_FILE[]=__FILE__;
 #endif
 
 //*****************************************************************************
+//* Function Name: UtilsInterfaceSupportsErrorInfo
+//*   Description: Helper function that provides a common implementation of
+//*                the ISupportErrorInfo::InterfaceSupportsErrorInfo method.
+//*****************************************************************************
+HRESULT UtilsInterfaceSupportsErrorInfo (REFIID p_riid1, REFIID p_riid2)
+{
+	return (p_riid1 == p_riid2) ? S_OK : S_FALSE;
+}
+
+
+//*****************************************************************************
 //* Function Name: UtilsAppendNameValueToQueryString
-//*   Description: 
+//*   Description: Helper function to append a name/value pair to a Url's
+//*                query string. This overload takes a value of type string.
 //*****************************************************************************
 void UtilsAppendNameValueToQueryString (
 	_bstr_t&		p_sbstrUrl,
@@ -25,7 +37,8 @@ void UtilsAppendNameValueToQueryString (
 
 //*****************************************************************************
 //* Function Name: UtilsAppendNameValueToQueryString
-//*   Description: 
+//*   Description: Helper function to append a name/value pair to a Url's
+//*                query string. This overload takes a value of type long.
 //*****************************************************************************
 void UtilsAppendNameValueToQueryString (
 	_bstr_t&		p_sbstrUrl,
@@ -46,7 +59,9 @@ void UtilsAppendNameValueToQueryString (
 
 //*****************************************************************************
 //* Function Name: UtilsPropertyGetHelper
-//*   Description: 
+//*   Description: Helper function to provide a common implementation of a
+//*                property getter method. This overload deals with properties
+//*                of type string.
 //*****************************************************************************
 HRESULT UtilsPropertyGetHelper (
 	BSTR*			p_pbstrProperty,
@@ -58,11 +73,13 @@ HRESULT UtilsPropertyGetHelper (
 		return E_POINTER;
 	}
 
+	*p_pbstrProperty = NULL;
+
 	try {
 		*p_pbstrProperty = p_sbstrProperty.copy ();
 	}
-	catch (const _com_error& _ce) {
-		l_hr = _ce.Error ();
+	catch (const _com_error& l_ce) {
+		l_hr = l_ce.Error ();
 	}
 
 	return l_hr;
@@ -71,7 +88,9 @@ HRESULT UtilsPropertyGetHelper (
 
 //*****************************************************************************
 //* Function Name: UtilsPropertyPutHelper
-//*   Description: 
+//*   Description: Helper function to provide a common implementation of a
+//*                property setter method. This overload deals with properties
+//*                of type string.
 //*****************************************************************************
 HRESULT UtilsPropertyPutHelper (
 	BSTR		p_bstrProperty,
@@ -86,9 +105,69 @@ HRESULT UtilsPropertyPutHelper (
 	try {
 		p_sbstrProperty = _bstr_t (p_bstrProperty, true /* fCopy */);
 	}
-	catch (const _com_error& _ce) {
-		l_hr = _ce.Error ();
+	catch (const _com_error& l_ce) {
+		l_hr = l_ce.Error ();
 	}
 
 	return l_hr;
+}
+
+
+//*****************************************************************************
+//* Function Name: UtilsPropertyGetHelper
+//*   Description: Helper function to provide a common implementation of a
+//*                property getter method. This overload deals with properties
+//*                of type long.
+//*****************************************************************************
+HRESULT UtilsPropertyGetHelper (
+	long*	p_plProperty,
+	long	p_lProperty)
+{
+	if (p_plProperty == NULL) {
+		return E_POINTER;
+	}
+
+	*p_plProperty = p_lProperty;
+
+	return S_OK;
+}
+
+
+//*****************************************************************************
+//* Function Name: UtilsPropertyGetHelper
+//*   Description: Helper function to provide a common implementation of a
+//*                property getter method. This overload deals with properties
+//*                of type double.
+//*****************************************************************************
+HRESULT UtilsPropertyGetHelper (
+	double*			p_pdblProperty,
+	double			p_dblProperty)
+{
+	if (p_pdblProperty == NULL) {
+		return E_POINTER;
+	}
+
+	*p_pdblProperty = p_dblProperty;
+
+	return S_OK;
+}
+
+
+//*****************************************************************************
+//* Function Name: UtilsPropertyGetHelper
+//*   Description: Helper function to provide a common implementation of a
+//*                property getter method. This overload deals with properties
+//*                of type VARIANT_BOOL.
+//*****************************************************************************
+HRESULT UtilsPropertyGetHelper (
+	VARIANT_BOOL*	p_pvbProperty,
+	bool			p_bProperty)
+{
+	if (p_pvbProperty == NULL) {
+		return E_POINTER;
+	}
+
+	*p_pvbProperty = (p_bProperty == false) ? VARIANT_FALSE : VARIANT_TRUE;
+
+	return S_OK;
 }

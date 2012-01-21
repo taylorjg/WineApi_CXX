@@ -1,23 +1,15 @@
 #include "stdafx.h"
 #include "Status.h"
 #include "EnumHelpers.h"
+#include "Utils.h"
 
 //*****************************************************************************
 //* Function Name: InterfaceSupportsErrorInfo
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CStatus::InterfaceSupportsErrorInfo (REFIID riid)
+STDMETHODIMP CStatus::InterfaceSupportsErrorInfo (REFIID p_riid)
 {
-	static const IID* arr[] = {
-		&IID_IConfig
-	};
-
-	for (int i = 0; i < sizeof (arr) / sizeof (arr[0]); i++) {
-		if (InlineIsEqualGUID (*arr[i], riid))
-			return S_OK;
-	}
-
-	return S_FALSE;
+	return UtilsInterfaceSupportsErrorInfo (p_riid, IID_IStatus);
 }
 
 
@@ -29,9 +21,7 @@ STDMETHODIMP CStatus::get_ReturnCode (long* p_plReturnCode)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_plReturnCode = m_lReturnCode;
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_plReturnCode, m_lReturnCode);
 }
 
 

@@ -15,6 +15,24 @@ Package=<4>
 
 ###############################################################################
 
+Project: "WineApiIntegrationTests"=".\WineApiIntegrationTests\WineApiIntegrationTests.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name WineApi
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name cppunit
+    End Project Dependency
+}}}
+
+###############################################################################
+
 Project: "WineApiTest"=".\WineApiTest\WineApiTest.dsp" - Package Owner=<4>
 
 Package=<5>
@@ -26,6 +44,36 @@ Package=<4>
     Begin Project Dependency
     Project_Dep_Name WineApi
     End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "WineApiUnitTests"=".\WineApiUnitTests\WineApiUnitTests.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name WineApi
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name cppunit
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "cppunit"=".\lib\cppunit-1.12.1\src\cppunit\cppunit.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
 }}}
 
 ###############################################################################

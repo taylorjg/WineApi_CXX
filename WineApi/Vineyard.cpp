@@ -1,22 +1,14 @@
 #include "stdafx.h"
 #include "Vineyard.h"
+#include "Utils.h"
 
 //*****************************************************************************
 //* Function Name: InterfaceSupportsErrorInfo
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CVineyard::InterfaceSupportsErrorInfo (REFIID riid)
+STDMETHODIMP CVineyard::InterfaceSupportsErrorInfo (REFIID p_riid)
 {
-	static const IID* arr[] = {
-		&IID_IVineyard
-	};
-
-	for (int i = 0; i < sizeof (arr) / sizeof (arr[0]); i++) {
-		if (InlineIsEqualGUID (*arr[i], riid))
-			return S_OK;
-	}
-
-	return S_FALSE;
+	return UtilsInterfaceSupportsErrorInfo (p_riid, IID_IVineyard);
 }
 
 
@@ -28,9 +20,7 @@ STDMETHODIMP CVineyard::get_Id (long* p_plId)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_plId = m_lId;
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_plId, m_lId);
 }
 
 
@@ -42,9 +32,7 @@ STDMETHODIMP CVineyard::get_Name (BSTR* p_pbstrName)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_pbstrName = m_sbstrName.copy ();
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_pbstrName, m_sbstrName);
 }
 
 
@@ -56,9 +44,19 @@ STDMETHODIMP CVineyard::get_Url (BSTR* p_pbstrUrl)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_pbstrUrl = m_sbstrUrl.copy ();
+	return UtilsPropertyGetHelper (p_pbstrUrl, m_sbstrUrl);
+}
 
-	return S_OK;
+
+//*****************************************************************************
+//* Function Name: get_ImageUrl
+//*   Description: 
+//*****************************************************************************
+STDMETHODIMP CVineyard::get_ImageUrl (BSTR* p_pbstrImageUrl)
+{
+	AFX_MANAGE_STATE(AfxGetStaticModuleState())
+
+	return UtilsPropertyGetHelper (p_pbstrImageUrl, m_sbstrImageUrl);
 }
 
 
@@ -70,10 +68,5 @@ STDMETHODIMP CVineyard::get_GeoLocation (IGeoLocation** p_ppGeoLocation)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	if (m_spGeoLocation) {
-		*p_ppGeoLocation = m_spGeoLocation;
-		(*p_ppGeoLocation)->AddRef ();
-	}
-
-	return S_OK;
+	return UtilsGetInterfacePointerHelper (p_ppGeoLocation, m_spGeoLocation);
 }

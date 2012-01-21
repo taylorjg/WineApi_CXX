@@ -1,22 +1,14 @@
 #include "stdafx.h"
 #include "ProductAttribute.h"
+#include "Utils.h"
 
 //*****************************************************************************
 //* Function Name: InterfaceSupportsErrorInfo
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CProductAttribute::InterfaceSupportsErrorInfo (REFIID riid)
+STDMETHODIMP CProductAttribute::InterfaceSupportsErrorInfo (REFIID p_riid)
 {
-	static const IID* arr[] = {
-		&IID_IProductAttribute
-	};
-
-	for (int i = 0; i < sizeof (arr) / sizeof (arr[0]); i++) {
-		if (InlineIsEqualGUID (*arr[i], riid))
-			return S_OK;
-	}
-
-	return S_FALSE;
+	return UtilsInterfaceSupportsErrorInfo (p_riid, IID_IProductAttribute);
 }
 
 
@@ -28,9 +20,7 @@ STDMETHODIMP CProductAttribute::get_Id (long* p_plId)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_plId = m_lId;
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_plId, m_lId);
 }
 
 
@@ -42,9 +32,7 @@ STDMETHODIMP CProductAttribute::get_Name (BSTR* p_pbstrName)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_pbstrName = m_sbstrName.copy ();
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_pbstrName, m_sbstrName);
 }
 
 
@@ -56,7 +44,17 @@ STDMETHODIMP CProductAttribute::get_Url (BSTR* p_pbstrUrl)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_pbstrUrl = m_sbstrUrl.copy ();
+	return UtilsPropertyGetHelper (p_pbstrUrl, m_sbstrUrl);
+}
 
-	return S_OK;
+
+//*****************************************************************************
+//* Function Name: get_ImageUrl
+//*   Description: 
+//*****************************************************************************
+STDMETHODIMP CProductAttribute::get_ImageUrl (BSTR* p_pbstrImageUrl)
+{
+	AFX_MANAGE_STATE(AfxGetStaticModuleState())
+
+	return UtilsPropertyGetHelper (p_pbstrImageUrl, m_sbstrImageUrl);
 }

@@ -41,6 +41,12 @@ HRESULT SafeArrayToVector (SAFEARRAY* p_psa, std::vector<_variant_t>& p_vValues)
 		return l_hr;
 	}
 
+	long l_lNumElements = l_lUpperBound - l_lLowerBound + 1;
+
+	if (l_lNumElements <= 0) {
+		return E_INVALIDARG;
+	}
+
 	for (long l_lIndex = l_lLowerBound; l_lIndex <= l_lUpperBound; l_lIndex++) {
 		_variant_t l_svarValue;
 		l_hr = SafeArrayGetElement (p_psa, &l_lIndex, &l_svarValue);

@@ -152,13 +152,14 @@
       <Optimization>MinSpace</Optimization>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_WINDLL;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;_WINDLL;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AssemblerListingLocation>.\ReleaseUMinDependency\</AssemblerListingLocation>
       <PrecompiledHeaderOutputFile>.\ReleaseUMinDependency\WineApi.pch</PrecompiledHeaderOutputFile>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <ObjectFileName>.\ReleaseUMinDependency\</ObjectFileName>
       <ProgramDataBaseFileName>.\ReleaseUMinDependency\</ProgramDataBaseFileName>
+      <AdditionalIncludeDirectories>..\lib\boost_1_47_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Midl>
       <TypeLibraryName>.\ReleaseUMinDependency\WineApi.tlb</TypeLibraryName>
@@ -201,13 +202,14 @@ echo Warning : Cannot register Unicode DLL on Windows 95
       <Optimization>MinSpace</Optimization>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_WINDLL;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;_WINDLL;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AssemblerListingLocation>.\ReleaseMinDependency\</AssemblerListingLocation>
       <PrecompiledHeaderOutputFile>.\ReleaseMinDependency\WineApi.pch</PrecompiledHeaderOutputFile>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <ObjectFileName>.\ReleaseMinDependency\</ObjectFileName>
       <ProgramDataBaseFileName>.\ReleaseMinDependency\</ProgramDataBaseFileName>
+      <AdditionalIncludeDirectories>..\lib\boost_1_47_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Midl>
       <TypeLibraryName>.\ReleaseMinDependency\WineApi.tlb</TypeLibraryName>
@@ -244,13 +246,14 @@ echo regsvr32 exec. time &gt; "$(OutDir)regsvr32.trg" </Command>
       <Optimization>MinSpace</Optimization>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_WINDLL;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;_WINDLL;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AssemblerListingLocation>.\Release\</AssemblerListingLocation>
       <PrecompiledHeaderOutputFile>.\Release\WineApi.pch</PrecompiledHeaderOutputFile>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <ObjectFileName>.\Release\</ObjectFileName>
       <ProgramDataBaseFileName>.\Release\</ProgramDataBaseFileName>
+      <AdditionalIncludeDirectories>..\lib\boost_1_47_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Midl>
       <TypeLibraryName>.\Release\WineApi.tlb</TypeLibraryName>
@@ -288,13 +291,14 @@ echo regsvr32 exec. time &gt; "$(OutDir)regsvr32.trg" </Command>
       <Optimization>MinSpace</Optimization>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_WINDLL;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;_WINDLL;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AssemblerListingLocation>.\ReleaseUMinSize\</AssemblerListingLocation>
       <PrecompiledHeaderOutputFile>.\ReleaseUMinSize\WineApi.pch</PrecompiledHeaderOutputFile>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <ObjectFileName>.\ReleaseUMinSize\</ObjectFileName>
       <ProgramDataBaseFileName>.\ReleaseUMinSize\</ProgramDataBaseFileName>
+      <AdditionalIncludeDirectories>..\lib\boost_1_47_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Midl>
       <TypeLibraryName>.\ReleaseUMinSize\WineApi.tlb</TypeLibraryName>
@@ -338,7 +342,7 @@ echo Warning : Cannot register Unicode DLL on Windows 95
       <WarningLevel>Level3</WarningLevel>
       <MinimalRebuild>true</MinimalRebuild>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_WINDLL;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;_WINDLL;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AssemblerListingLocation>.\DebugU\</AssemblerListingLocation>
       <PrecompiledHeaderOutputFile>.\DebugU\WineApi.pch</PrecompiledHeaderOutputFile>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -346,6 +350,7 @@ echo Warning : Cannot register Unicode DLL on Windows 95
       <ObjectFileName>.\DebugU\</ObjectFileName>
       <ProgramDataBaseFileName>.\DebugU\</ProgramDataBaseFileName>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <AdditionalIncludeDirectories>..\lib\boost_1_47_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Midl>
       <TypeLibraryName>.\DebugU\WineApi.tlb</TypeLibraryName>
@@ -389,13 +394,14 @@ echo Warning : Cannot register Unicode DLL on Windows 95
       <Optimization>MinSpace</Optimization>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_WINDLL;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;_WINDLL;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AssemblerListingLocation>.\ReleaseMinSize\</AssemblerListingLocation>
       <PrecompiledHeaderOutputFile>.\ReleaseMinSize\WineApi.pch</PrecompiledHeaderOutputFile>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <ObjectFileName>.\ReleaseMinSize\</ObjectFileName>
       <ProgramDataBaseFileName>.\ReleaseMinSize\</ProgramDataBaseFileName>
+      <AdditionalIncludeDirectories>..\lib\boost_1_47_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Midl>
       <TypeLibraryName>.\ReleaseMinSize\WineApi.tlb</TypeLibraryName>
@@ -433,7 +439,7 @@ echo regsvr32 exec. time &gt; "$(OutDir)regsvr32.trg" </Command>
       <WarningLevel>Level3</WarningLevel>
       <MinimalRebuild>true</MinimalRebuild>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_WINDLL;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;_WINDLL;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AssemblerListingLocation>.\Debug\</AssemblerListingLocation>
       <PrecompiledHeaderOutputFile>.\Debug\WineApi.pch</PrecompiledHeaderOutputFile>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -441,7 +447,7 @@ echo regsvr32 exec. time &gt; "$(OutDir)regsvr32.trg" </Command>
       <ObjectFileName>.\Debug\</ObjectFileName>
       <ProgramDataBaseFileName>.\Debug\</ProgramDataBaseFileName>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
-      <AdditionalIncludeDirectories>C:\Documents and Settings\jonathan.taylor\My Documents\Downloads\Boost\boost_1_47_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\lib\boost_1_47_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Midl>
       <TypeLibraryName>.\Debug\WineApi.tlb</TypeLibraryName>
@@ -471,6 +477,7 @@ echo regsvr32 exec. time &gt; "$(OutDir)regsvr32.trg" </Command>
     </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ActiveMethodGUIDs.cpp" />
     <ClCompile Include="Appellation.cpp" />
     <ClCompile Include="Area.cpp" />
     <ClCompile Include="Article.cpp" />
@@ -480,6 +487,7 @@ echo regsvr32 exec. time &gt; "$(OutDir)regsvr32.trg" </Command>
     <ClCompile Include="Category.cpp" />
     <ClCompile Include="CategoryMap.cpp" />
     <ClCompile Include="CategoryMapService.cpp" />
+    <ClCompile Include="ComErrorHandling.cpp" />
     <ClCompile Include="Community.cpp" />
     <ClCompile Include="CommunityReview.cpp" />
     <ClCompile Include="CommunityReviews.cpp" />
@@ -501,6 +509,7 @@ echo regsvr32 exec. time &gt; "$(OutDir)regsvr32.trg" </Command>
     <ClCompile Include="Region.cpp" />
     <ClCompile Include="Retail.cpp" />
     <ClCompile Include="SafeArrayHelpers.cpp" />
+    <ClCompile Include="ServiceBase.cpp" />
     <ClCompile Include="Status.cpp" />
     <ClCompile Include="StdAfx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Unicode Release MinDependency|Win32'">Create</PrecompiledHeader>
@@ -579,6 +588,7 @@ echo regsvr32 exec. time &gt; "$(OutDir)regsvr32.trg" </Command>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ActiveMethodGUIDs.h" />
     <ClInclude Include="Appellation.h" />
     <ClInclude Include="Area.h" />
     <ClInclude Include="Article.h" />
@@ -588,6 +598,7 @@ echo regsvr32 exec. time &gt; "$(OutDir)regsvr32.trg" </Command>
     <ClInclude Include="Category.h" />
     <ClInclude Include="CategoryMap.h" />
     <ClInclude Include="CategoryMapService.h" />
+    <ClInclude Include="ComErrorHandling.h" />
     <ClInclude Include="Community.h" />
     <ClInclude Include="CommunityReview.h" />
     <ClInclude Include="CommunityReviews.h" />

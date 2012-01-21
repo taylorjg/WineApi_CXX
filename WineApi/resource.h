@@ -3,8 +3,11 @@
 // Used by WineApi.rc
 //
 #define IDS_PROJNAME                    100
+#define IDS_LOADXML_FAILED              101
 #define IDR_CONFIG                      102
+#define IDS_UNSUPPORTED_PROPERTY_DATA_TYPE 102
 #define IDR_CATEGORYMAPSERVICE          103
+#define IDS_HTTP_REQUEST_FAILED         103
 #define IDR_CATEGORY                    104
 #define IDR_CATEGORYMAP                 105
 #define IDR_STATUS                      106

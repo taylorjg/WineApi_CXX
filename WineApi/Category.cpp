@@ -1,23 +1,15 @@
 #include "stdafx.h"
 #include "Category.h"
 #include "EnumHelpers.h"
+#include "Utils.h"
 
 //*****************************************************************************
 //* Function Name: InterfaceSupportsErrorInfo
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CCategory::InterfaceSupportsErrorInfo (REFIID riid)
+STDMETHODIMP CCategory::InterfaceSupportsErrorInfo (REFIID p_riid)
 {
-	static const IID* arr[] = {
-		&IID_IConfig
-	};
-
-	for (int i = 0; i < sizeof (arr) / sizeof (arr[0]); i++) {
-		if (InlineIsEqualGUID (*arr[i], riid))
-			return S_OK;
-	}
-
-	return S_FALSE;
+	return UtilsInterfaceSupportsErrorInfo (p_riid, IID_ICategory);
 }
 
 
@@ -29,9 +21,7 @@ STDMETHODIMP CCategory::get_Id (long* p_plId)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_plId = m_lId;
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_plId, m_lId);
 }
 
 
@@ -39,13 +29,11 @@ STDMETHODIMP CCategory::get_Id (long* p_plId)
 //* Function Name: get_Name
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CCategory::get_Name (BSTR* p_pName)
+STDMETHODIMP CCategory::get_Name (BSTR* p_pbstrName)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_pName = m_sbstrName.copy ();
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_pbstrName, m_sbstrName);
 }
 
 

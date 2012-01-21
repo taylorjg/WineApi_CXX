@@ -1,23 +1,15 @@
 #include "stdafx.h"
 #include "Products.h"
 #include "EnumHelpers.h"
+#include "Utils.h"
 
 //*****************************************************************************
 //* Function Name: InterfaceSupportsErrorInfo
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CProducts::InterfaceSupportsErrorInfo (REFIID riid)
+STDMETHODIMP CProducts::InterfaceSupportsErrorInfo (REFIID p_riid)
 {
-	static const IID* arr[] = {
-		&IID_IProducts
-	};
-
-	for (int i = 0; i < sizeof (arr) / sizeof (arr[0]); i++) {
-		if (InlineIsEqualGUID (*arr[i], riid))
-			return S_OK;
-	}
-
-	return S_FALSE;
+	return UtilsInterfaceSupportsErrorInfo (p_riid, IID_IProducts);
 }
 
 
@@ -29,9 +21,7 @@ STDMETHODIMP CProducts::get_Total (long* p_plTotal)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_plTotal = m_lTotal;
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_plTotal, m_lTotal);
 }
 
 
@@ -43,9 +33,7 @@ STDMETHODIMP CProducts::get_Offset (long* p_plOffset)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_plOffset = m_lOffset;
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_plOffset, m_lOffset);
 }
 
 
@@ -53,13 +41,11 @@ STDMETHODIMP CProducts::get_Offset (long* p_plOffset)
 //* Function Name: get_Url
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CProducts::get_Url (BSTR* p_pUrl)
+STDMETHODIMP CProducts::get_Url (BSTR* p_pbstrUrl)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_pUrl = m_sbstrUrl.copy ();
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_pbstrUrl, m_sbstrUrl);
 }
 
 

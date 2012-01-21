@@ -1,23 +1,17 @@
 #include "stdafx.h"
 #include "CategoryMapService.h"
+#include "ActiveMethodGUIDs.h"
 #include "SafeArrayHelpers.h"
+#include "ComErrorHandling.h"
+#include "Utils.h"
 
 //*****************************************************************************
 //* Function Name: InterfaceSupportsErrorInfo
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CCategoryMapService::InterfaceSupportsErrorInfo (REFIID riid)
+STDMETHODIMP CCategoryMapService::InterfaceSupportsErrorInfo (REFIID p_riid)
 {
-	static const IID* arr[] = {
-		&IID_IConfig
-	};
-
-	for (int i = 0; i < sizeof (arr) / sizeof (arr[0]); i++) {
-		if (InlineIsEqualGUID (*arr[i], riid))
-			return S_OK;
-	}
-
-	return S_FALSE;
+	return UtilsInterfaceSupportsErrorInfo (p_riid, IID_ICategoryMapService);
 }
 
 
@@ -29,14 +23,19 @@ STDMETHODIMP CCategoryMapService::Execute (ICategoryMap** p_ppCategoryMap)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	ICategoryMapPtr l_spCategoryMap = ExecuteHelper ();
+	CActiveMethodGUIDs l_ActiveMethodGUIDs (CLSID_CategoryMapService, IID_ICategoryMapService);
 
-	if (l_spCategoryMap) {
-		*p_ppCategoryMap = l_spCategoryMap;
-		(*p_ppCategoryMap)->AddRef ();
+	HRESULT l_hr = S_OK;
+
+	try {
+		ICategoryMapPtr l_spCategoryMap = ExecuteHelper ();
+		l_hr = UtilsGetInterfacePointerHelper (p_ppCategoryMap, l_spCategoryMap);
+	}
+	catch (const _com_error& l_ce) {
+		l_hr = HandleComErrorException (__FILE__, __LINE__, l_ce);
 	}
 
-	return S_OK;
+	return l_hr;
 }
 
 
@@ -295,26 +294,129 @@ STDMETHODIMP CCategoryMapService::Search (
 
 
 //*****************************************************************************
-//* Function Name: Show
+//* Function Name: Show1
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CCategoryMapService::Show (long p_lId, ICategoryMapService** p_ppSelf)
+STDMETHODIMP CCategoryMapService::Show1 (
+	long p_lCategory1,
+	ICategoryMapService** p_ppSelf)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	wchar_t l_wszId[20] = {0};
+	std::vector<_variant_t> l_vValues;
+	l_vValues.push_back (p_lCategory1);
 
-#if _MSC_VER >= 1400
-	(void) _snwprintf_s (l_wszId, 20, L"%d", p_lId);
-#else
-	(void) _snwprintf (l_wszId, 20, L"%d", p_lId);
-#endif
+	return AppendShow (l_vValues, p_ppSelf);
+}
 
-	AppendNameValueToQueryString (L"show", l_wszId);
 
-	return QueryInterface (
-		__uuidof (*p_ppSelf),
-		reinterpret_cast<void**>(p_ppSelf));
+//*****************************************************************************
+//* Function Name: Show2
+//*   Description: 
+//*****************************************************************************
+STDMETHODIMP CCategoryMapService::Show2 (
+	long p_lCategory1,
+	long p_lCategory2,
+	ICategoryMapService** p_ppSelf)
+{
+	AFX_MANAGE_STATE(AfxGetStaticModuleState())
+
+	std::vector<_variant_t> l_vValues;
+	l_vValues.push_back (p_lCategory1);
+	l_vValues.push_back (p_lCategory2);
+
+	return AppendShow (l_vValues, p_ppSelf);
+}
+
+
+//*****************************************************************************
+//* Function Name: Show3
+//*   Description: 
+//*****************************************************************************
+STDMETHODIMP CCategoryMapService::Show3 (
+	long p_lCategory1,
+	long p_lCategory2,
+	long p_lCategory3,
+	ICategoryMapService** p_ppSelf)
+{
+	AFX_MANAGE_STATE(AfxGetStaticModuleState())
+
+	std::vector<_variant_t> l_vValues;
+	l_vValues.push_back (p_lCategory1);
+	l_vValues.push_back (p_lCategory2);
+	l_vValues.push_back (p_lCategory3);
+
+	return AppendShow (l_vValues, p_ppSelf);
+}
+
+
+//*****************************************************************************
+//* Function Name: Show4
+//*   Description: 
+//*****************************************************************************
+STDMETHODIMP CCategoryMapService::Show4 (
+	long p_lCategory1,
+	long p_lCategory2,
+	long p_lCategory3,
+	long p_lCategory4,
+	ICategoryMapService** p_ppSelf)
+{
+	AFX_MANAGE_STATE(AfxGetStaticModuleState())
+
+	std::vector<_variant_t> l_vValues;
+	l_vValues.push_back (p_lCategory1);
+	l_vValues.push_back (p_lCategory2);
+	l_vValues.push_back (p_lCategory3);
+	l_vValues.push_back (p_lCategory4);
+
+	return AppendShow (l_vValues, p_ppSelf);
+}
+
+
+//*****************************************************************************
+//* Function Name: Show5
+//*   Description: 
+//*****************************************************************************
+STDMETHODIMP CCategoryMapService::Show5 (
+	long p_lCategory1,
+	long p_lCategory2,
+	long p_lCategory3,
+	long p_lCategory4,
+	long p_lCategory5,
+	ICategoryMapService** p_ppSelf)
+{
+	AFX_MANAGE_STATE(AfxGetStaticModuleState())
+
+	std::vector<_variant_t> l_vValues;
+	l_vValues.push_back (p_lCategory1);
+	l_vValues.push_back (p_lCategory2);
+	l_vValues.push_back (p_lCategory3);
+	l_vValues.push_back (p_lCategory4);
+	l_vValues.push_back (p_lCategory5);
+
+	return AppendShow (l_vValues, p_ppSelf);
+}
+
+
+//*****************************************************************************
+//* Function Name: Show
+//*   Description: 
+//*****************************************************************************
+STDMETHODIMP CCategoryMapService::Show (
+	SAFEARRAY* p_psa,
+	ICategoryMapService** p_ppSelf)
+{
+	AFX_MANAGE_STATE(AfxGetStaticModuleState())
+
+	std::vector<_variant_t> l_vValues;
+
+	HRESULT l_hr = SafeArrayToVector (p_psa, l_vValues);
+
+	if (SUCCEEDED (l_hr)) {
+		l_hr = AppendShow (l_vValues, p_ppSelf);
+	}
+
+	return l_hr;
 }
 
 
@@ -346,7 +448,26 @@ HRESULT CCategoryMapService::AppendSearch (
 
 	AppendNameValueToQueryString (L"search", l_sbstrJoinedValues);
 
-	return QueryInterface (
-		__uuidof (*p_ppSelf),
-		reinterpret_cast<void**>(p_ppSelf));
+	return UtilsSelfQueryInterfaceHelper (this, p_ppSelf);
+}
+
+
+//*****************************************************************************
+//* Function Name: AppendShow
+//*   Description: 
+//*****************************************************************************
+HRESULT CCategoryMapService::AppendShow (
+	const std::vector<_variant_t>&	p_vValues,
+	ICategoryMapService**			p_ppSelf)
+{
+	_bstr_t l_sbstrJoinedValues = JoinValues (p_vValues);
+
+	_bstr_t l_sbstrValue;
+	l_sbstrValue  = L"(";
+	l_sbstrValue += l_sbstrJoinedValues;
+	l_sbstrValue += L")";
+
+	AppendNameValueToQueryString (L"show", l_sbstrValue);
+
+	return UtilsSelfQueryInterfaceHelper (this, p_ppSelf);
 }

@@ -19,7 +19,7 @@ public:
 		CServiceBase<CReference, IReferencePtr> (
 			new CInternalUrlInvoker (),
 			new CInternalResponseDecoder<CReference, IReferencePtr> (),
-			L"reference")
+			RESOURCE_REFERENCE)
 	{
 		ATLTRACE (_T("CReferenceService::CReferenceService - %p\n"), this);
 	}

@@ -17,6 +17,8 @@ Release
 Notes
 *.sdf
 *.suo
+*.opensdf
 ipch
 *.vcxproj.filters
 *.vcxproj.user
+lib/boost_1_47_0

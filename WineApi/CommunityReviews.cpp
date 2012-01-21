@@ -1,23 +1,15 @@
 #include "stdafx.h"
 #include "CommunityReviews.h"
 #include "EnumHelpers.h"
+#include "Utils.h"
 
 //*****************************************************************************
 //* Function Name: InterfaceSupportsErrorInfo
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CCommunityReviews::InterfaceSupportsErrorInfo (REFIID riid)
+STDMETHODIMP CCommunityReviews::InterfaceSupportsErrorInfo (REFIID p_riid)
 {
-	static const IID* arr[] = {
-		&IID_ICommunityReviews
-	};
-
-	for (int i = 0; i < sizeof (arr) / sizeof (arr[0]); i++) {
-		if (InlineIsEqualGUID (*arr[i], riid))
-			return S_OK;
-	}
-
-	return S_FALSE;
+	return UtilsInterfaceSupportsErrorInfo (p_riid, IID_ICommunityReviews);
 }
 
 
@@ -29,9 +21,7 @@ STDMETHODIMP CCommunityReviews::get_HighestScore (long* p_plHighestScore)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_plHighestScore = m_lHighestScore;
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_plHighestScore, m_lHighestScore);
 }
 
 
@@ -43,9 +33,7 @@ STDMETHODIMP CCommunityReviews::get_Url (BSTR* p_pbstrUrl)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_pbstrUrl = m_sbstrUrl.copy ();
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_pbstrUrl, m_sbstrUrl);
 }
 
 

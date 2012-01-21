@@ -7,18 +7,9 @@
 //* Function Name: InterfaceSupportsErrorInfo
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CWineApiStringCollection::InterfaceSupportsErrorInfo (REFIID riid)
+STDMETHODIMP CWineApiStringCollection::InterfaceSupportsErrorInfo (REFIID p_riid)
 {
-	static const IID* arr[] = {
-		&IID_IWineApiStringCollection
-	};
-
-	for (int i = 0; i < sizeof (arr) / sizeof (arr[0]); i++) {
-		if (InlineIsEqualGUID (*arr[i], riid))
-			return S_OK;
-	}
-
-	return S_FALSE;
+	return UtilsInterfaceSupportsErrorInfo (p_riid, IID_IWineApiStringCollection);
 }
 
 
@@ -26,13 +17,11 @@ STDMETHODIMP CWineApiStringCollection::InterfaceSupportsErrorInfo (REFIID riid)
 //* Function Name: get_Count
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CWineApiStringCollection::get_Count (long* p_lCount)
+STDMETHODIMP CWineApiStringCollection::get_Count (long* p_plCount)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	*p_lCount = m_lNumItems;
-
-	return S_OK;
+	return UtilsPropertyGetHelper (p_plCount, m_lNumItems);
 }
 
 
@@ -52,14 +41,16 @@ STDMETHODIMP CWineApiStringCollection::get_Item (long p_lIndex, BSTR* p_pbstrIte
 		return E_POINTER;
 	}
 
+	*p_pbstrItem = NULL;
+
 	HRESULT l_hr = S_OK;
 
 	try {
 		_bstr_t l_sbstrItem (m_svara[p_lIndex]);
 		*p_pbstrItem = l_sbstrItem.copy ();
 	}
-	catch (const _com_error& _ce) {
-		l_hr = _ce.Error ();
+	catch (const _com_error& l_ce) {
+		l_hr = l_ce.Error ();
 	}
 
 	return l_hr;
@@ -73,6 +64,10 @@ STDMETHODIMP CWineApiStringCollection::get_Item (long p_lIndex, BSTR* p_pbstrIte
 STDMETHODIMP CWineApiStringCollection::get__NewEnum (IUnknown** p_ppEnum)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
+
+	if (p_ppEnum == NULL) {
+		return E_POINTER;
+	}
 
 	*p_ppEnum = NULL;
 

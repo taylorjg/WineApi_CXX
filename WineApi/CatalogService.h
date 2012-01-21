@@ -19,7 +19,7 @@ public:
 		CServiceBase<CCatalog, ICatalogPtr> (
 			new CInternalUrlInvoker (),
 			new CInternalResponseDecoder<CCatalog, ICatalogPtr> (),
-			L"catalog")
+			RESOURCE_CATALOG)
 	{
 		ATLTRACE (_T("CCatalogService::CCatalogService - %p\n"), this);
 	}

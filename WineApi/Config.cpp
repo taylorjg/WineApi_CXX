@@ -17,18 +17,9 @@ _bstr_t CConfig::m_s_sbstrAffiliateId (BLANK);
 //* Function Name: InterfaceSupportsErrorInfo
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CConfig::InterfaceSupportsErrorInfo (REFIID riid)
+STDMETHODIMP CConfig::InterfaceSupportsErrorInfo (REFIID p_riid)
 {
-	static const IID* arr[] = {
-		&IID_IConfig
-	};
-
-	for (int i = 0; i < sizeof (arr) / sizeof (arr[0]); i++) {
-		if (InlineIsEqualGUID (*arr[i], riid))
-			return S_OK;
-	}
-
-	return S_FALSE;
+	return UtilsInterfaceSupportsErrorInfo (p_riid, IID_IConfig);
 }
 
 
@@ -137,4 +128,16 @@ _bstr_t CConfig::GetBaseUrl (const _bstr_t& p_sbstrResource)
 	}
 
 	return l_sbstrBaseUrl;
+}
+
+
+//*****************************************************************************
+//* Function Name: GetBaseUrl
+//*   Description: 
+//*****************************************************************************
+void CConfig::Reset (void)
+{
+	m_s_sbstrApiKey			= BLANK;
+	m_s_sbstrVersion		= DEFAULT_API_VERSION;
+	m_s_sbstrAffiliateId	= BLANK;
 }

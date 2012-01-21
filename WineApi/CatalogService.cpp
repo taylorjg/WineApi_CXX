@@ -1,23 +1,17 @@
 #include "stdafx.h"
 #include "CatalogService.h"
+#include "ActiveMethodGUIDs.h"
 #include "SafeArrayHelpers.h"
+#include "ComErrorHandling.h"
+#include "Utils.h"
 
 //*****************************************************************************
 //* Function Name: InterfaceSupportsErrorInfo
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CCatalogService::InterfaceSupportsErrorInfo (REFIID riid)
+STDMETHODIMP CCatalogService::InterfaceSupportsErrorInfo (REFIID p_riid)
 {
-	static const IID* arr[] = {
-		&IID_ICatalogService
-	};
-
-	for (int i = 0; i < sizeof (arr) / sizeof (arr[0]); i++) {
-		if (InlineIsEqualGUID (*arr[i], riid))
-			return S_OK;
-	}
-
-	return S_FALSE;
+	return UtilsInterfaceSupportsErrorInfo (p_riid, IID_ICatalogService);
 }
 
 
@@ -29,14 +23,19 @@ STDMETHODIMP CCatalogService::Execute (ICatalog** p_ppCatalog)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	ICatalogPtr l_spCatalog = ExecuteHelper ();
+	CActiveMethodGUIDs l_ActiveMethodGUIDs (CLSID_CatalogService, IID_ICatalogService);
 
-	if (l_spCatalog) {
-		*p_ppCatalog = l_spCatalog;
-		(*p_ppCatalog)->AddRef ();
+	HRESULT l_hr = S_OK;
+
+	try {
+		ICatalogPtr l_spCatalog = ExecuteHelper ();
+		l_hr = UtilsGetInterfacePointerHelper (p_ppCatalog, l_spCatalog);
+	}
+	catch (const _com_error& l_ce) {
+		l_hr = HandleComErrorException (__FILE__, __LINE__, l_ce);
 	}
 
-	return S_OK;
+	return l_hr;
 }
 
 
@@ -52,9 +51,7 @@ STDMETHODIMP CCatalogService::Offset (
 
 	AppendNameValueToQueryString (L"offset", p_lOffset);
 
-	return QueryInterface (
-		__uuidof (*p_ppSelf),
-		reinterpret_cast<void**>(p_ppSelf));
+	return UtilsSelfQueryInterfaceHelper (this, p_ppSelf);
 }
 
 
@@ -70,9 +67,7 @@ STDMETHODIMP CCatalogService::Size (
 
 	AppendNameValueToQueryString (L"size", p_lSize);
 
-	return QueryInterface (
-		__uuidof (*p_ppSelf),
-		reinterpret_cast<void**>(p_ppSelf));
+	return UtilsSelfQueryInterfaceHelper (this, p_ppSelf);
 }
 
 
@@ -350,9 +345,7 @@ STDMETHODIMP CCatalogService::RatingFromFilter (
 
 	AppendNameValueToQueryString (L"filter", l_wszValue);
 
-	return QueryInterface (
-		__uuidof (*p_ppSelf),
-		reinterpret_cast<void**>(p_ppSelf));
+	return UtilsSelfQueryInterfaceHelper (this, p_ppSelf);
 }
 
 
@@ -377,9 +370,7 @@ STDMETHODIMP CCatalogService::RatingFromToFilter (
 
 	AppendNameValueToQueryString (L"filter", l_wszValue);
 
-	return QueryInterface (
-		__uuidof (*p_ppSelf),
-		reinterpret_cast<void**>(p_ppSelf));
+	return UtilsSelfQueryInterfaceHelper (this, p_ppSelf);
 }
 
 
@@ -396,16 +387,14 @@ STDMETHODIMP CCatalogService::PriceFromFilter (
 	wchar_t l_wszValue[100] = {0};
 
 #if _MSC_VER >= 1400
-	(void) _snwprintf_s (l_wszValue, 100, L"price(%f)", p_dblFrom);
+	(void) _snwprintf_s (l_wszValue, 100, L"price(%.4f)", p_dblFrom);
 #else
-	(void) _snwprintf (l_wszValue, 100, L"price(%f)", p_dblFrom);
+	(void) _snwprintf (l_wszValue, 100, L"price(%.4f)", p_dblFrom);
 #endif
 
 	AppendNameValueToQueryString (L"filter", l_wszValue);
 
-	return QueryInterface (
-		__uuidof (*p_ppSelf),
-		reinterpret_cast<void**>(p_ppSelf));
+	return UtilsSelfQueryInterfaceHelper (this, p_ppSelf);
 }
 
 
@@ -423,16 +412,14 @@ STDMETHODIMP CCatalogService::PriceFromToFilter (
 	wchar_t l_wszValue[100] = {0};
 
 #if _MSC_VER >= 1400
-	(void) _snwprintf_s (l_wszValue, 100, L"price(%f|%f)", p_dblFrom, p_dblTo);
+	(void) _snwprintf_s (l_wszValue, 100, L"price(%.4f|%.4f)", p_dblFrom, p_dblTo);
 #else
-	(void) _snwprintf (l_wszValue, 100, L"price(%f|%f)", p_dblFrom, p_dblTo);
+	(void) _snwprintf (l_wszValue, 100, L"price(%.4f|%.4f)", p_dblFrom, p_dblTo);
 #endif
 
 	AppendNameValueToQueryString (L"filter", l_wszValue);
 
-	return QueryInterface (
-		__uuidof (*p_ppSelf),
-		reinterpret_cast<void**>(p_ppSelf));
+	return UtilsSelfQueryInterfaceHelper (this, p_ppSelf);
 }
 
 
@@ -575,9 +562,7 @@ STDMETHODIMP CCatalogService::State (
 
 	AppendNameValueToQueryString (L"state", p_bstrState);
 
-	return QueryInterface (
-		__uuidof (*p_ppSelf),
-		reinterpret_cast<void**>(p_ppSelf));
+	return UtilsSelfQueryInterfaceHelper (this, p_ppSelf);
 }
 
 
@@ -631,7 +616,6 @@ STDMETHODIMP CCatalogService::SortBy (
 
 		default:
 			return E_INVALIDARG;
-			break;
 	}
 
 	switch (p_eSortDirection) {
@@ -646,7 +630,6 @@ STDMETHODIMP CCatalogService::SortBy (
 
 		default:
 			return E_INVALIDARG;
-			break;
 	}
 
 	_bstr_t l_sbstrValue;
@@ -656,9 +639,7 @@ STDMETHODIMP CCatalogService::SortBy (
 
 	AppendNameValueToQueryString (L"sort", l_sbstrValue);
 
-	return QueryInterface (
-		__uuidof (*p_ppSelf),
-		reinterpret_cast<void**>(p_ppSelf));
+	return UtilsSelfQueryInterfaceHelper (this, p_ppSelf);
 }
 
 
@@ -676,9 +657,7 @@ STDMETHODIMP CCatalogService::InStock (
 
 	AppendNameValueToQueryString (L"instock", (l_bInStock) ? L"true" : L"false");
 
-	return QueryInterface (
-		__uuidof (*p_ppSelf),
-		reinterpret_cast<void**>(p_ppSelf));
+	return UtilsSelfQueryInterfaceHelper (this, p_ppSelf);
 }
 
 
@@ -726,7 +705,5 @@ HRESULT CCatalogService::AppendSearch (
 
 	AppendNameValueToQueryString (L"search", l_sbstrJoinedValues);
 
-	return QueryInterface (
-		__uuidof (*p_ppSelf),
-		reinterpret_cast<void**>(p_ppSelf));
+	return UtilsSelfQueryInterfaceHelper (this, p_ppSelf);
 }

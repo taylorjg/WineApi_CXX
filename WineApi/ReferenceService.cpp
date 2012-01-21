@@ -1,23 +1,17 @@
 #include "stdafx.h"
 #include "ReferenceService.h"
+#include "ActiveMethodGUIDs.h"
 #include "SafeArrayHelpers.h"
+#include "ComErrorHandling.h"
+#include "Utils.h"
 
 //*****************************************************************************
 //* Function Name: InterfaceSupportsErrorInfo
 //*   Description: 
 //*****************************************************************************
-STDMETHODIMP CReferenceService::InterfaceSupportsErrorInfo (REFIID riid)
+STDMETHODIMP CReferenceService::InterfaceSupportsErrorInfo (REFIID p_riid)
 {
-	static const IID* arr[] = {
-		&IID_IReferenceService
-	};
-
-	for (int i = 0; i < sizeof (arr) / sizeof (arr[0]); i++) {
-		if (InlineIsEqualGUID (*arr[i], riid))
-			return S_OK;
-	}
-
-	return S_FALSE;
+	return UtilsInterfaceSupportsErrorInfo (p_riid, IID_IReferenceService);
 }
 
 
@@ -29,14 +23,19 @@ STDMETHODIMP CReferenceService::Execute (IReference** p_ppReference)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState())
 
-	IReferencePtr l_spReference = ExecuteHelper ();
+	CActiveMethodGUIDs l_ActiveMethodGUIDs (CLSID_ReferenceService, IID_IReferenceService);
 
-	if (l_spReference) {
-		*p_ppReference = l_spReference;
-		(*p_ppReference)->AddRef ();
+	HRESULT l_hr = S_OK;
+
+	try {
+		IReferencePtr l_spReference = ExecuteHelper ();
+		l_hr = UtilsGetInterfacePointerHelper (p_ppReference, l_spReference);
+	}
+	catch (const _com_error& l_ce) {
+		l_hr = HandleComErrorException (__FILE__, __LINE__, l_ce);
 	}
 
-	return S_OK;
+	return l_hr;
 }
 
 

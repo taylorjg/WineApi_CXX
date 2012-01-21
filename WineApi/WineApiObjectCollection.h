@@ -39,7 +39,7 @@ public:
 
 // IWineApiObjectCollection
 public:
-	STDMETHOD(get_Count)(long* p_lCount);
+	STDMETHOD(get_Count)(long* p_plCount);
 	STDMETHOD(get_Item)(long p_lIndex, IDispatch** p_ppDispatch);
 	STDMETHOD(get__NewEnum)(IUnknown** p_ppEnum);
 
