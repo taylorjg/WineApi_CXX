@@ -13,28 +13,70 @@ making calls to any of the services. It has the following properties:
 
 - ApiKey
 - Version (defaults to "beta2")
+- AffiliateId
 
 Each of the service objects has an Execute() method that returns an appropriate object.
 For example, CatalogService.Execute() returns a Catalog object which in turn contains
 Status and Products objects.
 
+## Release 1.0.3.0
+
+Pre-built DLLs for version 1.0.3.0 are available in the following zip file:
+
+http://github.com/taylorjg/WineApi_CXX/raw/master/Releases/1.0.3.0.zip
+
+The zip file contains Debug and Release builds from both Visual Studio 6 and Visual Studio 2010.
+
+## Unit Tests and Integration Tests
+
+There are separate projects containing unit tests and integration tests. The unit tests read
+canned XML response from custom resources. Some of the tests are only included in Visual Studio
+2010 because they use lambda functions. The integration tests invoke the real wine.com services.
+Both the unit tests and the integration tests use CppUnit.
+
 ## References
 
 - http://api.wine.com
 - http://api.wine.com/wiki
+- http://sourceforge.net/projects/cppunit/
+- http://cppunit.sourceforge.net/doc/1.8.0/
+- http://msdn.microsoft.com/en-us/library/dd293608.aspx
+- http://en.wikipedia.org/wiki/C%2B%2B11#Lambda_functions_and_expressions
+- http://en.wikipedia.org/wiki/Anonymous_function#C.2B.2B
+
+## TODO
+
+- Separate out some of the utility stuff (e.g. ComErrorHandling, SafeArrayHelpers, etc.)
+- Separate out the metadata stuff (e.g. IEntityMetadata, CEntityDecoder, etc.)
+- It may be worth creating a CWineApiUrl class and refactoring the code
+
+Separating out some of the stuff into separate libraries would allow for re-use and
+better unit testing.
 
 ## Simple Visual C++ Client Example
 
 ```C++
 #include <windows.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include <tchar.h>
 
 #import "WineApi.dll"
 
+//*****************************************************************************
+//* Function Name: main
+//*   Description: Entry point.
+//*****************************************************************************
 int main ()
 {
+    int l_iResult = EXIT_FAILURE;
+
+    // Initialise COM run-time on this thread.
     if (SUCCEEDED (CoInitialize (NULL))) {
+
+        // Assume success.
+        l_iResult = EXIT_SUCCESS;
+
         try {
             HRESULT l_hr;
 
@@ -49,14 +91,29 @@ int main ()
 
             WineApi::ICatalogPtr l_spCatalog = l_spCatalogService
                 ->State (L"CA")
-                ->InStock (VARIANT_TRUE)
-                ->Search1 (L"Merlot")
+                ->InStock (true)
+                ->Search1 (L"merlot")
                 ->RatingFromToFilter (90, 96)
                 ->SortBy (WineApi::SortOptionRating, WineApi::SortDirectionDescending)
                 ->Execute ();
 
             if (l_spCatalog->Status->ReturnCode == WineApi::ReturnCodeSuccess) {
+
                 _tprintf (_T("Number of products found: %ld\n"), l_spCatalog->Products->Total);
+
+                long l_lNumProducts = l_spCatalog->Products->List->Count;
+                for (long l_lIndex = 0; l_lIndex < l_lNumProducts; l_lIndex++) {
+
+                    WineApi::IProductPtr l_spProduct = l_spCatalog->Products->List->Item[l_lIndex];
+
+                    long l_lHighestScore = l_spProduct->Ratings->HighestScore;
+                    _bstr_t l_sbstrName = l_spProduct->Name;
+
+                    _tprintf (
+                        _T("Rating: %ld; Name: \"%s\".\n"),
+                        l_lHighestScore,
+                        static_cast<LPCTSTR>(l_sbstrName));
+                }
             }
             else {
                 _bstr_t l_sbstrFirstMessage = l_spCatalog->Status->Messages->Item[0];
@@ -65,12 +122,13 @@ int main ()
         }
         catch (const _com_error& _ce) {
             _ftprintf (stderr, _T("HRESULT = 0x%08X\n"), _ce.Error ());
+            l_iResult = EXIT_FAILURE;
         }
 
         CoUninitialize ();
     }
 
-    return 0;
+    return l_iResult;
 }
 ```
 
