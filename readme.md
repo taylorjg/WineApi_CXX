@@ -1,6 +1,12 @@
 # WineApi COM Library
 
-WineApi is a COM library written in Visual C++ / ATL. It implements the entire wine.com API object model.
+WineApi is a COM library written in Visual C++ / ATL. It wraps the entire wine.com API object model
+and can be used to invoke all three of the wine.com RESTful services:
+
+- Catalog
+- CategoryMap
+- Reference
+
 The following 4 COM objects can be created:
 
 - WineApi.Config
@@ -30,7 +36,7 @@ The zip file contains Debug and Release builds from both Visual Studio 6 and Vis
 ## Unit Tests and Integration Tests
 
 There are separate projects containing unit tests and integration tests. The unit tests read
-canned XML response from custom resources. Some of the tests are only included in Visual Studio
+canned XML responses from custom resources. Some of the tests are only included in Visual Studio
 2010 because they use lambda functions. The integration tests invoke the real wine.com services.
 Both the unit tests and the integration tests use CppUnit.
 
@@ -40,15 +46,15 @@ Both the unit tests and the integration tests use CppUnit.
 - http://api.wine.com/wiki
 - http://sourceforge.net/projects/cppunit/
 - http://cppunit.sourceforge.net/doc/1.8.0/
-- http://msdn.microsoft.com/en-us/library/dd293608.aspx
-- http://en.wikipedia.org/wiki/C%2B%2B11#Lambda_functions_and_expressions
-- http://en.wikipedia.org/wiki/Anonymous_function#C.2B.2B
+- [Lambda Expressions in C++](http://msdn.microsoft.com/en-us/library/dd293608.aspx)
+- [C++11#Lambda functions and expressions](http://en.wikipedia.org/wiki/C%2B%2B11#Lambda_functions_and_expressions)
+- [Anonymous function#C++](http://en.wikipedia.org/wiki/Anonymous_function#C.2B.2B)
 
 ## TODO
 
 - Separate out some of the utility stuff (e.g. ComErrorHandling, SafeArrayHelpers, etc.)
 - Separate out the metadata stuff (e.g. IEntityMetadata, CEntityDecoder, etc.)
-- It may be worth creating a CWineApiUrl class and refactoring the code
+- Maybe create a CWineApiUrl class and refactor the code
 
 Separating out some of the stuff into separate libraries would allow for re-use and
 better unit testing.
