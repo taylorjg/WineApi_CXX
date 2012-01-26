@@ -1,0 +1,7 @@
+The WineApi project uses Boost (http://www.boost.org/).
+
+The particular version I used is available here:
+
+http://sourceforge.net/projects/boost/files/boost/1.47.0/
+
+The WineApi project adds "..\lib\boost_1_47_0" to the list of additional include directoties.
